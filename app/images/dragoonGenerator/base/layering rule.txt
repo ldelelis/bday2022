@@ -1,0 +1,4 @@
+1) blackline.png
+2) shadow
+3) skin tone.png ( which is you code the RGB stuff there)
+4) white base.png (white, optional if you want to put another RGB slide there too)

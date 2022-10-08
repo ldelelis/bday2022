@@ -1,0 +1,8 @@
+top to btm
+1. hand item
+2. hat
+3. eye
+4. moustache
+5. cloth
+6. base
+7. horn
