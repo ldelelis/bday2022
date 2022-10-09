@@ -9,3 +9,9 @@ export const eyeCurrent = atomWithStorage("eye", 0, storage);
 export const hatCurrent = atomWithStorage("hat", 0, storage);
 export const hornCurrent = atomWithStorage("horn", 0, storage);
 export const moustacheCurrent = atomWithStorage("moustache", 0, storage);
+
+export const baseColorCurrent = atomWithStorage(
+  "baseColor",
+  "#c084fc",
+  storage
+);

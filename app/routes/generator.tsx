@@ -1,7 +1,9 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useAtom } from "jotai";
+import { HuePicker } from "react-color";
 import {
+  baseColorCurrent,
   clothCurrent,
   eyeCurrent,
   handItemCurrent,
@@ -49,12 +51,18 @@ export default function Generator() {
   const [hornIndex, setHorn] = useAtom(hornCurrent);
   const [moustacheIndex, setMoustache] = useAtom(moustacheCurrent);
 
+  const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
+
   const cloth = viewData.clothes[clothIndex];
   const eye = viewData.eyes[eyeIndex];
   const hat = viewData.hats[hatIndex];
   const handItem = viewData.handItems[handItemIndex];
   const horn = viewData.horns[hornIndex];
   const moustache = viewData.moustaches[moustacheIndex];
+
+  const handleColorChange = (color, event) => {
+    setCurrentColor(color.hex);
+  };
 
   return (
     <div className="grid grid-cols-6 grid-rows-1 gap-2">
@@ -101,8 +109,9 @@ export default function Generator() {
       <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
       <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
       <DragoonItemPreview styleProps="stacked" image={baseShadow} />
-      <DragoonItemBase className="stacked w-full h-full text-purple-400" />
+      <DragoonItemBase className="stacked w-full h-full" color={currentColor} />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
+      <HuePicker color={currentColor} onChange={handleColorChange} />
     </div>
   );
 }
