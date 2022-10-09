@@ -11,7 +11,17 @@ import {
 } from "~/atoms";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonItemPreview from "~/components/DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
-import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
+import {
+  cloth,
+  eye,
+  hat,
+  handItem,
+  horn,
+  moustache,
+  baseBlackLine,
+  baseShadow,
+  baseSkinTone,
+} from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 
 export async function loader() {
@@ -89,6 +99,9 @@ export default function Generator() {
       <DragoonItemPreview styleProps="stacked z-30" image={eye} />
       <DragoonItemPreview styleProps="stacked z-20" image={moustache} />
       <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
+      <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
+      <DragoonItemPreview styleProps="stacked" image={baseShadow} />
+      <DragoonItemPreview styleProps="stacked" image={baseSkinTone} />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
     </div>
   );

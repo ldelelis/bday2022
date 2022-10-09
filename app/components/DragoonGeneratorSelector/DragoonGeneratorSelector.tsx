@@ -18,13 +18,13 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   setIndex,
 }) => {
   return (
-    <div>
+    <div className="grid grid-cols-5 items-center">
       <DragoonSelectorPrevious
         itemIndex={itemIndex}
         itemCount={itemCount}
         setPrevious={setIndex}
       />
-      <DragoonItemPreview image={imagePath} />
+      <DragoonItemPreview image={imagePath} styleProps="col-span-3" />
       <DragoonSelectorNext
         itemIndex={itemIndex}
         itemCount={itemCount}
