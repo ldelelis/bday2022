@@ -20,9 +20,9 @@ import {
   moustache,
   baseBlackLine,
   baseShadow,
-  baseSkinTone,
 } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
+import DragoonItemBase from "~/components/DragoonSelector/DragoonSelectorBase/DragoonSelectorBase";
 
 export async function loader() {
   return json({
@@ -101,7 +101,7 @@ export default function Generator() {
       <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
       <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
       <DragoonItemPreview styleProps="stacked" image={baseShadow} />
-      <DragoonItemPreview styleProps="stacked" image={baseSkinTone} />
+      <DragoonItemBase className="stacked w-full h-full text-purple-400" />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
     </div>
   );
