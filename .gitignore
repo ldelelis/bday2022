@@ -1,7 +1,9 @@
 node_modules
+dev.db
 
 /.cache
 /build
 /public/build
 .env
 tags
+.envrc
