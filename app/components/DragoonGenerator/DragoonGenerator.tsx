@@ -11,7 +11,7 @@ import { useAtom } from "jotai";
 import { FC } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
-import { HuePicker } from "react-color";
+import { ColorResult, HuePicker } from "react-color";
 import { Form } from "@remix-run/react";
 
 type DragoonGeneratorProps = {
@@ -41,7 +41,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const horn = horns[hornIndex];
   const moustache = moustaches[moustacheIndex];
 
-  const handleColorChange = (color, event) => {
+  const handleColorChange = (color: ColorResult) => {
     setCurrentColor(color.hex);
   };
 

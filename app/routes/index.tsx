@@ -1,6 +1,6 @@
 import { ActionArgs, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getClientIPAddress } from "remix-utils";
+import { ClientOnly, getClientIPAddress } from "remix-utils";
 import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
@@ -44,5 +44,5 @@ export function links() {
 export default function Generator() {
   const viewData = useLoaderData();
 
-  return <DragoonGenerator {...viewData} />;
+  return <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>;
 }
