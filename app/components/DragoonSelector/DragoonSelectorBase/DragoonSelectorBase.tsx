@@ -8,6 +8,7 @@ const DragoonItemBase: FC<React.SVGProps<SVGSVGElement>> = (props) => {
       viewBox="0 0 350 350"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ border: "4px solid black" }}
       {...props}
     >
       <path

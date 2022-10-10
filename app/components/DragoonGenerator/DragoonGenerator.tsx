@@ -46,88 +46,101 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-6 grid-rows-1 gap-2">
-      <DragoonGeneratorSelector
-        imagePath={cloth}
-        itemIndex={clothIndex}
-        itemCount={clothes.length}
-        setIndex={setCloth}
-      />
-      <DragoonGeneratorSelector
-        imagePath={eye}
-        itemIndex={eyeIndex}
-        itemCount={eyes.length}
-        setIndex={setEye}
-      />
-      <DragoonGeneratorSelector
-        imagePath={hat}
-        itemIndex={hatIndex}
-        itemCount={hats.length}
-        setIndex={setHat}
-      />
-      <DragoonGeneratorSelector
-        imagePath={handItem}
-        itemIndex={handItemIndex}
-        itemCount={handItems.length}
-        setIndex={setHandItem}
-      />
-      <DragoonGeneratorSelector
-        imagePath={horn}
-        itemIndex={hornIndex}
-        itemCount={horns.length}
-        setIndex={setHorn}
-      />
-      <DragoonGeneratorSelector
-        imagePath={moustache}
-        itemIndex={moustacheIndex}
-        itemCount={moustaches.length}
-        setIndex={setMoustache}
-      />
-
-      <DragoonPreview
-        handItem={handItem}
-        hat={hat}
-        eye={eye}
-        moustache={moustache}
-        cloth={cloth}
-        horn={horn}
-        currentColor={currentColor}
-      />
-      <HuePicker color={currentColor} onChange={handleColorChange} />
-
-      <Form method="post" className="grid grid-cols-1 grid-rows-6">
-        <textarea name="comment" className="row-span-4"></textarea>
-        <input id="author" name="author" type="text" />
-        <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
-        <input
-          id="handItem"
-          name="handItem"
-          type="hidden"
-          value={handItemIndex + 1}
+    <>
+      <div className="grid grid-cols-3 grid-rows-1 justify-items-center">
+        <DragoonPreview
+          handItem={handItem}
+          hat={hat}
+          eye={eye}
+          moustache={moustache}
+          cloth={cloth}
+          horn={horn}
+          currentColor={currentColor}
         />
-        <input id="eye" name="eye" type="hidden" value={eyeIndex + 1} />
-        <input
-          id="moustache"
-          name="moustache"
-          type="hidden"
-          value={moustacheIndex + 1}
+        <Form
+          method="post"
+          className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
+        >
+          <input
+            id="author"
+            name="author"
+            type="text"
+            className="border-0 border-b-2 border-gray-200"
+          />
+          <textarea
+            name="comment"
+            className="row-span-4 border-2 border-slate-200"
+          ></textarea>
+          <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
+          <input
+            id="handItem"
+            name="handItem"
+            type="hidden"
+            value={handItemIndex + 1}
+          />
+          <input id="eye" name="eye" type="hidden" value={eyeIndex + 1} />
+          <input
+            id="moustache"
+            name="moustache"
+            type="hidden"
+            value={moustacheIndex + 1}
+          />
+          <input
+            id="clothes"
+            name="clothes"
+            type="hidden"
+            value={clothIndex + 1}
+          />
+          <input id="horns" name="horns" type="hidden" value={hornIndex + 1} />
+          <input
+            id="baseColor"
+            name="baseColor"
+            type="hidden"
+            value={currentColor}
+          />
+          <button type="submit">kjdlkas</button>
+        </Form>
+      </div>
+      <div className="grid grid-cols-6 grid-rows-2">
+        <DragoonGeneratorSelector
+          imagePath={cloth}
+          itemIndex={clothIndex}
+          itemCount={clothes.length}
+          setIndex={setCloth}
         />
-        <input
-          id="clothes"
-          name="clothes"
-          type="hidden"
-          value={clothIndex + 1}
+        <DragoonGeneratorSelector
+          imagePath={eye}
+          itemIndex={eyeIndex}
+          itemCount={eyes.length}
+          setIndex={setEye}
         />
-        <input id="horns" name="horns" type="hidden" value={hornIndex + 1} />
-        <input
-          id="baseColor"
-          name="baseColor"
-          type="hidden"
-          value={currentColor}
+        <DragoonGeneratorSelector
+          imagePath={hat}
+          itemIndex={hatIndex}
+          itemCount={hats.length}
+          setIndex={setHat}
         />
-        <button type="submit">kjdlkas</button>
-      </Form>
-    </div>
+        <DragoonGeneratorSelector
+          imagePath={handItem}
+          itemIndex={handItemIndex}
+          itemCount={handItems.length}
+          setIndex={setHandItem}
+        />
+        <DragoonGeneratorSelector
+          imagePath={horn}
+          itemIndex={hornIndex}
+          itemCount={horns.length}
+          setIndex={setHorn}
+        />
+        <DragoonGeneratorSelector
+          imagePath={moustache}
+          itemIndex={moustacheIndex}
+          itemCount={moustaches.length}
+          setIndex={setMoustache}
+        />
+        <HuePicker color={currentColor} onChange={handleColorChange} />
+      </div>
+    </>
   );
 };
 
