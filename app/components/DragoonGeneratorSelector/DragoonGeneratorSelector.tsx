@@ -5,6 +5,7 @@ import DragoonSelectorPrevious from "../DragoonSelector/DragoonSelectorPrevious/
 
 type DragoonitemSelectorProps = {
   imagePath: string;
+  partName: string;
   itemName?: string;
   itemIndex: number;
   itemCount: number;
@@ -12,25 +13,27 @@ type DragoonitemSelectorProps = {
 };
 
 const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
+  partName,
   imagePath,
   itemIndex,
   itemCount,
   setIndex,
 }) => {
   return (
-    <div className="grid grid-cols-5 items-center">
-      <DragoonSelectorPrevious
-        itemIndex={itemIndex}
-        itemCount={itemCount}
-        setPrevious={setIndex}
-      />
+    <>
+      {/* <DragoonSelectorPrevious */}
+      {/*   itemIndex={itemIndex} */}
+      {/*   itemCount={itemCount} */}
+      {/*   setPrevious={setIndex} */}
+      {/* /> */}
       <DragoonItemPreview image={imagePath} styleProps="col-span-3" />
-      <DragoonSelectorNext
-        itemIndex={itemIndex}
-        itemCount={itemCount}
-        setNext={setIndex}
-      />
-    </div>
+      <h1 className="text-center capitalize font-bold">{partName}</h1>
+      {/* <DragoonSelectorNext */}
+      {/*   itemIndex={itemIndex} */}
+      {/*   itemCount={itemCount} */}
+      {/*   setNext={setIndex} */}
+      {/* /> */}
+    </>
   );
 };
 

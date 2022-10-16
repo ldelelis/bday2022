@@ -57,6 +57,15 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setCurrentColor(color.hex);
   };
 
+  const handleReset = () => {
+    setCloth(0);
+    setEye(0);
+    setHat(0);
+    setHandItem(0);
+    setHorn(0);
+    setMoustache(0);
+  };
+
   return (
     <>
       <div className="grid grid-cols-3 grid-rows-1 justify-items-center">
@@ -74,19 +83,22 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           method="post"
           className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
         >
+          <label htmlFor="author" className="m-auto">
+            <i className="text-lg font-extralight text-center w-max">Name: </i>
+          </label>
           <input
             id="author"
             name="author"
             type="text"
-            className="border-0 border-b-2 border-gray-200"
+            className="row-span-1 border-0 border-b-2 border-gray-200"
           />
-          <label htmlFor="comment" className="text-center m-auto">
-            Message:
+          <label htmlFor="comment" className="m-auto">
+            <i className="font-extralight text-lg">Your Message:</i>
           </label>
           <textarea
             name="comment"
             id="comment"
-            className="row-span-3 border-2 border-slate-200"
+            className="row-span-4 border-2 border-slate-200"
           ></textarea>
           <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
           <input
@@ -130,6 +142,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("clothes")}>
           <DragoonGeneratorSelector
             imagePath={cloth}
+            partName="clothes"
             itemIndex={clothIndex}
             itemCount={clothes.length}
             setIndex={setCloth}
@@ -138,6 +151,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("eyes")}>
           <DragoonGeneratorSelector
             imagePath={eye}
+            partName="eyes"
             itemIndex={eyeIndex}
             itemCount={eyes.length}
             setIndex={setEye}
@@ -146,6 +160,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("hats")}>
           <DragoonGeneratorSelector
             imagePath={hat}
+            partName="hats"
             itemIndex={hatIndex}
             itemCount={hats.length}
             setIndex={setHat}
@@ -154,6 +169,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("handItems")}>
           <DragoonGeneratorSelector
             imagePath={handItem}
+            partName="accessories"
             itemIndex={handItemIndex}
             itemCount={handItems.length}
             setIndex={setHandItem}
@@ -162,6 +178,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("horns")}>
           <DragoonGeneratorSelector
             imagePath={horn}
+            partName="horns"
             itemIndex={hornIndex}
             itemCount={horns.length}
             setIndex={setHorn}
@@ -170,6 +187,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("moustaches")}>
           <DragoonGeneratorSelector
             imagePath={moustache}
+            partName="face"
             itemIndex={moustacheIndex}
             itemCount={moustaches.length}
             setIndex={setMoustache}
@@ -181,8 +199,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           setIndex={partSetterMap[selected]}
         ></DragoonPartsPreview>
         <button type="submit" form="dragoonData">
-          kjdlkas
+          Submit
         </button>
+        <button onClick={() => handleReset()}>Reset</button>
       </div>
     </>
   );
