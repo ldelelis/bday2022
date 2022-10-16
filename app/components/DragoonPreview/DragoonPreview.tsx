@@ -25,7 +25,7 @@ const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
       <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
       <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
       <DragoonItemPreview styleProps="stacked" image={baseShadow} />
-      <DragoonItemBase className="stacked" color={currentColor} />
+      <DragoonItemBase className="stacked w-fit" color={currentColor} />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
     </>
   );

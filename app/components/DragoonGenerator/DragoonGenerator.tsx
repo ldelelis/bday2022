@@ -67,7 +67,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   };
 
   return (
-    <>
+    <div className="m-4">
       <div className="grid grid-cols-3 grid-rows-1 justify-items-center">
         <DragoonPreview
           handItem={handItem}
@@ -84,7 +84,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
         >
           <label htmlFor="author" className="m-auto">
-            <i className="text-lg font-extralight text-center w-max">Name: </i>
+            <i className="text-lg font-light text-center w-max">Name: </i>
           </label>
           <input
             id="author"
@@ -93,7 +93,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             className="row-span-1 border-0 border-b-2 border-gray-200"
           />
           <label htmlFor="comment" className="m-auto">
-            <i className="font-extralight text-lg">Your Message:</i>
+            <i className="font-light text-lg">Your Message:</i>
           </label>
           <textarea
             name="comment"
@@ -140,70 +140,46 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       </h2>
       <div className="grid grid-cols-6">
         <div onClick={() => setSelected("clothes")}>
-          <DragoonGeneratorSelector
-            imagePath={cloth}
-            partName="clothes"
-            itemIndex={clothIndex}
-            itemCount={clothes.length}
-            setIndex={setCloth}
-          />
+          <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
         </div>
         <div onClick={() => setSelected("eyes")}>
-          <DragoonGeneratorSelector
-            imagePath={eye}
-            partName="eyes"
-            itemIndex={eyeIndex}
-            itemCount={eyes.length}
-            setIndex={setEye}
-          />
+          <DragoonGeneratorSelector imagePath={eye} partName="eyes" />
         </div>
         <div onClick={() => setSelected("hats")}>
-          <DragoonGeneratorSelector
-            imagePath={hat}
-            partName="hats"
-            itemIndex={hatIndex}
-            itemCount={hats.length}
-            setIndex={setHat}
-          />
+          <DragoonGeneratorSelector imagePath={hat} partName="hats" />
         </div>
         <div onClick={() => setSelected("handItems")}>
           <DragoonGeneratorSelector
             imagePath={handItem}
             partName="accessories"
-            itemIndex={handItemIndex}
-            itemCount={handItems.length}
-            setIndex={setHandItem}
           />
         </div>
         <div onClick={() => setSelected("horns")}>
-          <DragoonGeneratorSelector
-            imagePath={horn}
-            partName="horns"
-            itemIndex={hornIndex}
-            itemCount={horns.length}
-            setIndex={setHorn}
-          />
+          <DragoonGeneratorSelector imagePath={horn} partName="horns" />
         </div>
         <div onClick={() => setSelected("moustaches")}>
-          <DragoonGeneratorSelector
-            imagePath={moustache}
-            partName="face"
-            itemIndex={moustacheIndex}
-            itemCount={moustaches.length}
-            setIndex={setMoustache}
-          />
+          <DragoonGeneratorSelector imagePath={moustache} partName="face" />
         </div>
         {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
         <DragoonPartsPreview
           images={props[selected]}
           setIndex={partSetterMap[selected]}
         ></DragoonPartsPreview>
-        <button type="submit" form="dragoonData">
-          Submit
-        </button>
-        <button onClick={() => handleReset()}>Reset</button>
       </div>
-    </>
+      <button
+        type="submit"
+        form="dragoonData"
+        className="w-fit p-2 px-4 m-2 mx-4 bg-sky-400 rounded-md font-semibold text-white"
+      >
+        Submit
+      </button>
+      <button
+        className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
+        onClick={() => handleReset()}
+      >
+        Reset
+      </button>
+    </div>
   );
 };
 
