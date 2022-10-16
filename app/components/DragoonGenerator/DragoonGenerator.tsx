@@ -32,6 +32,15 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [hornIndex, setHorn] = useAtom(hornCurrent);
   const [moustacheIndex, setMoustache] = useAtom(moustacheCurrent);
 
+  const partSetterMap = {
+    clothes: setCloth,
+    eyes: setEye,
+    hats: setHat,
+    handItems: setHandItem,
+    horns: setHorn,
+    moustaches: setMoustache,
+  };
+
   const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
 
   const [selected, setSelected] = useState("hats");
@@ -61,6 +70,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           currentColor={currentColor}
         />
         <Form
+          id="dragoonData"
           method="post"
           className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
         >
@@ -105,9 +115,10 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             type="hidden"
             value={currentColor}
           />
-          <button type="submit">kjdlkas</button>
         </Form>
       </div>
+
+      {/* separator */}
       <div className="relative flex py-5 items-center">
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
@@ -115,7 +126,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       <h2 className="font-sans text-4xl antialiased font-bold">
         Build your dragoon:
       </h2>
-      <div className="grid grid-cols-6 grid-rows-2">
+      <div className="grid grid-cols-6">
         <div onClick={() => setSelected("clothes")}>
           <DragoonGeneratorSelector
             imagePath={cloth}
@@ -165,7 +176,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           />
         </div>
         {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
-        <DragoonPartsPreview images={props[selected]}></DragoonPartsPreview>
+        <DragoonPartsPreview
+          images={props[selected]}
+          setIndex={partSetterMap[selected]}
+        ></DragoonPartsPreview>
+        <button type="submit" form="dragoonData">
+          kjdlkas
+        </button>
       </div>
     </>
   );

@@ -3,15 +3,23 @@ import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/Dragoo
 
 type DragoonPartsPreviewProps = {
   images: string[];
+  setIndex: (idx: number) => void;
 };
 
 const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
-  const { images } = props;
+  const { images, setIndex } = props;
 
   return (
-    <div className="grid grid-cols-5 grid-rows-3">
-      {images.map((image) => {
-        return <DragoonItemPreview image={image} />;
+    <div className="border-2 border-b-2 border-slate-600 col-span-6 grid grid-cols-5">
+      {images.map((image, idx) => {
+        return (
+          <div
+            className="border-2 border-b-2 border-slate-600"
+            onClick={() => setIndex(idx)}
+          >
+            <DragoonItemPreview image={image} />
+          </div>
+        );
       })}
     </div>
   );
