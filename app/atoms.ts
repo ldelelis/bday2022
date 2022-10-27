@@ -8,3 +8,7 @@ export const hornCurrent = atomWithStorage("horn", 0);
 export const moustacheCurrent = atomWithStorage("moustache", 0);
 
 export const baseColorCurrent = atomWithStorage("baseColor", "#c084fc");
+export const backgroundColorCurrent = atomWithStorage(
+  "backgroundColor",
+  "#ffffff"
+);

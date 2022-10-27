@@ -1,4 +1,5 @@
 import {
+  backgroundColorCurrent,
   baseColorCurrent,
   clothCurrent,
   eyeCurrent,
@@ -14,6 +15,8 @@ import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
 import { ColorResult, HuePicker } from "react-color";
 import { Form } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
+import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
+import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
 
 type DragoonGeneratorProps = {
   clothes: string[];
@@ -25,6 +28,10 @@ type DragoonGeneratorProps = {
 };
 
 const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
+  const handleColorChange = (color: ColorResult) => {
+    setCurrentColor(color.hex);
+  };
+
   const [clothIndex, setCloth] = useAtom(clothCurrent);
   const [eyeIndex, setEye] = useAtom(eyeCurrent);
   const [hatIndex, setHat] = useAtom(hatCurrent);
@@ -39,9 +46,11 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     handItems: setHandItem,
     horns: setHorn,
     moustaches: setMoustache,
+    colour: null,
   };
 
   const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
+  const [backgroundColor] = useAtom(backgroundColorCurrent);
 
   const [selected, setSelected] = useState("hats");
 
@@ -52,10 +61,6 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const handItem = handItems[handItemIndex];
   const horn = horns[hornIndex];
   const moustache = moustaches[moustacheIndex];
-
-  const handleColorChange = (color: ColorResult) => {
-    setCurrentColor(color.hex);
-  };
 
   const handleReset = () => {
     setCloth(0);
@@ -77,6 +82,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           cloth={cloth}
           horn={horn}
           currentColor={currentColor}
+          backgroundColor={backgroundColor}
         />
         <Form
           id="dragoonData"
@@ -138,7 +144,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       <h2 className="font-sans text-4xl antialiased font-bold">
         Build your dragoon:
       </h2>
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-7">
         <div onClick={() => setSelected("clothes")}>
           <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
         </div>
@@ -160,11 +166,18 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div onClick={() => setSelected("moustaches")}>
           <DragoonGeneratorSelector imagePath={moustache} partName="face" />
         </div>
+        <div onClick={() => setSelected("colour")}>
+          <DragoonColourPreview />
+        </div>
         {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
-        <DragoonPartsPreview
-          images={props[selected]}
-          setIndex={partSetterMap[selected]}
-        ></DragoonPartsPreview>
+        {selected !== "colour" ? (
+          <DragoonPartsPreview
+            images={props[selected]}
+            setIndex={partSetterMap[selected]}
+          ></DragoonPartsPreview>
+        ) : (
+          <DragoonColourSelector />
+        )}
       </div>
       <button
         type="submit"

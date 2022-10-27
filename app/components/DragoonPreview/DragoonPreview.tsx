@@ -1,6 +1,6 @@
 import { FC } from "react";
 import DragoonItemPreview from "~/components/DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
-import { baseBlackLine, baseShadow } from "~/images";
+import { baseBlackLine, baseShadow, baseWhiteBase } from "~/images";
 import DragoonItemBase from "~/components/DragoonSelector/DragoonSelectorBase/DragoonSelectorBase";
 
 type DragoonPreviewProps = {
@@ -11,10 +11,20 @@ type DragoonPreviewProps = {
   cloth: string;
   horn: string;
   currentColor: string;
+  backgroundColor: string;
 };
 
 const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
-  const { handItem, hat, eye, moustache, cloth, horn, currentColor } = props;
+  const {
+    handItem,
+    hat,
+    eye,
+    moustache,
+    cloth,
+    horn,
+    currentColor,
+    backgroundColor,
+  } = props;
 
   return (
     <>
@@ -25,8 +35,11 @@ const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
       <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
       <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
       <DragoonItemPreview styleProps="stacked" image={baseShadow} />
-      <DragoonItemBase className="stacked w-fit" color={currentColor} />
+      <DragoonItemBase className="stacked" color={currentColor} />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
+      <div className="stacked -z-20" style={{ backgroundColor }}>
+        <DragoonItemPreview image={baseWhiteBase} />
+      </div>
     </>
   );
 };
