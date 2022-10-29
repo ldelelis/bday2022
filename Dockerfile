@@ -57,4 +57,4 @@ COPY --from=build /app/build /app/build
 COPY --from=build /app/public /app/public
 ADD . .
 
-CMD ["yarn", "start"]
+CMD ["sh", "start_with_migrations.sh"]
