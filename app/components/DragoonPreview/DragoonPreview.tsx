@@ -28,12 +28,12 @@ const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
 
   return (
     <>
-      <DragoonItemPreview styleProps="stacked z-50" image={handItem} />
-      <DragoonItemPreview styleProps="stacked z-40" image={hat} />
-      <DragoonItemPreview styleProps="stacked z-30" image={eye} />
-      <DragoonItemPreview styleProps="stacked z-20" image={moustache} />
-      <DragoonItemPreview styleProps="stacked z-10" image={cloth} />
-      <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
+      <DragoonItemPreview styleProps="stacked z-[60]" image={handItem} />
+      <DragoonItemPreview styleProps="stacked z-50" image={hat} />
+      <DragoonItemPreview styleProps="stacked z-40" image={eye} />
+      <DragoonItemPreview styleProps="stacked z-30" image={moustache} />
+      <DragoonItemPreview styleProps="stacked z-20" image={cloth} />
+      <DragoonItemPreview styleProps="stacked z-10" image={baseBlackLine} />
       <DragoonItemPreview styleProps="stacked" image={baseShadow} />
       <DragoonItemBase className="stacked" color={currentColor} />
       <DragoonItemPreview styleProps="stacked -z-10" image={horn} />
