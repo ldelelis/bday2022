@@ -96,7 +96,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             id="author"
             name="author"
             type="text"
-            className="row-span-1 border-0 border-b-2 border-gray-200"
+            className="row-span-1 border-0 border-b-2 border-gray-200 px-4"
           />
           <label htmlFor="comment" className="m-auto">
             <i className="font-light text-lg">Your Message:</i>
@@ -104,7 +104,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <textarea
             name="comment"
             id="comment"
-            className="row-span-4 border-2 border-slate-200"
+            className="row-span-4 border-2 border-slate-200 p-4"
           ></textarea>
           <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
           <input
