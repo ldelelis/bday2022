@@ -28,10 +28,6 @@ type DragoonGeneratorProps = {
 };
 
 const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
-  const handleColorChange = (color: ColorResult) => {
-    setCurrentColor(color.hex);
-  };
-
   const [clothIndex, setCloth] = useAtom(clothCurrent);
   const [eyeIndex, setEye] = useAtom(eyeCurrent);
   const [hatIndex, setHat] = useAtom(hatCurrent);
@@ -49,7 +45,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     colour: null,
   };
 
-  const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
+  const [currentColor] = useAtom(baseColorCurrent);
   const [backgroundColor] = useAtom(backgroundColorCurrent);
 
   const [selected, setSelected] = useState("hats");
@@ -132,6 +128,12 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             name="baseColor"
             type="hidden"
             value={currentColor}
+          />
+          <input
+            id="backgroundColor"
+            name="backgroundColor"
+            type="hidden"
+            value={backgroundColor}
           />
         </Form>
       </div>

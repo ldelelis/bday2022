@@ -28,6 +28,8 @@ const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
 
   return (
     <>
+      {/* tailwind only provides z indexes up to 50. arbitrary values beyond that */}
+      {/* must be enclosed in square brackets, as seen below */}
       <DragoonItemPreview styleProps="stacked z-[60]" image={handItem} />
       <DragoonItemPreview styleProps="stacked z-50" image={hat} />
       <DragoonItemPreview styleProps="stacked z-40" image={eye} />

@@ -22,6 +22,7 @@ model Dragoon {
 	clothes		Int
 	horns		Int
 	baseColor	String
+	backgroundColor	String
 
 	comment		DragoonComment?
 }

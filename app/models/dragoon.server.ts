@@ -33,3 +33,23 @@ export async function createDragoon(
     },
   });
 }
+
+export async function getAllDragoons(
+  page: number
+): Promise<[Number, Dragoon[]]> {
+  const pageSize = 4;
+  const skip = (page - 1) * pageSize;
+
+  const count = await db.dragoon.count();
+
+  const dragoons = await db.dragoon.findMany({
+    include: { comment: true },
+    orderBy: {
+      createdAt: "asc",
+    },
+    take: pageSize,
+    skip,
+  });
+
+  return [count, dragoons];
+}
