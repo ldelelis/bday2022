@@ -29,6 +29,7 @@ export async function action({ request }: ActionArgs) {
     Number(formData.get("clothes")),
     Number(formData.get("horns")),
     formData.get("baseColor"),
+    formData.get("backgroundColor"),
     formData.get("comment"),
     clientIp,
     formData.get("author")

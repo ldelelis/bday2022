@@ -10,6 +10,7 @@ export async function createDragoon(
   clothes: Dragoon["clothes"],
   horns: Dragoon["horns"],
   baseColor: Dragoon["baseColor"],
+  backgroundColor: Dragoon["backgroundColor"],
   comment: DragoonComment["comment"],
   userIP: DragoonComment["originIp"],
   author: DragoonComment["author"]
@@ -23,6 +24,7 @@ export async function createDragoon(
       clothes,
       horns,
       baseColor,
+      backgroundColor,
       comment: {
         create: {
           comment,
