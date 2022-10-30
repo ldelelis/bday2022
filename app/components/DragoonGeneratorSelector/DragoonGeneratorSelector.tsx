@@ -21,7 +21,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
       <DragoonItemBase
         className="-z-10 stacked h-min w-min"
         color={DEFAULT_COLOR}
-        style={{}}
+        style={{ fillOpacity: 0.5 }}
       />
       <h1 className="text-center capitalize font-bold row-span-1">
         {partName}
