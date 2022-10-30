@@ -2,6 +2,7 @@ import {
   backgroundColorCurrent,
   baseColorCurrent,
   clothCurrent,
+  DEFAULT_COLOR,
   eyeCurrent,
   handItemCurrent,
   hatCurrent,
@@ -45,8 +46,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     colour: null,
   };
 
-  const [currentColor] = useAtom(baseColorCurrent);
-  const [backgroundColor] = useAtom(backgroundColorCurrent);
+  const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
+  const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
 
   const [selected, setSelected] = useState("hats");
 
@@ -65,6 +66,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setHandItem(0);
     setHorn(0);
     setMoustache(0);
+    setCurrentColor(DEFAULT_COLOR);
+    setBackgroundColor("#ffffff");
   };
 
   return (

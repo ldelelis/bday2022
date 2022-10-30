@@ -666,6 +666,30 @@ video {
   display: none;
 }
 
+.h-auto {
+  height: auto;
+}
+
+.h-min {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-\[350px\] {
+  height: 350px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -690,6 +714,14 @@ video {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-\[350px\] {
+  width: 350px;
 }
 
 .flex-grow {
@@ -738,6 +770,10 @@ video {
 
 .justify-items-center {
   justify-items: center;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-md {
@@ -877,4 +913,8 @@ video {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline {
+  outline-style: solid;
 }

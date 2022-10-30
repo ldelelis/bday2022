@@ -3,8 +3,6 @@ import { FC } from "react";
 const DragoonItemBase: FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      width="350"
-      height="350"
       viewBox="0 0 350 350"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
