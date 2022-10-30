@@ -14,7 +14,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
       {images.map((image, idx) => {
         return (
           <div
-            className="m-4 border-4 border-black"
+            className="m-4 border-4 border-black backdrop-blur-[4px]"
             onClick={() => setIndex(idx)}
           >
             <DragoonItemPreview image={image} />

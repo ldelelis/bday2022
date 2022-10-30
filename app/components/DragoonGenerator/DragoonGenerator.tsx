@@ -89,7 +89,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
         >
           <label htmlFor="author" className="m-auto">
-            <i className="text-lg font-light text-center w-max">Name: </i>
+            <i className="text-lg font-normal text-center w-max">Name: </i>
           </label>
           <input
             id="author"
@@ -98,7 +98,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             className="row-span-1 border-0 border-b-2 border-gray-200 px-4"
           />
           <label htmlFor="comment" className="m-auto">
-            <i className="font-light text-lg">Your Message:</i>
+            <i className="font-normal text-lg">Your Message:</i>
           </label>
           <textarea
             name="comment"
@@ -149,7 +149,6 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       <div
         style={{
           backgroundImage: `url(${background})`,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundSize: "50%",
         }}
       >
