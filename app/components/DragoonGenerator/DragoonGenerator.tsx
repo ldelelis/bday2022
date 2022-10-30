@@ -13,11 +13,11 @@ import { useAtom } from "jotai";
 import { FC, useState } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
-import { ColorResult, HuePicker } from "react-color";
 import { Form } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
+import { background } from "~/images";
 
 type DragoonGeneratorProps = {
   clothes: string[];
@@ -71,7 +71,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   };
 
   return (
-    <div className="m-4">
+    <div>
       <div className="grid grid-cols-3 grid-rows-1 justify-items-center">
         <DragoonPreview
           handItem={handItem}
@@ -146,43 +146,51 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
 
-      <h2 className="font-sans text-4xl antialiased font-bold">
-        Build your dragoon:
-      </h2>
-      <div className="grid grid-cols-7">
-        <div onClick={() => setSelected("clothes")}>
-          <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
+      <div
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundSize: "50%",
+        }}
+      >
+        <h2 className="font-sans text-4xl antialiased font-bold">
+          Build your dragoon:
+        </h2>
+        <div className="grid grid-cols-7">
+          <div onClick={() => setSelected("clothes")}>
+            <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
+          </div>
+          <div onClick={() => setSelected("eyes")}>
+            <DragoonGeneratorSelector imagePath={eye} partName="eyes" />
+          </div>
+          <div onClick={() => setSelected("hats")}>
+            <DragoonGeneratorSelector imagePath={hat} partName="hats" />
+          </div>
+          <div onClick={() => setSelected("handItems")}>
+            <DragoonGeneratorSelector
+              imagePath={handItem}
+              partName="accessories"
+            />
+          </div>
+          <div onClick={() => setSelected("horns")}>
+            <DragoonGeneratorSelector imagePath={horn} partName="horns" />
+          </div>
+          <div onClick={() => setSelected("moustaches")}>
+            <DragoonGeneratorSelector imagePath={moustache} partName="face" />
+          </div>
+          <div onClick={() => setSelected("colour")}>
+            <DragoonColourPreview />
+          </div>
+          {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
+          {selected !== "colour" ? (
+            <DragoonPartsPreview
+              images={props[selected]}
+              setIndex={partSetterMap[selected]}
+            ></DragoonPartsPreview>
+          ) : (
+            <DragoonColourSelector />
+          )}
         </div>
-        <div onClick={() => setSelected("eyes")}>
-          <DragoonGeneratorSelector imagePath={eye} partName="eyes" />
-        </div>
-        <div onClick={() => setSelected("hats")}>
-          <DragoonGeneratorSelector imagePath={hat} partName="hats" />
-        </div>
-        <div onClick={() => setSelected("handItems")}>
-          <DragoonGeneratorSelector
-            imagePath={handItem}
-            partName="accessories"
-          />
-        </div>
-        <div onClick={() => setSelected("horns")}>
-          <DragoonGeneratorSelector imagePath={horn} partName="horns" />
-        </div>
-        <div onClick={() => setSelected("moustaches")}>
-          <DragoonGeneratorSelector imagePath={moustache} partName="face" />
-        </div>
-        <div onClick={() => setSelected("colour")}>
-          <DragoonColourPreview />
-        </div>
-        {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
-        {selected !== "colour" ? (
-          <DragoonPartsPreview
-            images={props[selected]}
-            setIndex={partSetterMap[selected]}
-          ></DragoonPartsPreview>
-        ) : (
-          <DragoonColourSelector />
-        )}
       </div>
       <button
         type="submit"

@@ -45,5 +45,9 @@ export function links() {
 export default function Generator() {
   const viewData = useLoaderData();
 
-  return <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>;
+  return (
+    <div className="p-16 bg-purple-300">
+      <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>
+    </div>
+  );
 }

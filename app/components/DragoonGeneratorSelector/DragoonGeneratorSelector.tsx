@@ -14,12 +14,12 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   imagePath,
 }) => {
   return (
-    <div className="m-2 border-4 border-slate-600 grid grid-rows-8 grid-cols-1">
-      <DragoonItemPreview image={imagePath} styleProps="stacked z-10" />
-      <DragoonItemPreview styleProps="stacked" image={baseBlackLine} />
+    <div className="m-2 border-4 border-black grid grid-rows-8 grid-cols-1 bg-white">
+      <DragoonItemPreview image={imagePath} styleProps="stacked z-20" />
+      <DragoonItemPreview styleProps="stacked z-10" image={baseBlackLine} />
       {/*We override the style definitions to disable the preview's outline*/}
       <DragoonItemBase
-        className="-z-10 stacked h-min w-min"
+        className="stacked h-min w-min"
         color={DEFAULT_COLOR}
         style={{ fillOpacity: 0.5 }}
       />
