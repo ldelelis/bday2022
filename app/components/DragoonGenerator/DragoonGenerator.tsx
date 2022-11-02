@@ -187,9 +187,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <div onClick={() => setSelected("colour")}>
             <DragoonColourPreview />
           </div>
-          {/* <HuePicker color={currentColor} onChange={handleColorChange} /> */}
           {selected !== "colour" ? (
             <DragoonPartsPreview
+              key={selected}
               images={props[selected]}
               setIndex={partSetterMap[selected]}
             ></DragoonPartsPreview>
