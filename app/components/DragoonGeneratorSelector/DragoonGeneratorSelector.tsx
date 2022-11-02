@@ -19,7 +19,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
       <DragoonItemPreview styleProps="stacked z-10" image={baseBlackLine} />
       {/*We override the style definitions to disable the preview's outline*/}
       <DragoonItemBase
-        className="stacked h-min w-min"
+        className="stacked "
         color={DEFAULT_COLOR}
         style={{ fillOpacity: 0.5 }}
       />

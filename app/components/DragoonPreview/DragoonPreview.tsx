@@ -42,7 +42,7 @@ const DragoonPreview: FC<DragoonPreviewProps> = (props) => {
         color={currentColor}
       />
       <DragoonItemPreview styleProps="stacked z-10" image={horn} />
-      <div className="stacked" style={{ backgroundColor }}>
+      <div className="stacked h-min" style={{ backgroundColor }}>
         <DragoonItemPreview image={baseWhiteBase} />
       </div>
     </>

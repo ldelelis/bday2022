@@ -71,8 +71,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   };
 
   return (
-    <div>
-      <div className="grid grid-cols-3 grid-rows-1 justify-items-center">
+    <div className="grid grid-cols-6">
+      <div className="grid grid-cols-1 grid-rows-2 col-span-2 justify-items-center h-min">
         <DragoonPreview
           handItem={handItem}
           hat={hat}
@@ -83,27 +83,23 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           currentColor={currentColor}
           backgroundColor={backgroundColor}
         />
-        <Form
-          id="dragoonData"
-          method="post"
-          className="col-span-2 grid grid-cols-1 grid-rows-6 w-1/2"
-        >
-          <label htmlFor="author" className="m-auto">
+        <Form id="dragoonData" method="post" className="grid grid-cols-2 w-2/3">
+          <label htmlFor="author" className="m-auto col-span-2">
             <i className="text-lg font-normal text-center w-max">Name: </i>
           </label>
           <input
             id="author"
             name="author"
             type="text"
-            className="row-span-1 border-0 border-b-2 border-gray-200 px-4"
+            className="col-span-2 border-0 border-b-2 border-gray-200 px-4"
           />
-          <label htmlFor="comment" className="m-auto">
+          <label htmlFor="comment" className="m-auto col-span-2">
             <i className="font-normal text-lg">Your Message:</i>
           </label>
           <textarea
             name="comment"
             id="comment"
-            className="row-span-4 border-2 border-slate-200 p-4"
+            className="row-span-4 border-2 border-slate-200 p-4 col-span-2"
           ></textarea>
           <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
           <input
@@ -138,15 +134,26 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             type="hidden"
             value={backgroundColor}
           />
+          <div className="col-span-2 grid grid-cols-2 justify-items-center">
+            <button
+              type="submit"
+              form="dragoonData"
+              className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
+            >
+              Submit
+            </button>
+            <button
+              className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
+              onClick={() => handleReset()}
+            >
+              Reset
+            </button>
+          </div>
         </Form>
       </div>
 
-      {/* separator */}
-      <div className="relative flex py-5 items-center">
-        <div className="flex-grow border-t border-gray-300"></div>
-      </div>
-
       <div
+        className="col-span-4 h-min"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
@@ -191,19 +198,6 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           )}
         </div>
       </div>
-      <button
-        type="submit"
-        form="dragoonData"
-        className="w-fit p-2 px-4 m-2 mx-4 bg-sky-400 rounded-md font-semibold text-white"
-      >
-        Submit
-      </button>
-      <button
-        className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
-        onClick={() => handleReset()}
-      >
-        Reset
-      </button>
     </div>
   );
 };

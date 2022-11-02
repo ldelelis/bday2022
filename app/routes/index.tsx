@@ -46,7 +46,7 @@ export default function Generator() {
   const viewData = useLoaderData();
 
   return (
-    <div className="p-16 bg-purple-300">
+    <div className="p-16 bg-purple-300 h-screen">
       <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>
     </div>
   );
