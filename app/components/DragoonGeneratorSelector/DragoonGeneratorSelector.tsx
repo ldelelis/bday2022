@@ -14,7 +14,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   imagePath,
 }) => {
   return (
-    <div className="m-2 border-4 border-black grid grid-rows-8 grid-cols-1 bg-white">
+    <div className="m-2 border-4 border-black grid grid-cols-1 bg-white">
       <DragoonItemPreview image={imagePath} styleProps="stacked z-20" />
       <DragoonItemPreview styleProps="stacked z-10" image={baseBlackLine} />
       {/*We override the style definitions to disable the preview's outline*/}

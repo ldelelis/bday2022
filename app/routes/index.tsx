@@ -1,6 +1,6 @@
 import { ActionArgs, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { ClientOnly, getClientIPAddress } from "remix-utils";
+import { ClientOnly } from "remix-utils";
 import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
@@ -19,7 +19,6 @@ export async function loader() {
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
-  const clientIp = getClientIPAddress(request.headers);
 
   await createDragoon(
     Number(formData.get("hat")),
@@ -28,11 +27,11 @@ export async function action({ request }: ActionArgs) {
     Number(formData.get("moustache")),
     Number(formData.get("clothes")),
     Number(formData.get("horns")),
-    formData.get("baseColor"),
-    formData.get("backgroundColor"),
-    formData.get("comment"),
-    clientIp,
-    formData.get("author")
+    String(formData.get("baseColor")),
+    String(formData.get("backgroundColor")),
+    String(formData.get("comment")),
+    "",
+    String(formData.get("author"))
   );
 
   return redirect("/");
