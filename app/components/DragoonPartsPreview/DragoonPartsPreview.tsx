@@ -9,7 +9,7 @@ type DragoonPartsPreviewProps = {
 const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
   const { images, setIndex } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 10;
+  const PAGE_SIZE = 15;
   const maxPages = Math.ceil(images.length / PAGE_SIZE);
 
   const slice = images.slice(
@@ -20,12 +20,12 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
   return (
     <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
       <div
-        className="row-span-2 m-auto"
+        className="row-span-3 m-auto"
         onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
       >
         {"<"}
       </div>
-      <div className="grid grid-cols-5 grid-rows-2 col-span-9">
+      <div className="grid grid-cols-5 grid-rows-3 col-span-9">
         {slice.map((image, idx) => {
           return (
             <div
@@ -39,7 +39,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
         })}
       </div>
       <div
-        className="row-span-2 m-auto"
+        className="row-span-3 m-auto"
         onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
       >
         {">"}
