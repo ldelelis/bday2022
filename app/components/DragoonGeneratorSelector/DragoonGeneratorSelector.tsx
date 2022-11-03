@@ -5,7 +5,7 @@ import DragoonItemBase from "../DragoonSelector/DragoonSelectorBase/DragoonSelec
 import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
 
 type DragoonitemSelectorProps = {
-  imagePath: string;
+  imagePath?: string;
   partName: string;
 };
 

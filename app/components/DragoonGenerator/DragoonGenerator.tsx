@@ -70,6 +70,10 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setBackgroundColor("#ffffff");
   };
 
+  const isOptional = (partName: string): boolean => {
+    return ["clothes", "hats", "handItems", "moustaches"].includes(partName);
+  };
+
   return (
     <div className="grid grid-cols-6">
       <div className="grid grid-cols-1 grid-rows-2 col-span-2 gap-y-16 justify-items-center h-min">
@@ -198,6 +202,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               key={selected}
               images={props[selected]}
               setIndex={partSetterMap[selected]}
+              optional={isOptional(selected)}
             ></DragoonPartsPreview>
           ) : (
             <DragoonColourSelector />

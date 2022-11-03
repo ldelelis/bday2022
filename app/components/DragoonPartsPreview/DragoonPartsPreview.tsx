@@ -3,13 +3,14 @@ import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/Dragoo
 
 type DragoonPartsPreviewProps = {
   images: string[];
-  setIndex: (idx: number) => void;
+  setIndex: (idx?: number | null) => void;
+  optional: boolean;
 };
 
 const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
-  const { images, setIndex } = props;
+  const { images, setIndex, optional } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 15;
+  const PAGE_SIZE = optional ? 14 : 15;
   const maxPages = Math.ceil(images.length / PAGE_SIZE);
 
   const slice = images.slice(
@@ -26,6 +27,9 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
         {"<"}
       </div>
       <div className="grid grid-cols-5 grid-rows-3 col-span-9">
+        {optional && (
+          <img src="./idfk.png" onClick={() => setIndex(null)}></img>
+        )}
         {slice.map((image, idx) => {
           return (
             <div
