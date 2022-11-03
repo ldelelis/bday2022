@@ -148,6 +148,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               Submit
             </button>
             <button
+              type="button"
               className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
               onClick={() => handleReset()}
             >
@@ -158,7 +159,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       </div>
 
       <div
-        className="col-span-4 h-min"
+        className="col-span-4 h-min p-4"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",

@@ -22,9 +22,9 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
       />
       {/*We override the style definitions to disable the preview's outline*/}
       <DragoonItemBase
-        className="stacked "
+        className="stacked opacity-30"
         color={DEFAULT_COLOR}
-        style={{ fillOpacity: 0.3 }}
+        style={{}}
       />
       <h1 className="text-center capitalize font-bold row-span-1">
         {partName}

@@ -599,6 +599,10 @@ video {
   grid-column: span 9 / span 9;
 }
 
+.col-span-8 {
+  grid-column: span 8 / span 8;
+}
+
 .row-span-5 {
   grid-row: span 5 / span 5;
 }
@@ -700,6 +704,10 @@ video {
 
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 .grid-rows-1 {
