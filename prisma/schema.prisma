@@ -15,11 +15,11 @@ model Dragoon {
 	createdAt	DateTime	@default(now())
 	updatedAt	DateTime	@updatedAt
 
-	hat		Int
-	handItem	Int
-	moustache	Int
+	hat		Int?
+	handItem	Int?
+	moustache	Int?
 	eye		Int
-	clothes		Int
+	clothes		Int?
 	horns		Int
 	baseColor	String
 	backgroundColor	String

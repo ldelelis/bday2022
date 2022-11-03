@@ -110,25 +110,30 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             id="comment"
             className="row-span-7 border-2 border-black p-4 col-span-2"
           ></textarea>
-          <input id="hat" name="hat" type="hidden" value={hatIndex + 1} />
+          <input
+            id="hat"
+            name="hat"
+            type="hidden"
+            value={hatIndex === null ? "" : hatIndex + 1}
+          />
           <input
             id="handItem"
             name="handItem"
             type="hidden"
-            value={handItemIndex + 1}
+            value={handItemIndex === null ? "" : handItemIndex + 1}
           />
           <input id="eye" name="eye" type="hidden" value={eyeIndex + 1} />
           <input
             id="moustache"
             name="moustache"
             type="hidden"
-            value={moustacheIndex + 1}
+            value={moustacheIndex === null ? "" : moustacheIndex + 1}
           />
           <input
             id="clothes"
             name="clothes"
             type="hidden"
-            value={clothIndex + 1}
+            value={clothIndex === null ? "" : clothIndex + 1}
           />
           <input id="horns" name="horns" type="hidden" value={hornIndex + 1} />
           <input
