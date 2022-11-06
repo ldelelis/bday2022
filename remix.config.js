@@ -4,5 +4,5 @@ module.exports = {
   // appDirectory: "app",
   assetsBuildDirectory: "build",
   // serverBuildPath: "build/index.js",
-  publicPath: "/build/",
+  publicPath: "/public/",
 };

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Selen Font";
+        font-style: normal;
+        font-display: auto;
+        src: local("Selen Font"),
+             url("/fonts/Selen-Regular.ttf") format("truetype");
+    }
+}
