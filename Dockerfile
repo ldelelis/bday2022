@@ -38,6 +38,7 @@ ADD prisma .
 RUN npx prisma generate
 
 ADD . .
+RUN yarn build:css
 RUN yarn build
 
 # Finally, build the production image with minimal footprint
