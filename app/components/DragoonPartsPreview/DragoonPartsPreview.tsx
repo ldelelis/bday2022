@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { noneSelected } from "~/images";
 import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
 
 type DragoonPartsPreviewProps = {
@@ -28,8 +29,14 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
       </div>
       <div className="grid grid-cols-5 grid-rows-3 col-span-9">
         {optional && (
-          <img src="./idfk.png" onClick={() => setIndex(null)}></img>
+          <div
+            className="m-4 border-4 border-black backdrop-blur-[4px]"
+            onClick={() => setIndex(null)}
+          >
+            <img src={noneSelected}></img>
+          </div>
         )}
+
         {slice.map((image, idx) => {
           return (
             <div

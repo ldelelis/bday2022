@@ -32,10 +32,12 @@ export default function All() {
   const { count, dragoons, clothes, eyes, handItems, hats, horns, moustaches } =
     JSON.parse(useLoaderData());
 
+  const PAGE_SIZE = 4;
+
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page") || 1);
 
-  const pageCount = Math.ceil(count / 4); // TODO: export 4 as PAGE_SIZE const
+  const pageCount = Math.ceil(count / PAGE_SIZE);
 
   const isPreviousDisabled = currentPage === 1;
   const isNextDisabled = currentPage === pageCount;
