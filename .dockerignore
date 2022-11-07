@@ -1,4 +1,5 @@
 /node_modules
+/app/tailwind.css
 *.log
 .DS_Store
 .env

@@ -18,6 +18,12 @@ import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
 import { background } from "~/images";
+import {
+  nameBanner,
+  resetIdleButton,
+  submitIdleButton,
+  yourMessage,
+} from "~/images/dragoonGenerator/form";
 
 type DragoonGeneratorProps = {
   clothes: string[];
@@ -76,39 +82,39 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
 
   return (
     <div className="grid grid-cols-6">
-      <div className="grid grid-cols-1 grid-rows-2 col-span-2 gap-y-16 justify-items-center h-min">
-        <DragoonPreview
-          handItem={handItem}
-          hat={hat}
-          eye={eye}
-          moustache={moustache}
-          cloth={cloth}
-          horn={horn}
-          currentColor={currentColor}
-          backgroundColor={backgroundColor}
-        />
+      <div className="col-span-2 justify-items-center">
+        <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center">
+          <DragoonPreview
+            handItem={handItem}
+            hat={hat}
+            eye={eye}
+            moustache={moustache}
+            cloth={cloth}
+            horn={horn}
+            currentColor={currentColor}
+            backgroundColor={backgroundColor}
+          />
+        </div>
 
         <Form
           id="dragoonData"
           method="post"
-          className="grid grid-cols-2 grid-rows-9 w-2/3"
+          className="flex flex-col w-2/3 m-auto py-8"
         >
-          <label htmlFor="author" className="m-auto col-span-2">
-            <i className="text-lg font-normal text-center w-max">Name: </i>
-          </label>
+          <img src={nameBanner} className="m-auto py-4" />
           <input
             id="author"
             name="author"
             type="text"
-            className="col-span-2 border-0 border-b-2 border-black px-4"
+            className="border-0 border-b-2 border-black px-4 h-max basis-8"
           />
-          <label htmlFor="comment" className="m-auto col-span-2">
-            <i className="font-normal text-lg">Your Message:</i>
+          <label htmlFor="comment" className="m-auto">
+            <img src={yourMessage} className="py-2" />
           </label>
           <textarea
             name="comment"
             id="comment"
-            className="row-span-7 border-2 border-black p-4 col-span-2"
+            className="border-2 border-black p-4 basis-52"
           ></textarea>
           <input
             id="hat"
@@ -148,21 +154,17 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             type="hidden"
             value={backgroundColor}
           />
-          <div className="my-4 col-span-2 grid grid-cols-2 justify-items-center">
+          <div className="flex justify-center gap-8 h-16 min-w-fit max-w-full">
             <button
               type="submit"
               form="dragoonData"
-              className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
-            >
-              Submit
-            </button>
+              className="submit-button h-full w-1/3"
+            />
             <button
               type="button"
-              className="w-fit p-2 px-4 bg-sky-400 rounded-md font-semibold text-white"
               onClick={() => handleReset()}
-            >
-              Reset
-            </button>
+              className="reset-button h-full w-2/5"
+            />
           </div>
         </Form>
       </div>
@@ -177,7 +179,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <h2 className="font-sans text-4xl antialiased font-bold">
           Build your dragoon:
         </h2>
-        <div className="grid grid-cols-7">
+        <div className="grid grid-cols-7 text-2xl">
           <div onClick={() => setSelected("clothes")}>
             <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
           </div>
