@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
-import { noneSelected } from "~/images";
+import { DEFAULT_COLOR } from "~/atoms";
+import { baseBlackLine, noneSelected } from "~/images";
+import DragoonItemBase from "../DragoonSelector/DragoonSelectorBase/DragoonSelectorBase";
 import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
 
 type DragoonPartsPreviewProps = {
@@ -41,10 +43,20 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           return (
             <div
               key={image}
-              className="m-4 border-4 border-black backdrop-blur-[4px]"
+              className="grid grid-cols-1 m-4 border-4 border-black backdrop-blur-[4px]"
               onClick={() => setIndex(idx + (currentPage - 1) * PAGE_SIZE)}
             >
-              <DragoonItemPreview image={image} />
+              <DragoonItemPreview styleProps="stacked z-20" image={image} />
+              <DragoonItemPreview
+                styleProps="stacked z-10 opacity-50"
+                image={baseBlackLine}
+              />
+              {/*We override the style definitions to disable the preview's outline*/}
+              <DragoonItemBase
+                className="stacked opacity-50"
+                color={DEFAULT_COLOR}
+                style={{}}
+              />
             </div>
           );
         })}
