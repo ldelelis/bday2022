@@ -172,7 +172,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <button
               type="button"
               onClick={() => handleReset()}
-              className="reset-button h-full w-2/5"
+              className="mt-3 reset-button h-full w-2/5"
             />
           </div>
         </Form>
