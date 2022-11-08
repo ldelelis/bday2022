@@ -210,18 +210,12 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <div onClick={() => setSelected("moustaches")}>
             <DragoonGeneratorSelector imagePath={moustache} partName="face" />
           </div>
-          <div className="grid grid-rows-2 grid-cols-1">
+          <div className="grid grid-rows-2 grid-cols-1 gap-4">
             <div onClick={() => setSelected("colour")}>
-              <DragoonColourPreview
-                thumbnailPath={newColorsButton}
-                subtitle="colors"
-              />
+              <DragoonColourPreview thumbnailPath={newColorsButton} />
             </div>
             <div onClick={() => setSelected("frames")}>
-              <DragoonColourPreview
-                thumbnailPath={framesButton}
-                subtitle="frames"
-              />
+              <DragoonColourPreview thumbnailPath={framesButton} />
             </div>
           </div>
           {selected === "colour" ? (
