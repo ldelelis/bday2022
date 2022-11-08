@@ -5,6 +5,7 @@ import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
 import DragoonGenerator from "~/components/DragoonGenerator/DragoonGenerator";
+import frames from "~/images/dragoonGenerator/frames";
 
 export async function loader() {
   return json({
@@ -14,6 +15,7 @@ export async function loader() {
     hats: hat,
     horns: horn,
     moustaches: moustache,
+    frames: frames,
   });
 }
 
@@ -31,7 +33,8 @@ export async function action({ request }: ActionArgs) {
     String(formData.get("backgroundColor")),
     String(formData.get("comment")),
     "",
-    String(formData.get("author"))
+    String(formData.get("author")),
+    Number(formData.get("frames"))
   );
 
   return redirect("/");

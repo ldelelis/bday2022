@@ -5,6 +5,8 @@ import baseWhiteBase from "./white-base.png";
 import noneSelected from "./none-selected.png";
 import background from "./background.png";
 import colorsButton from "./colors-button.png";
+import newColorsButton from "./new-colors-button.png";
+import framesButton from "./frames-button.png";
 
 export { baseBlackLine };
 export { baseShadow };
@@ -13,3 +15,5 @@ export { baseWhiteBase };
 export { noneSelected };
 export { background };
 export { colorsButton };
+export { newColorsButton };
+export { framesButton };

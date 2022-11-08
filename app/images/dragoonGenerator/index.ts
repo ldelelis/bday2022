@@ -5,3 +5,4 @@ export { default as hat } from "./hat";
 export { default as handItem } from "./handItem";
 export { default as horn } from "./horn";
 export { default as moustache } from "./moustache";
+export { default as frame } from "./frames";

@@ -1,11 +1,17 @@
 import { FC } from "react";
-import { colorsButton } from "~/images";
 
-const DragoonColourPreview: FC = () => {
+type DragoonColourPreviewProps = {
+  thumbnailPath: string;
+  subtitle: string;
+};
+
+const DragoonColourPreview: FC<DragoonColourPreviewProps> = (props) => {
+  const { thumbnailPath, subtitle } = props;
+
   return (
-    <div className="m-2 border-4 border-black bg-white">
-      <img src={colorsButton} />
-      <h1 className="text-center capitalize font-bold">Colours</h1>
+    <div className="mx-2 my-1 h-min border-4 border-black bg-white">
+      <img src={thumbnailPath} />
+      <h1 className="text-center capitalize font-bold">{subtitle}</h1>
     </div>
   );
 };

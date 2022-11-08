@@ -4,7 +4,7 @@ import { json } from "remix-utils";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
 import { getAllDragoons } from "~/models/dragoon.server";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
-import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
+import { cloth, eye, hat, handItem, horn, moustache, frame } from "~/images";
 import { LoaderArgs } from "@remix-run/node";
 
 export async function loader({ request }: LoaderArgs) {
@@ -20,6 +20,7 @@ export async function loader({ request }: LoaderArgs) {
     horns: horn,
     moustaches: moustache,
     dragoons: dragoonsData,
+    frames: frame,
     count,
   });
 }
@@ -29,8 +30,17 @@ export function links() {
 }
 
 export default function All() {
-  const { count, dragoons, clothes, eyes, handItems, hats, horns, moustaches } =
-    JSON.parse(useLoaderData());
+  const {
+    count,
+    dragoons,
+    clothes,
+    eyes,
+    handItems,
+    hats,
+    horns,
+    moustaches,
+    frames,
+  } = JSON.parse(useLoaderData());
 
   const PAGE_SIZE = 4;
 
@@ -54,6 +64,7 @@ export default function All() {
     <div className="p-12">
       <div className="grid grid-cols-2">
         {dragoons.map((goon: Dragoon) => {
+          console.log(goon);
           return (
             <div
               key={goon.id}
@@ -66,6 +77,7 @@ export default function All() {
                 handItem={handItems[goon.handItem - 1]}
                 hat={hats[goon.hat - 1]}
                 moustache={moustaches[goon.moustache - 1]}
+                frame={frames[goon.frame - 1]}
                 currentColor={goon.baseColor}
                 backgroundColor={goon.backgroundColor}
               />
