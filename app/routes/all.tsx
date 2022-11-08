@@ -67,7 +67,7 @@ export default function All() {
           return (
             <div
               key={goon.id}
-              className="grid grid-cols-2 grid-rows-1 p-2 border-2 border-slate-400 m-1"
+              className="grid grid-cols-3 grid-rows-1 p-2 border-2 border-slate-400 m-1"
             >
               <DragoonPreview
                 cloth={clothes[goon.clothes - 1]}
@@ -80,7 +80,7 @@ export default function All() {
                 currentColor={goon.baseColor}
                 backgroundColor={goon.backgroundColor}
               />
-              <div className="grid grid-cols-1 grid-rows-2">
+              <div className="col-span-2 grid grid-cols-1 grid-rows-2">
                 <p>Name: {goon.comment.author}</p>
                 <p>Their message: {goon.comment.comment}</p>
               </div>
