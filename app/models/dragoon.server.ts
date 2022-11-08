@@ -14,7 +14,7 @@ export async function createDragoon(
   comment: DragoonComment["comment"],
   userIP: DragoonComment["originIp"],
   author: DragoonComment["author"],
-  frames: Dragoon["frames"]
+  frame: Dragoon["frames"]
 ) {
   return db.dragoon.create({
     data: {
@@ -24,7 +24,7 @@ export async function createDragoon(
       moustache,
       clothes,
       horns,
-      frames,
+      frame,
       baseColor,
       backgroundColor,
       comment: {
