@@ -28,7 +28,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
         {"<"}
       </div>
       <div className="grid grid-cols-5 grid-rows-3 col-span-9">
-        {optional && (
+        {optional && currentPage === 1 && (
           <div
             className="m-4 border-4 border-black backdrop-blur-[4px]"
             onClick={() => setIndex(null)}
