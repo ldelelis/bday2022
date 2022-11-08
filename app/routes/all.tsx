@@ -64,7 +64,6 @@ export default function All() {
     <div className="p-12">
       <div className="grid grid-cols-2">
         {dragoons.map((goon: Dragoon) => {
-          console.log(goon);
           return (
             <div
               key={goon.id}
