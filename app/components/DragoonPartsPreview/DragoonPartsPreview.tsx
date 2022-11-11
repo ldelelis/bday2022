@@ -23,12 +23,16 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
 
   return (
     <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
-      <div
-        className="row-span-3 m-auto"
-        onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-      >
-        <img src="/buttons/next-button.png" className="-scale-x-100" />
-      </div>
+      {images.length >= PAGE_SIZE ? (
+        <div
+          className="row-span-3 m-auto"
+          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+        >
+          <img src="/buttons/next-button.png" className="-scale-x-100" />
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className="grid grid-cols-5 grid-rows-3 col-span-9">
         {optional && currentPage === 1 && (
           <div
@@ -61,12 +65,16 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           );
         })}
       </div>
-      <div
-        className="row-span-3 m-auto"
-        onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
-      >
-        <img src="/buttons/next-button.png" />
-      </div>
+      {images.length >= PAGE_SIZE ? (
+        <div
+          className="row-span-3 m-auto"
+          onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
+        >
+          <img src="/buttons/next-button.png" />
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
