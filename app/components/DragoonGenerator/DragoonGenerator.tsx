@@ -231,6 +231,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             ></DragoonPartsPreview>
           )}
         </div>
+        <div className="text-2xl">
+          Want the selen font for yourself? <a className="bg-purple-500 text-white py-2 px-4" href="/fonts/Selen-Regular.ttf">Download here!</a>
+        </div>
       </div>
     </div>
   );
