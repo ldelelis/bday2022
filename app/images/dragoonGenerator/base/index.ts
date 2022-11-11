@@ -7,6 +7,7 @@ import background from "./background.png";
 import colorsButton from "./colors-button.png";
 import newColorsButton from "./new-colors-button.png";
 import framesButton from "./frames-button.png";
+import allBackground from "./all-background.png";
 
 export { baseBlackLine };
 export { baseShadow };
@@ -17,3 +18,4 @@ export { background };
 export { colorsButton };
 export { newColorsButton };
 export { framesButton };
+export { allBackground };

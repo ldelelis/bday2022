@@ -4,7 +4,16 @@ import { json } from "remix-utils";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
 import { getAllDragoons } from "~/models/dragoon.server";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
-import { cloth, eye, hat, handItem, horn, moustache, frame } from "~/images";
+import {
+  cloth,
+  eye,
+  hat,
+  handItem,
+  horn,
+  moustache,
+  frame,
+  allBackground,
+} from "~/images";
 import { LoaderArgs } from "@remix-run/node";
 
 export async function loader({ request }: LoaderArgs) {
@@ -61,29 +70,34 @@ export default function All() {
   };
 
   return (
-    <div className="p-12">
-      <div className="grid grid-cols-2">
+    <div
+      className="p-12 font-dragoon text-2xl"
+      style={{
+        backgroundImage: `url(${allBackground})`,
+        backgroundSize: "50%",
+      }}
+    >
+      <div className="grid grid-rows-2 grid-cols-2  gap-2">
         {dragoons.map((goon: Dragoon) => {
           return (
-            <div
-              key={goon.id}
-              className="grid grid-cols-3 grid-rows-1 p-2 border-2 border-slate-400 m-1"
-            >
-              <DragoonPreview
-                cloth={clothes[goon.clothes - 1]}
-                horn={horns[goon.horns - 1]}
-                eye={eyes[goon.eye - 1]}
-                handItem={handItems[goon.handItem - 1]}
-                hat={hats[goon.hat - 1]}
-                moustache={moustaches[goon.moustache - 1]}
-                frame={frames[goon.frame - 1]}
-                currentColor={goon.baseColor}
-                backgroundColor={goon.backgroundColor}
-              />
-              <div className="col-span-2 grid grid-cols-1 grid-rows-2">
-                <p>Name: {goon.comment.author}</p>
-                <p>Their message: {goon.comment.comment}</p>
+            <div className="border-2 border-black backdrop-blur-sm flex flex-col flex-wrap">
+              <div key={goon.id} className="grid p-2">
+                <DragoonPreview
+                  cloth={clothes[goon.clothes - 1]}
+                  horn={horns[goon.horns - 1]}
+                  eye={eyes[goon.eye - 1]}
+                  handItem={handItems[goon.handItem - 1]}
+                  hat={hats[goon.hat - 1]}
+                  moustache={moustaches[goon.moustache - 1]}
+                  frame={frames[goon.frame - 1]}
+                  currentColor={goon.baseColor}
+                  backgroundColor={goon.backgroundColor}
+                />
               </div>
+              <p>{goon.comment.author}</p>
+              <p className="min-h-0 h-full min-w-0 w-full">
+                {goon.comment.comment}
+              </p>
             </div>
           );
         })}
