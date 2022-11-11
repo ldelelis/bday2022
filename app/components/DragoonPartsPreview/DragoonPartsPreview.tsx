@@ -33,7 +33,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
       ) : (
         <div></div>
       )}
-      <div className="grid grid-cols-5 grid-rows-3 col-span-9">
+      <div className="grid lg:grid-cols-5 lg:grid-rows-3  sm:grid-cols-3 sm:grid-rows-5 grid-cols-2 grid-rows-8 col-span-9">
         {optional && currentPage === 1 && (
           <div
             className="m-4 border-4 border-black backdrop-blur-[4px]"

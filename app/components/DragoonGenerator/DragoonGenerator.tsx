@@ -188,7 +188,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <h2 className="font-sans text-4xl antialiased font-bold">
           Build your dragoon:
         </h2>
-        <div className="grid grid-cols-7 text-2xl">
+        <div className="grid grid-cols-2 grid-rows-3 sm:grid-cols-4 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-2xl">
           <div onClick={() => setSelected("clothes")}>
             <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
           </div>
@@ -218,6 +218,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               <DragoonColourPreview thumbnailPath={framesButton} />
             </div>
           </div>
+        </div>
+        <div>
           {selected === "colour" ? (
             <DragoonColourSelector />
           ) : (
