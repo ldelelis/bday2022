@@ -27,7 +27,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
         className="row-span-3 m-auto"
         onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
       >
-        {"<"}
+        <img src="/buttons/next-button.png" className="-scale-x-100" />
       </div>
       <div className="grid grid-cols-5 grid-rows-3 col-span-9">
         {optional && currentPage === 1 && (
@@ -65,7 +65,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
         className="row-span-3 m-auto"
         onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
       >
-        {">"}
+        <img src="/buttons/next-button.png" />
       </div>
     </div>
   );
