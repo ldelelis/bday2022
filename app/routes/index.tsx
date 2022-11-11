@@ -37,7 +37,7 @@ export async function action({ request }: ActionArgs) {
     Number(formData.get("frames"))
   );
 
-  return redirect("/");
+  return redirect("/all");
 }
 
 export function links() {
