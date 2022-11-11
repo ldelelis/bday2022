@@ -117,7 +117,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <textarea
             name="comment"
             id="comment"
-            className="text-2xl border-2 border-black p-4 basis-52"
+            className="text-4xl border-2 border-black p-4 basis-52"
           ></textarea>
           <input
             id="hat"
