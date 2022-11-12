@@ -110,7 +110,9 @@ export default function All() {
                     backgroundColor={goon.backgroundColor}
                   />
                 </div>
-                <p className="basis-2/3 h-1/3 grow">"{goon.comment.comment}"</p>
+                <p className="basis-2/3 h-1/3 break-all">
+                  "{goon.comment.comment}"
+                </p>
                 <p className="m-auto py-2">- {goon.comment.author}</p>
               </div>
             );

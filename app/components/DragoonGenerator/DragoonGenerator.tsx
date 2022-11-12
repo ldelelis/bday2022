@@ -111,6 +111,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             type="text"
             required={true}
             className="text-4xl border-b-2 border-black px-4 h-max basis-8"
+            maxLength={35}
           />
           <label htmlFor="comment" className="m-auto">
             <img src={yourMessage} className="py-2" />
@@ -120,6 +121,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             id="comment"
             className="text-4xl border-2 border-black p-4 basis-52"
             required={true}
+            maxLength={160}
           ></textarea>
           <input
             id="hat"
