@@ -109,6 +109,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             id="author"
             name="author"
             type="text"
+            required={true}
             className="text-xl border-b-2 border-black px-4 h-max basis-8"
           />
           <label htmlFor="comment" className="m-auto">
@@ -118,6 +119,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             name="comment"
             id="comment"
             className="text-4xl border-2 border-black p-4 basis-52"
+            required={true}
           ></textarea>
           <input
             id="hat"
@@ -232,7 +234,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           )}
         </div>
         <div className="text-2xl">
-          Want the selen font for yourself? <a className="bg-purple-500 text-white py-2 px-4" href="/fonts/Selen-Regular.ttf">Download here!</a>
+          Want the selen font for yourself?{" "}
+          <a
+            className="bg-purple-500 text-white py-2 px-4"
+            href="/fonts/Selen-Regular.ttf"
+          >
+            Download here!
+          </a>
         </div>
       </div>
     </div>
