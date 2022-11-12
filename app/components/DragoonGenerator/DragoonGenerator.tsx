@@ -110,7 +110,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             name="author"
             type="text"
             required={true}
-            className="text-xl border-b-2 border-black px-4 h-max basis-8"
+            className="text-4xl border-b-2 border-black px-4 h-max basis-8"
           />
           <label htmlFor="comment" className="m-auto">
             <img src={yourMessage} className="py-2" />
