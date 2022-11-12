@@ -14,7 +14,7 @@ import { useAtom } from "jotai";
 import { FC, useState } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
-import { Form } from "@remix-run/react";
+import { Form, useTransition } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
@@ -76,6 +76,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setBackgroundColor("#ffffff");
   };
 
+  const transition = useTransition();
+
   const isOptional = (partName: string): boolean => {
     return ["clothes", "hats", "handItems", "moustaches", "frames"].includes(
       partName
@@ -112,6 +114,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             required={true}
             className="text-4xl border-b-2 border-black px-4 h-max basis-8"
             maxLength={35}
+            disabled={transition.state === "submitting"}
           />
           <label htmlFor="comment" className="m-auto">
             <img src={yourMessage} className="py-2" />
@@ -122,6 +125,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             className="text-4xl border-2 border-black p-4 basis-52"
             required={true}
             maxLength={160}
+            disabled={transition.state === "submitting"}
           ></textarea>
           <input
             id="hat"
@@ -172,11 +176,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               type="submit"
               form="dragoonData"
               className="submit-button h-full w-1/3"
+              disabled={transition.state === "submitting"}
             />
             <button
               type="button"
               onClick={() => handleReset()}
               className="mt-3 reset-button h-full w-2/5"
+              disabled={transition.state === "submitting"}
             />
           </div>
         </Form>
