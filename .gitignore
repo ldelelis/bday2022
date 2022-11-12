@@ -7,3 +7,5 @@ dev.db
 .env
 tags
 .envrc
+
+app/tailwind.css
