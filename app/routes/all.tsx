@@ -74,14 +74,14 @@ export default function All() {
 
   return (
     <div
-      className="p-12 font-dragoon text-2xl h-screen w-screen"
+      className="p-12 font-dragoon text-4xl h-screen w-screen"
       style={{
         backgroundImage: `url(${allBackground})`,
         backgroundSize: "50%",
       }}
     >
-      <img src="/banners/message-board.png" className="w-1/4 m-auto mb-12" />
-      <div className="flex flex-row gap-x-8">
+      <img src="/banners/message-board.png" className="w-1/5 m-auto mb-12" />
+      <div className="flex flex-row gap-x-8 min-h-max">
         <div className="m-auto w-1/12">
           <img
             src="/buttons/next-button.png"
@@ -97,7 +97,7 @@ export default function All() {
                 key={goon.id}
                 className="border-2 border-black backdrop-blur-sm flex flex-row flex-wrap"
               >
-                <div className="grid p-2 basis-1/3">
+                <div className="grid p-4 basis-1/3">
                   <DragoonPreview
                     cloth={clothes[goon.clothes - 1]}
                     horn={horns[goon.horns - 1]}
@@ -110,8 +110,8 @@ export default function All() {
                     backgroundColor={goon.backgroundColor}
                   />
                 </div>
-                <p className="basis-2/3">{goon.comment.comment}</p>
-                <p className="">{goon.comment.author}</p>
+                <p className="basis-2/3 h-1/3 grow">"{goon.comment.comment}"</p>
+                <p className="m-auto py-2">- {goon.comment.author}</p>
               </div>
             );
           })}
