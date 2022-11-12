@@ -62,10 +62,12 @@ export default function All() {
   const isNextDisabled = currentPage === pageCount;
 
   const handlePagination = (e) => {
-    console.log("in pagination");
     const { target } = e;
     const operation = target.getAttribute("data-nav-operation");
     const offset = operation === "next" ? 1 : -1;
+
+    if (operation === "next" && isNextDisabled) return;
+    if (operation === "previous" && isPreviousDisabled) return;
 
     setSearchParams({ page: String(currentPage + offset) });
   };
@@ -80,14 +82,15 @@ export default function All() {
     >
       <img src="/banners/message-board.png" className="w-1/4 m-auto mb-12" />
       <div className="flex flex-row gap-x-8">
-        <div
-          className="m-auto"
-          onClick={() => handlePagination}
-          data-nav-operation="previous"
-        >
-          <img src="/buttons/next-button.png" className="-scale-x-100" />
+        <div className="m-auto w-1/12">
+          <img
+            src="/buttons/next-button.png"
+            className="-scale-x-100"
+            onClick={handlePagination}
+            data-nav-operation="previous"
+          />
         </div>
-        <div className="grid grid-rows-2 grid-cols-2  gap-2">
+        <div className="grid grid-rows-2 grid-cols-2  gap-2 basis-full">
           {dragoons.map((goon: Dragoon) => {
             return (
               <div
@@ -113,12 +116,12 @@ export default function All() {
             );
           })}
         </div>
-        <div
-          className="m-auto"
-          onClick={() => handlePagination}
-          data-nav-operation="next"
-        >
-          <img src="/buttons/next-button.png" />
+        <div className="m-auto w-1/12">
+          <img
+            src="/buttons/next-button.png"
+            onClick={handlePagination}
+            data-nav-operation="next"
+          />
         </div>
       </div>
     </div>
