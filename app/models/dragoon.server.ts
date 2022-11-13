@@ -57,3 +57,27 @@ export async function getAllDragoons(
 
   return [count, dragoons];
 }
+
+export async function getRandomDragoons() {
+  return await db.$queryRaw<Dragoon[]>`
+SELECT
+	d.hat,
+	d."handItem",
+	d.moustache,
+	d.eye,
+	d.clothes,
+	d.horns,
+	d.frame,
+	d."baseColor",
+	d."backgroundColor",
+	dc.author,
+	dc."comment"
+FROM
+	"Dragoon" d
+INNER JOIN "DragoonComment" dc ON
+	d.id LIKE dc."dragoonId"
+ORDER BY
+	random()
+LIMIT 5;
+`;
+}
