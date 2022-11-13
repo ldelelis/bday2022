@@ -191,7 +191,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       <div
         className="col-span-4 h-min p-4"
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: "url(/backgrounds/generator.png)",
           backgroundSize: "50%",
         }}
       >

@@ -28,7 +28,7 @@
     	background-repeat: no-repeat;
     }
     .submit-button:hover {
-    	background-image: url("/buttons/submit-hover.png")
+    	background-image: url("/buttons/submit-hover.png");
     }
 
     .reset-button {
@@ -37,6 +37,6 @@
     	background-repeat: no-repeat;
     }
     .reset-button:hover {
-    	background-image: url("/buttons/reset-hover.png")
+    	background-image: url("/buttons/reset-hover.png");
     }
 }

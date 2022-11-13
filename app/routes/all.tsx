@@ -89,6 +89,7 @@ export default function All() {
             onClick={handlePagination}
             data-nav-operation="previous"
           />
+          <p className="w-min m-auto text-3xl">Previous</p>
         </div>
         <div className="grid grid-rows-2 grid-cols-2  gap-2 basis-full">
           {dragoons.map((goon: Dragoon) => {
@@ -124,6 +125,7 @@ export default function All() {
             onClick={handlePagination}
             data-nav-operation="next"
           />
+          <p className="w-min m-auto text-3xl">Next</p>
         </div>
       </div>
     </div>

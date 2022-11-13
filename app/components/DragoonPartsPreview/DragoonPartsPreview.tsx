@@ -29,6 +29,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
         >
           <img src="/buttons/next-button.png" className="-scale-x-100" />
+          <p className="w-min m-auto text-2xl">Previous</p>
         </div>
       ) : (
         <div></div>
@@ -71,6 +72,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
         >
           <img src="/buttons/next-button.png" />
+          <p className="w-min m-auto text-2xl">Next</p>
         </div>
       ) : (
         <div></div>
