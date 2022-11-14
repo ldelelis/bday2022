@@ -86,8 +86,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
 
   return (
     <div className="flex gap-x-8">
-      <div className="w-1/4 xl:w-max">
-        <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center">
+      <div className="w-1/4 2xl:w-max">
+        <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink">
           <DragoonPreview
             handItem={handItem}
             hat={hat}
@@ -104,25 +104,28 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <Form
           id="dragoonData"
           method="post"
-          className="flex flex-col m-auto py-4"
+          className="flex flex-col m-auto 2xl:py-4"
         >
-          <img src={nameBanner} className="m-auto py-4" />
+          <img src={nameBanner} className="m-auto py-2 2xl:py-4" />
           <input
             id="author"
             name="author"
             type="text"
             required={true}
-            className="text-4xl border-b-2 border-black px-4 h-max basis-8"
+            className="text-2xl 2xl:text-4xl border-b-2 border-black px-4 h-max basis-8"
             maxLength={35}
             disabled={transition.state === "submitting"}
           />
           <label htmlFor="comment" className="m-auto">
-            <img src={yourMessage} className="py-2" />
+            <img
+              src={yourMessage}
+              className="h-2/3 w-2/3 2xl:h-full 2xl:w-full py-2 m-auto"
+            />
           </label>
           <textarea
             name="comment"
             id="comment"
-            className="text-4xl border-2 border-black p-4 basis-52"
+            className="text-2xl 2xl:text-4xl border-2 border-black p-4 basis-52"
             required={true}
             maxLength={160}
             disabled={transition.state === "submitting"}
@@ -189,7 +192,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       </div>
 
       <div
-        className="h-min p-4"
+        className="h-fit w-fit max-h-min p-4"
         style={{
           backgroundImage: "url(/backgrounds/generator.png)",
           backgroundSize: "50%",

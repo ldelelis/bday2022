@@ -31,12 +31,12 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
         >
           <img src="/buttons/next-button.png" className="-scale-x-100" />
-          <p className="w-min m-auto text-md xl:text-2xl">Previous</p>
+          <p className="text-md xl:text-2xl">Previous</p>
         </div>
       ) : (
         <div></div>
       )}
-      <div className="grid lg:grid-cols-5 lg:grid-rows-3  sm:grid-cols-3 sm:grid-rows-5 grid-cols-2 grid-rows-8 col-span-9">
+      <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3">
         {optional && currentPage === 1 && (
           <div
             className="m-4 border-4 border-black backdrop-blur-[4px]"
