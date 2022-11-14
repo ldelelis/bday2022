@@ -80,38 +80,7 @@ export default function All() {
     setSearchParams({ pageSize: String(innerWidth > 1024 ? 4 : 2) });
   }, []);
 
-  const pageCount = Math.ceil(count / pageSize);
-
-  const isPreviousDisabled = currentPage === 1;
-  const isNextDisabled = currentPage === pageCount;
-
-  const handlePagination = (e) => {
-    const { target } = e;
-    const operation = target.getAttribute("data-nav-operation");
-    const offset = operation === "next" ? 1 : -1;
-
-    if (operation === "next" && isNextDisabled) {
-      return new URLSearchParams({
-        page: String(currentPage),
-        pageSize: String(pageSize),
-      }).toString();
-    }
-    if (operation === "previous" && isPreviousDisabled) {
-      return new URLSearchParams({
-        page: String(currentPage),
-        pageSize: String(pageSize),
-      }).toString();
-    }
-
-    // setSearchParams({
-    //   page: String(currentPage + offset),
-    //   pageSize: String(pageSize),
-    // });
-    return new URLSearchParams({
-      page: String(currentPage + offset),
-      pageSize: String(pageSize),
-    }).toString();
-  };
+  const pageCount = Math.ceil(count / pageSize) || 1;
 
   return (
     <div
