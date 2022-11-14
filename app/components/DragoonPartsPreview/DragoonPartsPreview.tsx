@@ -15,71 +15,83 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
   console.log(window.innerHeight);
   const { images, setIndex, optional } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = optional ? 14 : 15;
+  const PAGE_SIZE = 15;
   const maxPages = Math.ceil(images.length / PAGE_SIZE);
+  let indexOffset = 0;
+  const safeImages = [...images];
 
-  const slice = images.slice(
+  if (optional) {
+    safeImages.unshift("");
+    indexOffset = 1;
+  }
+
+  const slice = safeImages.slice(
     (currentPage - 1) * PAGE_SIZE,
     PAGE_SIZE * currentPage
   );
 
   return (
-    <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
-      {images.length > PAGE_SIZE ? (
-        <div
-          className="row-span-3 m-auto animate-wiggle"
-          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-        >
-          <img src="/buttons/next-button.png" className="-scale-x-100" />
-          <p className="text-md xl:text-2xl">Previous</p>
-        </div>
-      ) : (
-        <div></div>
-      )}
-      <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3">
-        {optional && currentPage === 1 && (
+    <>
+      <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
+        {images.length > PAGE_SIZE ? (
           <div
-            className="m-4 border-4 border-black backdrop-blur-[4px]"
-            onClick={() => setIndex(null)}
+            className="row-span-3 m-auto animate-wiggle"
+            onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
           >
-            <img src={noneSelected}></img>
+            <img src="/buttons/next-button.png" className="-scale-x-100" />
+            <p className="text-md xl:text-2xl">Previous</p>
           </div>
+        ) : (
+          <div></div>
         )}
-
-        {slice.map((image, idx) => {
-          return (
-            <div
-              key={image}
-              className="grid grid-cols-1 m-4 border-4 border-black backdrop-blur-[4px]"
-              onClick={() => setIndex(idx + (currentPage - 1) * PAGE_SIZE)}
-            >
-              <DragoonItemPreview styleProps="stacked z-20" image={image} />
-              <DragoonItemPreview
-                styleProps="stacked z-10 opacity-50"
-                image={baseBlackLine}
-              />
-              {/*We override the style definitions to disable the preview's outline*/}
-              <DragoonItemBase
-                className="stacked opacity-50"
-                color={DEFAULT_COLOR}
-                style={{}}
-              />
-            </div>
-          );
-        })}
-      </div>
-      {images.length > PAGE_SIZE ? (
-        <div
-          className="row-span-3 m-auto animate-wiggle"
-          onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
-        >
-          <img src="/buttons/next-button.png" />
-          <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
+        <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3">
+          {slice.map((image, idx) => {
+            return image === "" ? (
+              <div
+                className="m-4 border-4 border-black backdrop-blur-[4px]"
+                onClick={() => setIndex(null)}
+              >
+                <img src={noneSelected}></img>
+              </div>
+            ) : (
+              <div
+                key={image}
+                className="grid grid-cols-1 m-4 border-4 border-black backdrop-blur-[4px]"
+                onClick={() =>
+                  setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
+                }
+              >
+                <DragoonItemPreview styleProps="stacked z-20" image={image} />
+                <DragoonItemPreview
+                  styleProps="stacked z-10 opacity-50"
+                  image={baseBlackLine}
+                />
+                {/*We override the style definitions to disable the preview's outline*/}
+                <DragoonItemBase
+                  className="stacked opacity-50"
+                  color={DEFAULT_COLOR}
+                  style={{}}
+                />
+              </div>
+            );
+          })}
         </div>
-      ) : (
-        <div></div>
-      )}
-    </div>
+        {images.length > PAGE_SIZE ? (
+          <div
+            className="row-span-3 m-auto animate-wiggle"
+            onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
+          >
+            <img src="/buttons/next-button.png" />
+            <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
+          </div>
+        ) : (
+          <div></div>
+        )}
+        <p className="text-xl float-right col-span-11">
+          Page {currentPage} of {maxPages}
+        </p>
+      </div>
+    </>
   );
 };
 
