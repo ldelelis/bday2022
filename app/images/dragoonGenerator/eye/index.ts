@@ -88,5 +88,4 @@ export default [
   eye44,
   eye45,
   eye46,
-  eye46,
 ];
