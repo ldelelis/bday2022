@@ -1,4 +1,4 @@
-import { ActionArgs, json, redirect } from "@remix-run/node";
+import { ActionArgs, HeadersFunction, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ClientOnly } from "remix-utils";
 import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
@@ -43,6 +43,14 @@ export async function action({ request }: ActionArgs) {
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
+
+export let headers: HeadersFunction = () => {
+  return {
+    "Cache-Control": `public, max-age=${60 * 10}, s-maxage=${
+      60 * 60 * 24 * 30
+    }`,
+  };
+};
 
 export function meta() {
   return {

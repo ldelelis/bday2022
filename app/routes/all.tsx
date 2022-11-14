@@ -1,5 +1,5 @@
 import { Dragoon } from "@prisma/client";
-import { useLoaderData, useSearchParams } from "@remix-run/react";
+import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import { json } from "remix-utils";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
 import { getAllDragoons } from "~/models/dragoon.server";
@@ -14,7 +14,7 @@ import {
   frame,
   allBackground,
 } from "~/images";
-import { LoaderArgs } from "@remix-run/node";
+import { HeadersFunction, LoaderArgs } from "@remix-run/node";
 import { useEffect, useState } from "react";
 
 export async function loader({ request }: LoaderArgs) {
@@ -49,6 +49,14 @@ export function meta() {
   };
 }
 
+export let headers: HeadersFunction = () => {
+  return {
+    "Cache-Control": `public, max-age=${60 * 10}, s-maxage=${
+      60 * 60 * 24 * 30
+    }`,
+  };
+};
+
 export default function All() {
   const {
     count,
@@ -82,13 +90,27 @@ export default function All() {
     const operation = target.getAttribute("data-nav-operation");
     const offset = operation === "next" ? 1 : -1;
 
-    if (operation === "next" && isNextDisabled) return;
-    if (operation === "previous" && isPreviousDisabled) return;
+    if (operation === "next" && isNextDisabled) {
+      return new URLSearchParams({
+        page: String(currentPage),
+        pageSize: String(pageSize),
+      }).toString();
+    }
+    if (operation === "previous" && isPreviousDisabled) {
+      return new URLSearchParams({
+        page: String(currentPage),
+        pageSize: String(pageSize),
+      }).toString();
+    }
 
-    setSearchParams({
+    // setSearchParams({
+    //   page: String(currentPage + offset),
+    //   pageSize: String(pageSize),
+    // });
+    return new URLSearchParams({
       page: String(currentPage + offset),
       pageSize: String(pageSize),
-    });
+    }).toString();
   };
 
   return (
@@ -102,12 +124,15 @@ export default function All() {
       <img src="/banners/message-board.png" className="w-1/5 m-auto mb-12" />
       <div className="flex flex-row gap-x-8 min-h-max">
         <div className="m-auto w-1/12">
-          <img
-            src="/buttons/next-button.png"
-            className="-scale-x-100"
-            onClick={handlePagination}
+          <Link
+            to={
+              "?page=" + Math.max(1, currentPage - 1) + "&pageSize=" + pageSize
+            }
+            prefetch="intent"
             data-nav-operation="previous"
-          />
+          >
+            <img src="/buttons/next-button.png" className="-scale-x-100" />
+          </Link>
           <p className="w-min m-auto text-xl xl:text-3xl">Previous</p>
         </div>
         <div className="grid grid-rows-2 grid-cols-1 xl:grid-cols-2 gap-2 basis-full">
@@ -141,11 +166,17 @@ export default function All() {
           })}
         </div>
         <div className="m-auto w-1/12">
-          <img
-            src="/buttons/next-button.png"
-            onClick={handlePagination}
-            data-nav-operation="next"
-          />
+          <Link
+            to={
+              "?page=" +
+              Math.min(currentPage + 1, pageCount) +
+              "&pageSize=" +
+              pageSize
+            }
+            prefetch="intent"
+          >
+            <img src="/buttons/next-button.png" />
+          </Link>
           <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
         </div>
       </div>
