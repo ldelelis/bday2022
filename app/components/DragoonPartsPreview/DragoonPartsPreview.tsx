@@ -27,7 +27,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
     <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
       {images.length > PAGE_SIZE ? (
         <div
-          className="row-span-3 m-auto"
+          className="row-span-3 m-auto animate-wiggle"
           onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
         >
           <img src="/buttons/next-button.png" className="-scale-x-100" />
@@ -70,7 +70,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
       </div>
       {images.length > PAGE_SIZE ? (
         <div
-          className="row-span-3 m-auto"
+          className="row-span-3 m-auto animate-wiggle"
           onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
         >
           <img src="/buttons/next-button.png" />
