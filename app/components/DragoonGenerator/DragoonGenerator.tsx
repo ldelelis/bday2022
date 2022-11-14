@@ -18,7 +18,7 @@ import { Form, useTransition } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
-import { background, framesButton, newColorsButton } from "~/images";
+import { framesButton, newColorsButton } from "~/images";
 import { nameBanner, yourMessage } from "~/images/dragoonGenerator/form";
 
 type DragoonGeneratorProps = {
@@ -85,8 +85,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-6">
-      <div className="col-span-2 justify-items-center">
+    <div className="flex gap-x-8">
+      <div className="w-1/4 xl:w-max">
         <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center">
           <DragoonPreview
             handItem={handItem}
@@ -104,7 +104,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <Form
           id="dragoonData"
           method="post"
-          className="flex flex-col w-2/3 m-auto py-8"
+          className="flex flex-col m-auto py-4"
         >
           <img src={nameBanner} className="m-auto py-4" />
           <input
@@ -181,7 +181,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <button
               type="button"
               onClick={() => handleReset()}
-              className="mt-3 reset-button h-full w-2/5"
+              className="bg-bottom reset-button h-full w-2/5"
               disabled={transition.state === "submitting"}
             />
           </div>
@@ -189,7 +189,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       </div>
 
       <div
-        className="col-span-4 h-min p-4"
+        className="h-min p-4"
         style={{
           backgroundImage: "url(/backgrounds/generator.png)",
           backgroundSize: "50%",
@@ -198,7 +198,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <h2 className="font-sans text-4xl antialiased font-bold">
           Build your dragoon:
         </h2>
-        <div className="grid grid-cols-2 grid-rows-3 sm:grid-cols-4 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-2xl">
+        <div className="grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 text-lg xl:text-2xl">
           <div onClick={() => setSelected("clothes")}>
             <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
           </div>
@@ -209,10 +209,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <DragoonGeneratorSelector imagePath={hat} partName="hats" />
           </div>
           <div onClick={() => setSelected("handItems")}>
-            <DragoonGeneratorSelector
-              imagePath={handItem}
-              partName="accessories"
-            />
+            <DragoonGeneratorSelector imagePath={handItem} partName="extras" />
           </div>
           <div onClick={() => setSelected("horns")}>
             <DragoonGeneratorSelector imagePath={horn} partName="horns" />
@@ -220,7 +217,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <div onClick={() => setSelected("moustaches")}>
             <DragoonGeneratorSelector imagePath={moustache} partName="face" />
           </div>
-          <div className="grid grid-rows-2 grid-cols-1 gap-4">
+          <div className="grid grid-rows-2 grid-cols-1 xl:gap-4">
             <div onClick={() => setSelected("colour")}>
               <DragoonColourPreview thumbnailPath={newColorsButton} />
             </div>

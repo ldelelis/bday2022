@@ -14,7 +14,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   imagePath,
 }) => {
   return (
-    <div className="m-2 border-4 border-black grid grid-cols-1 bg-white">
+    <div className="h-fit w-4/5 xl:h-fit xl:w-fit m-2 border-4 border-black grid grid-cols-1 bg-white">
       <DragoonItemPreview image={imagePath} styleProps="stacked z-20" />
       <DragoonItemPreview
         styleProps="stacked z-10 opacity-50"

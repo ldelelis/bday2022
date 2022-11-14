@@ -1,4 +1,3 @@
-import { LoaderArgs } from "@remix-run/node";
 import { json } from "remix-utils";
 import { getRandomDragoons } from "~/models/dragoon.server";
 import { cloth, eye, hat, handItem, horn, moustache, frame } from "~/images";

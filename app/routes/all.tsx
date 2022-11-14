@@ -15,11 +15,16 @@ import {
   allBackground,
 } from "~/images";
 import { LoaderArgs } from "@remix-run/node";
+import { useEffect, useState } from "react";
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
   const page = url.searchParams.get("page");
-  const [count, dragoonsData] = await getAllDragoons(Number(page || 1));
+  const pageSize = url.searchParams.get("pageSize");
+  const [count, dragoonsData] = await getAllDragoons(
+    Number(page || 1),
+    Number(pageSize || 4)
+  );
 
   return json({
     clothes: cloth,
@@ -51,12 +56,17 @@ export default function All() {
     frames,
   } = JSON.parse(useLoaderData());
 
-  const PAGE_SIZE = 4;
+  const [pageSize, setPageSize] = useState(4);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page") || 1);
+  useEffect(() => {
+    const { innerWidth } = window;
+    setPageSize(innerWidth > 1024 ? 4 : 2);
+    setSearchParams({ pageSize: String(innerWidth > 1024 ? 4 : 2) });
+  }, []);
 
-  const pageCount = Math.ceil(count / PAGE_SIZE);
+  const pageCount = Math.ceil(count / pageSize);
 
   const isPreviousDisabled = currentPage === 1;
   const isNextDisabled = currentPage === pageCount;
@@ -69,12 +79,15 @@ export default function All() {
     if (operation === "next" && isNextDisabled) return;
     if (operation === "previous" && isPreviousDisabled) return;
 
-    setSearchParams({ page: String(currentPage + offset) });
+    setSearchParams({
+      page: String(currentPage + offset),
+      pageSize: String(pageSize),
+    });
   };
 
   return (
     <div
-      className="p-12 font-dragoon text-4xl h-screen w-screen"
+      className="p-12 font-dragoon text-2xl xl:text-4xl min-h-screen h-full w-screen"
       style={{
         backgroundImage: `url(${allBackground})`,
         backgroundSize: "50%",
@@ -89,9 +102,9 @@ export default function All() {
             onClick={handlePagination}
             data-nav-operation="previous"
           />
-          <p className="w-min m-auto text-3xl">Previous</p>
+          <p className="w-min m-auto text-xl xl:text-3xl">Previous</p>
         </div>
-        <div className="grid grid-rows-2 grid-cols-2  gap-2 basis-full">
+        <div className="grid grid-rows-2 grid-cols-1 xl:grid-cols-2 gap-2 basis-full">
           {dragoons.map((goon: Dragoon) => {
             return (
               <div
@@ -111,10 +124,10 @@ export default function All() {
                     backgroundColor={goon.backgroundColor}
                   />
                 </div>
-                <p className="basis-2/3 h-1/3 break-all">
-                  "{goon.comment.comment}"
+                <p className="basis-2/3 break-all">"{goon.comment.comment}"</p>
+                <p className="mx-auto xl:py-2 self-end">
+                  - {goon.comment.author}
                 </p>
-                <p className="m-auto py-2">- {goon.comment.author}</p>
               </div>
             );
           })}
@@ -125,7 +138,7 @@ export default function All() {
             onClick={handlePagination}
             data-nav-operation="next"
           />
-          <p className="w-min m-auto text-3xl">Next</p>
+          <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
         </div>
       </div>
     </div>

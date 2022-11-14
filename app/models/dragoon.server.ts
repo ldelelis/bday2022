@@ -39,9 +39,9 @@ export async function createDragoon(
 }
 
 export async function getAllDragoons(
-  page: number
+  page: number,
+  pageSize: number = 4
 ): Promise<[Number, Dragoon[]]> {
-  const pageSize = 4;
   const skip = (page - 1) * pageSize;
 
   const count = await db.dragoon.count();
