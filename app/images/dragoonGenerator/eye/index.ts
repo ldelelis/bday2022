@@ -42,6 +42,7 @@ import eye43 from "./43.png";
 import eye44 from "./44.png";
 import eye45 from "./45.png";
 import eye46 from "./46.png";
+import eye47 from "./47.png";
 
 export default [
   eye1,
@@ -88,4 +89,5 @@ export default [
   eye44,
   eye45,
   eye46,
+  eye47,
 ];

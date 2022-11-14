@@ -24,6 +24,7 @@ import moustache23 from "./23.png";
 import moustache24 from "./24.png";
 import moustache25 from "./25.png";
 import moustache26 from "./26.png";
+import moustache27 from "./27.png";
 
 export default [
   moustache1,
@@ -52,4 +53,5 @@ export default [
   moustache24,
   moustache25,
   moustache26,
+  moustache27,
 ];
