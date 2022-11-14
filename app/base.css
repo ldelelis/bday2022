@@ -39,4 +39,12 @@
     .reset-button:hover {
     	background-image: url("/buttons/reset-hover.png");
     }
+
+    .selector-border {
+	border-color: rgb(0 0 0);
+    }
+
+    .selector-border-selected {
+	border-color: rgb(124 58 237);
+    }
 }

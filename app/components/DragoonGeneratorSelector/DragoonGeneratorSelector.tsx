@@ -7,14 +7,26 @@ import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/Dragoo
 type DragoonitemSelectorProps = {
   imagePath?: string;
   partName: string;
+  label: string;
+  selected: string;
 };
 
 const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   partName,
   imagePath,
+  selected,
+  label,
 }) => {
+  const isSelected = selected === partName;
+
   return (
-    <div className="h-fit w-4/5 xl:h-fit xl:w-fit m-2 border-4 border-black grid grid-cols-1 bg-white">
+    <div
+      className={
+        "h-fit w-4/5 xl:h-fit xl:w-fit m-2 border-4 grid grid-cols-1 bg-white" +
+        " " +
+        (isSelected ? "selector-border-selected" : "selector-border")
+      }
+    >
       <DragoonItemPreview image={imagePath} styleProps="stacked z-20" />
       <DragoonItemPreview
         styleProps="stacked z-10 opacity-50"
@@ -26,9 +38,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
         color={DEFAULT_COLOR}
         style={{}}
       />
-      <h1 className="text-center capitalize font-bold row-span-1">
-        {partName}
-      </h1>
+      <h1 className="text-center capitalize font-bold row-span-1">{label}</h1>
     </div>
   );
 };

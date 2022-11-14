@@ -86,7 +86,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
 
   return (
     <div className="flex gap-x-8">
-      <div className="w-1/4 2xl:w-max">
+      <div className="w-1/4">
         <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink">
           <DragoonPreview
             handItem={handItem}
@@ -203,29 +203,67 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         </h2>
         <div className="grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 text-lg xl:text-2xl">
           <div onClick={() => setSelected("clothes")}>
-            <DragoonGeneratorSelector imagePath={cloth} partName="clothes" />
+            <DragoonGeneratorSelector
+              imagePath={cloth}
+              partName="clothes"
+              label="clothes"
+              selected={selected}
+            />
           </div>
           <div onClick={() => setSelected("eyes")}>
-            <DragoonGeneratorSelector imagePath={eye} partName="eyes" />
+            <DragoonGeneratorSelector
+              imagePath={eye}
+              partName="eyes"
+              label="eyes"
+              selected={selected}
+            />
           </div>
           <div onClick={() => setSelected("hats")}>
-            <DragoonGeneratorSelector imagePath={hat} partName="hats" />
+            <DragoonGeneratorSelector
+              imagePath={hat}
+              partName="hats"
+              label="hats"
+              selected={selected}
+            />
           </div>
           <div onClick={() => setSelected("handItems")}>
-            <DragoonGeneratorSelector imagePath={handItem} partName="extras" />
+            <DragoonGeneratorSelector
+              imagePath={handItem}
+              partName="handItems"
+              label="extras"
+              selected={selected}
+            />
           </div>
           <div onClick={() => setSelected("horns")}>
-            <DragoonGeneratorSelector imagePath={horn} partName="horns" />
+            <DragoonGeneratorSelector
+              imagePath={horn}
+              partName="horns"
+              label="horns"
+              selected={selected}
+            />
           </div>
           <div onClick={() => setSelected("moustaches")}>
-            <DragoonGeneratorSelector imagePath={moustache} partName="face" />
+            <DragoonGeneratorSelector
+              imagePath={moustache}
+              partName="moustaches"
+              label="face"
+              selected={selected}
+            />
           </div>
           <div className="grid grid-rows-2 grid-cols-1 xl:gap-4">
             <div onClick={() => setSelected("colour")}>
-              <DragoonColourPreview thumbnailPath={newColorsButton} />
+              <DragoonColourPreview
+                thumbnailPath={newColorsButton}
+                partName="colour"
+                selected={selected}
+              />
             </div>
             <div onClick={() => setSelected("frames")}>
-              <DragoonColourPreview thumbnailPath={framesButton} />
+              <DragoonColourPreview
+                thumbnailPath={framesButton}
+                partName="frames"
+                selected={selected}
+              />
             </div>
           </div>
         </div>
