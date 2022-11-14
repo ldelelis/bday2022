@@ -127,6 +127,5 @@ export default [
   cloth61,
   cloth62,
   cloth63,
-  cloth63,
   cloth64,
 ];
