@@ -43,6 +43,12 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
+export function meta() {
+  return {
+    title: "Your Messages",
+  };
+}
+
 export default function All() {
   const {
     count,
@@ -124,7 +130,9 @@ export default function All() {
                     backgroundColor={goon.backgroundColor}
                   />
                 </div>
-                <p className="basis-2/3 break-all">"{goon.comment.comment}"</p>
+                <p className="basis-2/3 break-words">
+                  "{goon.comment.comment}"
+                </p>
                 <p className="mx-auto xl:py-2 self-end">
                   - {goon.comment.author}
                 </p>

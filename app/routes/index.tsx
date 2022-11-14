@@ -44,6 +44,12 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
+export function meta() {
+  return {
+    title: "Build your Dragoon!",
+  };
+}
+
 export default function Generator() {
   const viewData = useLoaderData();
 
