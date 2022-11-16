@@ -84,7 +84,7 @@ export default function All() {
 
   return (
     <div
-      className="p-1 font-dragoon text-2xl xl:text-[2rem] leading-10 min-h-screen h-full"
+      className="p-1 font-dragoon text-2xl xl:text-[1.9rem] leading-10 min-h-screen h-full"
       style={{
         backgroundImage: `url(${allBackground})`,
         backgroundSize: "50%",
