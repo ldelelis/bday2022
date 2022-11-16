@@ -11,6 +11,14 @@
              url("/fonts/Selen-Regular.ttf") format("truetype");
     }
 
+    @font-face {
+        font-family: "Selen2 Font";
+        font-style: normal;
+        font-display: auto;
+        src: local("Selen Font"),
+             url("/fonts/Selen2-Regular.ttf") format("truetype");
+    }
+
     button:disabled {
         -webkit-filter: grayscale(100%);
         -moz-filter: grayscale(100%);

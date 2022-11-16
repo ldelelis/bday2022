@@ -3,7 +3,7 @@ module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   theme: {
     fontFamily: {
-      dragoon: ["Selen Font"],
+      dragoon: ["Selen2 Font", "Selen Font"],
     },
     extend: {
       gridTemplateRows: {
@@ -15,15 +15,15 @@ module.exports = {
         "span-7": "span 7 / span 7",
       },
       animation: {
-        wiggle: 'wiggle 3s ease-in-out infinite',
+        wiggle: "wiggle 3s ease-in-out infinite",
       },
       keyframes: {
         wiggle: {
-          '32%': { transform: 'rotate(0deg)' },
-          '8%, 24%': { transform: 'rotate(-3deg)' },
-          '16%': { transform: 'rotate(3deg)' },
+          "32%": { transform: "rotate(0deg)" },
+          "8%, 24%": { transform: "rotate(-3deg)" },
+          "16%": { transform: "rotate(3deg)" },
         },
-      }
+      },
     },
   },
   plugins: [],
