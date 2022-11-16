@@ -90,7 +90,7 @@ export default function All() {
         backgroundSize: "50%",
       }}
     >
-      <img src="/banners/message-board.png" className="w-1/5 m-auto mb-12" />
+      <img src="/images/message-board.png" className="w-1/5 m-auto mb-12" />
       <div className="flex flex-row gap-x-8 min-h-max">
         <div className="m-auto w-1/12">
           <Link
