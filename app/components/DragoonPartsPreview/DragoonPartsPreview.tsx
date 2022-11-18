@@ -11,8 +11,6 @@ type DragoonPartsPreviewProps = {
 };
 
 const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
-  console.log(window.innerWidth);
-  console.log(window.innerHeight);
   const { images, setIndex, optional } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 15;
@@ -48,6 +46,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           {slice.map((image, idx) => {
             return image === "" ? (
               <div
+                key="null"
                 className="m-4 border-4 border-black backdrop-blur-[4px]"
                 onClick={() => setIndex(null)}
               >

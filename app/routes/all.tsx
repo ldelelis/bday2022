@@ -1,21 +1,12 @@
 import { Dragoon } from "@prisma/client";
 import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import { json } from "remix-utils";
-import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
 import { getAllDragoons } from "~/models/dragoon.server";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
-import {
-  cloth,
-  eye,
-  hat,
-  handItem,
-  horn,
-  moustache,
-  frame,
-  allBackground,
-} from "~/images";
+import { allBackground } from "~/images";
 import { HeadersFunction, LoaderArgs } from "@remix-run/node";
 import { useEffect, useState } from "react";
+import DragoonCard from "~/components/DragoonCard/DragoonCard";
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
@@ -27,14 +18,7 @@ export async function loader({ request }: LoaderArgs) {
   );
 
   return json({
-    clothes: cloth,
-    eyes: eye,
-    handItems: handItem,
-    hats: hat,
-    horns: horn,
-    moustaches: moustache,
     dragoons: dragoonsData,
-    frames: frame,
     count,
   });
 }
@@ -58,17 +42,7 @@ export let headers: HeadersFunction = () => {
 };
 
 export default function All() {
-  const {
-    count,
-    dragoons,
-    clothes,
-    eyes,
-    handItems,
-    hats,
-    horns,
-    moustaches,
-    frames,
-  } = JSON.parse(useLoaderData());
+  const { count, dragoons } = JSON.parse(useLoaderData());
 
   const [pageSize, setPageSize] = useState(4);
 
@@ -87,7 +61,6 @@ export default function All() {
       className="p-1 font-dragoon text-2xl xl:text-[1.9rem] leading-10 min-h-screen h-full"
       style={{
         backgroundImage: `url(${allBackground})`,
-        backgroundSize: "50%",
       }}
     >
       <img
@@ -110,30 +83,20 @@ export default function All() {
         <div className="grid grid-rows-2 grid-cols-1 2xl:grid-cols-2 gap-2 basis-10/12">
           {dragoons.map((goon: Dragoon) => {
             return (
-              <div
+              <DragoonCard
                 key={goon.id}
-                className="border-2 border-black backdrop-blur-sm flex flex-row flex-wrap"
-              >
-                <div className="grid p-4 basis-3/12 xl:basis-2/12 2xl:basis-1/3">
-                  <DragoonPreview
-                    cloth={clothes[goon.clothes - 1]}
-                    horn={horns[goon.horns - 1]}
-                    eye={eyes[goon.eye - 1]}
-                    handItem={handItems[goon.handItem - 1]}
-                    hat={hats[goon.hat - 1]}
-                    moustache={moustaches[goon.moustache - 1]}
-                    frame={frames[goon.frame - 1]}
-                    currentColor={goon.baseColor}
-                    backgroundColor={goon.backgroundColor}
-                  />
-                </div>
-                <p className="basis-9/12 xl:basis-10/12 2xl:basis-2/3 break-words">
-                  "{goon.comment.comment}"
-                </p>
-                <p className="mx-auto xl:py-2 self-end">
-                  - {goon.comment.author}
-                </p>
-              </div>
+                author={goon.comment.author}
+                comment={goon.comment.comment}
+                clothesIndex={goon.clothes - 1}
+                eyeIndex={goon.eye - 1}
+                hatIndex={goon.hat - 1}
+                hornsIndex={goon.horns - 1}
+                handItemIndex={goon.handItem - 1}
+                moustacheIndex={goon.moustache - 1}
+                frameIndex={goon.frame - 1}
+                baseColor={goon.baseColor}
+                backgroundColor={goon.backgroundColor}
+              />
             );
           })}
         </div>
