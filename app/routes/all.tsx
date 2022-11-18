@@ -68,7 +68,7 @@ export default function All() {
         className="w-4/12 xl:w-3/12 2xl:w-2/12 mx-auto my-4"
       />
       <div className="flex flex-row gap-x-4 2xl:gap-x-8 min-h-max">
-        <div className="m-auto basis-1/12">
+        <div className="m-auto basis-1/12 animate-wiggle">
           <Link
             to={
               "?page=" + Math.max(1, currentPage - 1) + "&pageSize=" + pageSize
@@ -76,9 +76,9 @@ export default function All() {
             prefetch="intent"
             data-nav-operation="previous"
           >
-            <img src="/buttons/next-button.png" className="-scale-x-100" />
+            <img src="/buttons/next-button-new.png" className="-scale-x-100" />
+            <p className="w-min m-auto text-xl xl:text-2xl">Previous</p>
           </Link>
-          <p className="w-min m-auto text-xl xl:text-2xl">Previous</p>
         </div>
         <div className="grid grid-rows-2 grid-cols-1 2xl:grid-cols-2 gap-2 basis-10/12">
           {dragoons.map((goon: Dragoon) => {
@@ -100,7 +100,7 @@ export default function All() {
             );
           })}
         </div>
-        <div className="m-auto basis-1/12">
+        <div className="m-auto basis-1/12 animate-wiggle">
           <Link
             to={
               "?page=" +
@@ -110,9 +110,9 @@ export default function All() {
             }
             prefetch="intent"
           >
-            <img src="/buttons/next-button.png" />
+            <img src="/buttons/next-button-new.png" />
+            <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
           </Link>
-          <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
         </div>
       </div>
       <p className="w-fit mx-auto py-4">

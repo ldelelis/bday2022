@@ -55,7 +55,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
   const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
 
-  const [selected, setSelected] = useState("hats");
+  const [selected, setSelected] = useState("eyes");
   const [isOpen, setIsOpen] = useState(false);
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
@@ -312,11 +312,11 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               ></DragoonPartsPreview>
             )}
           </div>
-          <div className="text-2xl">
+          <div className="text-xl xl:text-2xl pt-3">
             Want the selen font for yourself?{" "}
             <a
-              className="bg-purple-500 text-white py-2 px-4"
-              href="/fonts/Selen-Regular.ttf"
+              className="bg-purple-500 text-white py-2 px-4 rounded-md"
+              href="/fonts/Selen2-Regular.ttf"
             >
               Download here!
             </a>

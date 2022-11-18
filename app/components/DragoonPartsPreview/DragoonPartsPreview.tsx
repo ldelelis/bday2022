@@ -30,63 +30,78 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
 
   return (
     <>
-      <div className="m-2 p-2 border-2 border-black col-span-7 grid grid-cols-11 justify-items-center">
-        {images.length > PAGE_SIZE ? (
-          <div
-            className="row-span-3 m-auto animate-wiggle"
-            onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-          >
-            <img src="/buttons/next-button.png" className="-scale-x-100" />
-            <p className="text-md xl:text-2xl">Previous</p>
+      <div className="border-2 border-black">
+        <div className="m-2 p-2 flex flex-row justify-items-center">
+          {images.length > PAGE_SIZE ? (
+            <div
+              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+            >
+              <img
+                src="/buttons/next-button-new.png"
+                className="-scale-x-100"
+              />
+              <p className="text-sm lg:text-md xl:text-xl 2xl:text-2xl">
+                Previous
+              </p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3 place-items-center gap-y-8">
+            {slice.map((image, idx) => {
+              return image === "" ? (
+                <div
+                  key="null"
+                  className="outline outline-4 outline-black backdrop-blur-[4px] w-4/6 max-h-fit"
+                  onClick={() => setIndex(null)}
+                >
+                  <img
+                    src={noneSelected}
+                    className="min-w-0 min-h-0 m-auto"
+                  ></img>
+                </div>
+              ) : (
+                <div
+                  key={image}
+                  className="grid grid-cols-1 outline outline-4 outline-black backdrop-blur-[4px] w-4/6  max-h-fit"
+                  onClick={() =>
+                    setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
+                  }
+                >
+                  <DragoonItemPreview
+                    styleProps="stacked z-20 min-w-0 min-h-0 m-auto"
+                    image={image}
+                  />
+                  <DragoonItemPreview
+                    styleProps="stacked z-10 opacity-50 min-w-0 min-h-0 m-auto"
+                    image={baseBlackLine}
+                  />
+                  {/*We override the style definitions to disable the preview's outline*/}
+                  <DragoonItemBase
+                    className="stacked opacity-50 min-w-0 min-h-0 m-auto"
+                    color={DEFAULT_COLOR}
+                    style={{}}
+                  />
+                </div>
+              );
+            })}
           </div>
-        ) : (
-          <div></div>
-        )}
-        <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3">
-          {slice.map((image, idx) => {
-            return image === "" ? (
-              <div
-                key="null"
-                className="m-4 border-4 border-black backdrop-blur-[4px]"
-                onClick={() => setIndex(null)}
-              >
-                <img src={noneSelected}></img>
-              </div>
-            ) : (
-              <div
-                key={image}
-                className="grid grid-cols-1 m-4 border-4 border-black backdrop-blur-[4px]"
-                onClick={() =>
-                  setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
-                }
-              >
-                <DragoonItemPreview styleProps="stacked z-20" image={image} />
-                <DragoonItemPreview
-                  styleProps="stacked z-10 opacity-50"
-                  image={baseBlackLine}
-                />
-                {/*We override the style definitions to disable the preview's outline*/}
-                <DragoonItemBase
-                  className="stacked opacity-50"
-                  color={DEFAULT_COLOR}
-                  style={{}}
-                />
-              </div>
-            );
-          })}
+          {images.length > PAGE_SIZE ? (
+            <div
+              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              onClick={() =>
+                setCurrentPage(Math.min(currentPage + 1, maxPages))
+              }
+            >
+              <img src="/buttons/next-button-new.png" />
+              <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
-        {images.length > PAGE_SIZE ? (
-          <div
-            className="row-span-3 m-auto animate-wiggle"
-            onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPages))}
-          >
-            <img src="/buttons/next-button.png" />
-            <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
-          </div>
-        ) : (
-          <div></div>
-        )}
-        <p className="text-xl float-right col-span-11">
+        <p className="text-2xl xl:text-3xl w-max mx-auto pb-2">
           Page {currentPage} of {maxPages}
         </p>
       </div>
