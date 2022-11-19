@@ -46,7 +46,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
               </p>
             </div>
           ) : (
-            <div></div>
+            <div className="w-1/6 m-auto"></div>
           )}
           <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3 place-items-center gap-y-8">
             {slice.map((image, idx) => {
@@ -98,7 +98,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
               <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
             </div>
           ) : (
-            <div></div>
+            <div className="w-1/6 m-auto"></div>
           )}
         </div>
         <p className="text-2xl xl:text-3xl w-max mx-auto pb-2">

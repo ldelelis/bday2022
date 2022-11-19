@@ -1,7 +1,15 @@
 import { ActionArgs, HeadersFunction, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ClientOnly } from "remix-utils";
-import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
+import {
+  cloth,
+  eye,
+  hat,
+  handItem,
+  horn,
+  moustache,
+  allBackground,
+} from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
 import DragoonGenerator from "~/components/DragoonGenerator/DragoonGenerator";
@@ -41,7 +49,12 @@ export async function action({ request }: ActionArgs) {
 }
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "preload", href: "/buttons/submit-hover.png", as: "image" },
+    { rel: "preload", href: "/buttons/reset-hover.png", as: "image" },
+    { rel: "preload", href: allBackground, as: "image" },
+  ];
 }
 
 export let headers: HeadersFunction = () => {
