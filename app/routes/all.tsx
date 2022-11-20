@@ -3,7 +3,6 @@ import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import { json } from "remix-utils";
 import { getAllDragoons } from "~/models/dragoon.server";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
-import { allBackground } from "~/images";
 import { HeadersFunction, LoaderArgs } from "@remix-run/node";
 import { useEffect, useState } from "react";
 import DragoonCard from "~/components/DragoonCard/DragoonCard";
@@ -60,12 +59,12 @@ export default function All() {
     <div
       className="p-1 font-dragoon text-2xl xl:text-[1.9rem] leading-10 min-h-screen h-full"
       style={{
-        backgroundImage: `url(${allBackground})`,
+        backgroundImage: "url(/backgrounds/all-background.png)",
       }}
     >
       <img
         src="/images/message-board.png"
-        className="w-4/12 xl:w-3/12 2xl:w-2/12 mx-auto my-4"
+        className="w-4/12 xl:w-3/12 2xl:w-2/12 mx-auto my-4 inset-0"
       />
       <div className="flex flex-row gap-x-4 2xl:gap-x-8 min-h-max">
         <div className="m-auto basis-1/12 animate-wiggle">
@@ -118,6 +117,17 @@ export default function All() {
       <p className="w-fit mx-auto py-4">
         Page {currentPage} of {pageCount}
       </p>
+      <Link
+        to="/"
+        prefetch="intent"
+        className="pl-[10vw] xl:pl-[9vw] 2xl:pl-[9.5vw] relative -top-16 "
+      >
+        <button className="text-xl text-white border-2 border-solid border-black bg-purple-400 rounded-md px-2">
+          {"<- Return to"}
+          <br />
+          {"generator"}
+        </button>
+      </Link>
     </div>
   );
 }

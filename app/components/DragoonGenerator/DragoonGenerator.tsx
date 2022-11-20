@@ -11,10 +11,10 @@ import {
   moustacheCurrent,
 } from "~/atoms";
 import { useAtom } from "jotai";
-import { FC, FormEvent, useState } from "react";
+import { FC, useState } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
-import { Form, useSubmit, useTransition } from "@remix-run/react";
+import { Form, Link, useSubmit, useTransition } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
@@ -108,7 +108,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       />
       <div className="flex gap-x-8">
         <div className="w-1/4">
-          <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink">
+          <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink w-full xl:w-3/4 2xl:w-full m-auto">
             <DragoonPreview
               handItem={handItem}
               hat={hat}
@@ -127,7 +127,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             method="post"
             className="flex flex-col m-auto 2xl:py-4"
           >
-            <img src={nameBanner} className="m-auto py-2 2xl:py-4" />
+            <img src={nameBanner} className="m-auto py-2" />
             <input
               id="author"
               name="author"
@@ -221,13 +221,21 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 disabled={transition.state === "submitting"}
               />
             </div>
+            <Link to="/all" prefetch="intent" className="pt-4 w-4/5 mx-auto">
+              <button
+                type="button"
+                className="text-xl xl:text-2xl border-2 border-solid border-black bg-purple-400 text-white py-2 px-2 rounded-md w-full"
+              >
+                Go to messages
+              </button>
+            </Link>
           </Form>
         </div>
 
         <div
           className="h-fit w-fit max-h-min p-4"
           style={{
-            backgroundImage: "url(/backgrounds/generator.png)",
+            backgroundImage: "url(/backgrounds/generator-rescaled.png)",
             backgroundSize: "50%",
           }}
         >
@@ -315,7 +323,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <div className="text-xl xl:text-2xl pt-3">
             Want the selen font for yourself?{" "}
             <a
-              className="bg-purple-500 text-white py-2 px-4 rounded-md"
+              className="border-2 border-solid border-black bg-purple-500 text-white py-1 px-4 rounded-md"
               href="/fonts/Selen2-Regular.ttf"
             >
               Download here!

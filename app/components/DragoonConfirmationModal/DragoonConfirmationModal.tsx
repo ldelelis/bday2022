@@ -1,18 +1,17 @@
 import { Dialog } from "@headlessui/react";
-import { Dispatch, FC, SetStateAction, useState } from "react";
-import { allBackground } from "~/images";
+import { Dispatch, FC, SetStateAction } from "react";
 import DragoonCard from "../DragoonCard/DragoonCard";
 
 type DragoonConfirmationModalProps = {
   author: string;
-  comment: number;
-  clothes: string;
+  comment: string;
+  clothes: number | null;
   horns: number;
   eye: number;
-  handItem: number;
-  hat: number;
-  moustache: number;
-  frame: number;
+  handItem: number | null;
+  hat: number | null;
+  moustache: number | null;
+  frame: number | null;
   baseColor: string;
   backgroundColor: string;
 
@@ -52,7 +51,7 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
             <div
               className="text-2xl"
               style={{
-                backgroundImage: `url(${allBackground})`,
+                backgroundImage: "url(/backgrounds/all-background.png)",
                 backgroundSize: "50%",
               }}
             >

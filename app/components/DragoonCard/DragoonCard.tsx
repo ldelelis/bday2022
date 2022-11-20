@@ -4,8 +4,8 @@ import DragoonPreview from "../DragoonPreview/DragoonPreview";
 
 type DragoonCardProps = {
   author: string;
-  comment: number;
-  clothesIndex: string;
+  comment: string;
+  clothesIndex: number;
   hornsIndex: number;
   eyeIndex: number;
   handItemIndex: number;

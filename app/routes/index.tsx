@@ -1,15 +1,7 @@
 import { ActionArgs, HeadersFunction, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ClientOnly } from "remix-utils";
-import {
-  cloth,
-  eye,
-  hat,
-  handItem,
-  horn,
-  moustache,
-  allBackground,
-} from "~/images";
+import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
 import DragoonGenerator from "~/components/DragoonGenerator/DragoonGenerator";
@@ -53,7 +45,8 @@ export function links() {
     { rel: "stylesheet", href: styles },
     { rel: "preload", href: "/buttons/submit-hover.png", as: "image" },
     { rel: "preload", href: "/buttons/reset-hover.png", as: "image" },
-    { rel: "preload", href: allBackground, as: "image" },
+    { rel: "preload", href: "/backgrounds/all-background.png", as: "image" },
+    { rel: "preload", href: "/fonts/Selen2-Regular.ttf", as: "font" },
   ];
 }
 
@@ -75,7 +68,7 @@ export default function Generator() {
   const viewData = useLoaderData();
 
   return (
-    <div className="p-0 sm:p-8 2xl:p-12 bg-purple-300 h-screen font-dragoon">
+    <div className="p-0 sm:p-4 2xl:p-8 bg-purple-300 h-screen font-dragoon lg:overflow-hidden">
       <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>
     </div>
   );

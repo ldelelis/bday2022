@@ -101,7 +101,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
             <div className="w-1/6 m-auto"></div>
           )}
         </div>
-        <p className="text-2xl xl:text-3xl w-max mx-auto pb-2">
+        <p className="text-xl xl:text-2xl 2xl:text-3xl w-max mx-auto pb-2">
           Page {currentPage} of {maxPages}
         </p>
       </div>
