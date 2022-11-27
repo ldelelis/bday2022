@@ -14,13 +14,14 @@ import { useAtom } from "jotai";
 import { FC, useState } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
-import { Form, Link, useSubmit, useTransition } from "@remix-run/react";
+import { Form, Link, useTransition } from "@remix-run/react";
 import DragoonPartsPreview from "../DragoonPartsPreview/DragoonPartsPreview";
 import DragoonColourPreview from "../DragoonColourPreview/DragoonColourPreview";
 import DragoonColourSelector from "../DragoonColourSelector/DragoonColourSelector";
 import { framesButton, newColorsButton } from "~/images";
 import { nameBanner, yourMessage } from "~/images/dragoonGenerator/form";
 import DragoonConfirmationModal from "../DragoonConfirmationModal/DragoonConfirmationModal";
+import DragoonGeneratorCreditsModal from "../DragoonGeneratorCreditsModal/DragoonGeneratorCreditsModal";
 
 type DragoonGeneratorProps = {
   clothes: string[];
@@ -55,8 +56,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
   const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
 
-  const [selected, setSelected] = useState("eyes");
+  const [selected, setSelected] = useState("clothes");
   const [isOpen, setIsOpen] = useState(false);
+  const [isCreditsOpen, setIsCreditsOpen] = useState(false);
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
 
@@ -76,12 +78,12 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setHandItem(null);
     setHorn(0);
     setMoustache(null);
+    setFrame(null);
     setCurrentColor(DEFAULT_COLOR);
     setBackgroundColor("#ffffff");
   };
 
   const transition = useTransition();
-  const submit = useSubmit();
 
   const isOptional = (partName: string): boolean => {
     return ["clothes", "hats", "handItems", "moustaches", "frames"].includes(
@@ -106,9 +108,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
+      <DragoonGeneratorCreditsModal
+        isOpen={isCreditsOpen}
+        setIsOpen={setIsCreditsOpen}
+      />
       <div className="flex gap-x-8">
         <div className="w-1/4">
-          <div className="grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink w-full xl:w-3/4 2xl:w-full m-auto">
+          <div className="w-full m-auto grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink xl:w-3/4 2xl:w-full">
             <DragoonPreview
               handItem={handItem}
               hat={hat}
@@ -127,13 +133,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             method="post"
             className="flex flex-col m-auto 2xl:py-4"
           >
-            <img src={nameBanner} className="m-auto py-2" />
+            <img src={nameBanner} className="py-2 m-auto" />
             <input
               id="author"
               name="author"
               type="text"
               required={true}
-              className="text-2xl 2xl:text-4xl border-b-2 border-black px-4 h-max basis-8"
+              className="px-4 text-2xl border-b-2 border-black 2xl:text-4xl h-max basis-8"
               maxLength={35}
               disabled={transition.state === "submitting"}
               onChange={(e) => setAuthor(e.target.value)}
@@ -141,13 +147,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <label htmlFor="comment" className="m-auto">
               <img
                 src={yourMessage}
-                className="h-2/3 w-2/3 2xl:h-full 2xl:w-full py-2 m-auto"
+                className="w-2/3 py-2 m-auto h-2/3 2xl:h-full 2xl:w-full"
               />
             </label>
             <textarea
               name="comment"
               id="comment"
-              className="text-2xl 2xl:text-4xl border-2 border-black p-4 basis-52"
+              className="p-4 text-2xl border-2 border-black 2xl:text-4xl basis-52"
               required={true}
               maxLength={160}
               disabled={transition.state === "submitting"}
@@ -202,11 +208,11 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               type="hidden"
               value={backgroundColor}
             />
-            <div className="flex justify-center gap-8 h-16 min-w-fit max-w-full">
+            <div className="flex justify-center h-16 max-w-full gap-8 min-w-fit">
               <button
                 type="button"
                 form="dragoonData"
-                className="submit-button h-full w-1/3"
+                className="w-1/3 h-full submit-button"
                 disabled={
                   transition.state === "submitting" ||
                   author.length === 0 ||
@@ -217,14 +223,14 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               <button
                 type="button"
                 onClick={() => handleReset()}
-                className="bg-bottom reset-button h-full w-2/5"
+                className="w-2/5 h-full bg-bottom reset-button"
                 disabled={transition.state === "submitting"}
               />
             </div>
-            <Link to="/all" prefetch="intent" className="pt-4 w-4/5 mx-auto">
+            <Link to="/all" prefetch="intent" className="w-4/5 pt-4 mx-auto">
               <button
                 type="button"
-                className="text-xl xl:text-2xl border-2 border-solid border-black bg-purple-400 text-white py-2 px-2 rounded-md w-full"
+                className="w-full px-2 py-2 text-xl text-white bg-purple-400 border-2 border-black border-solid xl:text-2xl rounded-md"
               >
                 Go to messages
               </button>
@@ -233,7 +239,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         </div>
 
         <div
-          className="h-fit w-fit max-h-min p-4"
+          className="p-4 h-fit w-fit max-h-min"
           style={{
             backgroundImage: "url(/backgrounds/generator-rescaled.png)",
             backgroundSize: "50%",
@@ -242,7 +248,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <h2 className="font-sans text-4xl antialiased font-bold">
             Build your dragoon:
           </h2>
-          <div className="grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 text-lg xl:text-2xl">
+          <div className="text-lg grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 xl:text-2xl">
             <div onClick={() => setSelected("clothes")}>
               <DragoonGeneratorSelector
                 imagePath={cloth}
@@ -320,14 +326,20 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               ></DragoonPartsPreview>
             )}
           </div>
-          <div className="text-xl xl:text-2xl pt-3">
+          <div className="pt-3 text-xl xl:text-2xl">
             Want the selen font for yourself?{" "}
             <a
-              className="border-2 border-solid border-black bg-purple-500 text-white py-1 px-4 rounded-md"
+              className="px-4 py-1 text-white bg-purple-500 border-2 border-black border-solid rounded-md"
               href="/fonts/Selen2-Regular.ttf"
             >
               Download here!
             </a>
+            <button
+              className="float-right px-4 py-1 -mt-1 text-white bg-purple-500 border-2 border-black border-solid rounded-md"
+              onClick={() => setIsCreditsOpen(true)}
+            >
+              Credits
+            </button>
           </div>
         </div>
       </div>

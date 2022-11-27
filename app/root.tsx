@@ -29,6 +29,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        {/* <footer className="fixed inset-x-0 bottom-0 h-12 bg-purple-500"></footer> */}
       </body>
     </html>
   );
