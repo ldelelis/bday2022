@@ -1,10 +1,10 @@
-import { json } from "remix-utils";
+import { cors, json } from "remix-utils";
 import { getRandomDragoons } from "~/models/dragoon.server";
 import { cloth, eye, hat, handItem, horn, moustache, frame } from "~/images";
 
-export async function loader() {
+export async function loader({ request }) {
   const data = await getRandomDragoons();
-  const baseUrl = "https://bday2022.fly.dev";
+  const baseUrl = "https://dragoon.selen2022.com";
 
   const response = data.map((goon) => {
     return {
@@ -18,5 +18,5 @@ export async function loader() {
       frame: goon.frame && `${baseUrl}${frame[goon.frame - 1]}`,
     };
   });
-  return json({ response });
+  return await cors(request, json({ response }), { origin: true });
 }
