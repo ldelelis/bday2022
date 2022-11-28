@@ -20,6 +20,7 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
+  return json({ data: "you shouldn't be here" });
   const formData = await request.formData();
 
   await createDragoon(
@@ -68,7 +69,7 @@ export default function Generator() {
   const viewData = useLoaderData();
 
   return (
-    <div className="p-0 sm:p-4 2xl:p-8 bg-purple-300 h-screen font-dragoon lg:overflow-hidden">
+    <div className="h-screen p-0 bg-purple-300 sm:p-4 2xl:p-8 font-dragoon lg:overflow-hidden">
       <ClientOnly>{() => <DragoonGenerator {...viewData} />}</ClientOnly>
     </div>
   );

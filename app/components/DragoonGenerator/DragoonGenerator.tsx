@@ -141,7 +141,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               required={true}
               className="px-4 text-2xl border-b-2 border-black 2xl:text-4xl h-max basis-8"
               maxLength={35}
-              disabled={transition.state === "submitting"}
+              disabled={true || transition.state === "submitting"}
               onChange={(e) => setAuthor(e.target.value)}
             />
             <label htmlFor="comment" className="m-auto">
@@ -156,8 +156,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               className="p-4 text-2xl border-2 border-black 2xl:text-4xl basis-52"
               required={true}
               maxLength={160}
-              disabled={transition.state === "submitting"}
+              disabled={true || transition.state === "submitting"}
               onChange={(e) => setMessage(e.target.value)}
+              placeholder="Submissions are disabled for now!"
             ></textarea>
             <input
               id="hat"
@@ -214,6 +215,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 form="dragoonData"
                 className="w-1/3 h-full submit-button"
                 disabled={
+                  true ||
                   transition.state === "submitting" ||
                   author.length === 0 ||
                   message.length === 0
