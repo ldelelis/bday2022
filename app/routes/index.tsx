@@ -20,7 +20,6 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  return json({ data: "you shouldn't be here" });
   const formData = await request.formData();
 
   await createDragoon(
