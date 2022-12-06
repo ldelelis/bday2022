@@ -1,5 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { Dispatch, FC, SetStateAction } from "react";
+import { asImage } from "~/utils/download";
 import DragoonCard from "../DragoonCard/DragoonCard";
 
 type DragoonConfirmationModalProps = {
@@ -36,6 +37,23 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
     setIsOpen,
   } = props;
 
+  const downloadDragoon = async () => {
+    const element = document.getElementById("dragoon-preview")
+    const image = await asImage(element)
+
+    const fakeLink = window.document.createElement("a")
+    fakeLink.style = "display:none;"
+    fakeLink.download = "foo.png"
+
+    fakeLink.href = image
+
+    document.body.appendChild(fakeLink)
+    fakeLink.click()
+    document.body.removeChild(fakeLink)
+    
+    fakeLink.remove()
+  }
+
   return (
     <Dialog
       open={isOpen}
@@ -69,16 +87,17 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
                 backgroundColor={backgroundColor}
               />
             </div>
-            <div className="py-2 space-x-4">
+            <div className="py-2 flex gap-x-4">
+              <button className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md mr-auto" onClick={async () => await downloadDragoon()}>Download</button>
               <button
                 type="submit"
                 form="dragoonData"
-                className="bg-purple-500 px-2 py-1 text-white rounded-md"
+                className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md"
               >
                 Submit!
               </button>
               <button
-                className="bg-purple-500 px-2 py-1 text-white rounded-md"
+                className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md"
                 onClick={() => setIsOpen(false)}
               >
                 Cancel

@@ -57,7 +57,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
 
   const [selected, setSelected] = useState("clothes");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isCreditsOpen, setIsCreditsOpen] = useState(false);
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
@@ -230,7 +230,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <Link to="/all" prefetch="intent" className="w-4/5 pt-4 mx-auto">
               <button
                 type="button"
-                className="w-full px-2 py-2 text-xl text-white bg-purple-400 border-2 border-black border-solid xl:text-2xl rounded-md"
+                className="w-full px-2 py-2 text-xl text-white bg-purple-500 border-2 border-black border-solid xl:text-2xl rounded-md"
               >
                 Go to messages
               </button>

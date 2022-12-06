@@ -32,7 +32,7 @@ const DragoonCard: FC<DragoonCardProps> = (props) => {
   } = props;
   return (
     <div className="border-2 border-black backdrop-blur-sm flex flex-row flex-wrap">
-      <div className="grid p-4 basis-1/4 xl:basis-2/12 2xl:basis-1/3">
+      <div id="dragoon-preview" className="grid p-4 basis-1/4 xl:basis-2/12 2xl:basis-1/3">
         <DragoonPreview
           cloth={cloth[clothesIndex]}
           horn={horn[hornsIndex]}
