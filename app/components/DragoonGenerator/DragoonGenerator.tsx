@@ -57,7 +57,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
 
   const [selected, setSelected] = useState("clothes");
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isCreditsOpen, setIsCreditsOpen] = useState(false);
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
