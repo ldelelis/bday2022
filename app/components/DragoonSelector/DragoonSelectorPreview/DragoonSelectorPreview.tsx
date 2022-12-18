@@ -9,6 +9,7 @@ const DragoonItemPreview: FC<DragoonItemPreviewProps> = ({
   image,
   styleProps,
 }) => {
+  if (!image) return <></>;
   return <img src={image} className={styleProps}></img>;
 };
 

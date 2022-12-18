@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { Dispatch, FC, SetStateAction } from "react";
-import { asImage } from "~/utils/download";
 import DragoonCard from "../DragoonCard/DragoonCard";
+import { toPng } from "html-to-image";
 
 type DragoonConfirmationModalProps = {
   author: string;
@@ -38,21 +38,30 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
   } = props;
 
   const downloadDragoon = async () => {
-    const element = document.getElementById("dragoon-preview")
-    const image = await asImage(element)
+    const filter = (node: HTMLElement) => {
+      console.log(node);
+      console.log(node.hasAttribute("src"));
+      if (node.tagName !== "img") {
+        return true;
+      }
 
-    const fakeLink = window.document.createElement("a")
-    fakeLink.style = "display:none;"
-    fakeLink.download = "foo.png"
+      return node.hasAttribute("src");
+    };
+    const element = document.getElementById("dragoon-preview");
+    const image = await toPng(element, { filter: filter });
 
-    fakeLink.href = image
+    const fakeLink = window.document.createElement("a");
+    fakeLink.style = "display:none;";
+    fakeLink.download = `dragoon-${author}.png`;
 
-    document.body.appendChild(fakeLink)
-    fakeLink.click()
-    document.body.removeChild(fakeLink)
-    
-    fakeLink.remove()
-  }
+    fakeLink.href = image;
+
+    document.body.appendChild(fakeLink);
+    fakeLink.click();
+    document.body.removeChild(fakeLink);
+
+    fakeLink.remove();
+  };
 
   return (
     <Dialog
@@ -62,8 +71,8 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
     >
       <div className="fixed inset-0 bg-black/30" aria-hidden="true">
         <div className="fixed inset-0 flex items-center justify-center">
-          <Dialog.Panel className="max-w-3xl rounded font-dragoon p-4 bg-purple-300 border-2 border-black">
-            <Dialog.Title className="text-2xl pb-2">
+          <Dialog.Panel className="max-w-3xl p-4 bg-purple-300 border-2 border-black rounded font-dragoon">
+            <Dialog.Title className="pb-2 text-2xl">
               Please confirm your message!
             </Dialog.Title>
             <div
@@ -87,17 +96,22 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
                 backgroundColor={backgroundColor}
               />
             </div>
-            <div className="py-2 flex gap-x-4">
-              <button className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md mr-auto" onClick={async () => await downloadDragoon()}>Download</button>
+            <div className="flex py-2 gap-x-4">
+              <button
+                className="px-2 py-1 mr-auto text-white bg-purple-500 border-2 border-black rounded-md"
+                onClick={downloadDragoon}
+              >
+                Download
+              </button>
               <button
                 type="submit"
                 form="dragoonData"
-                className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md"
+                className="px-2 py-1 text-white bg-purple-500 border-2 border-black rounded-md"
               >
                 Submit!
               </button>
               <button
-                className="border-2 border-black bg-purple-500 px-2 py-1 text-white rounded-md"
+                className="px-2 py-1 text-white bg-purple-500 border-2 border-black rounded-md"
                 onClick={() => setIsOpen(false)}
               >
                 Cancel
