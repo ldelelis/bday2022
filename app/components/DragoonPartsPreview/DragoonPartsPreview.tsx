@@ -23,18 +23,12 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
     indexOffset = 1;
   }
 
-  const slice = safeImages.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    PAGE_SIZE * currentPage
-  );
-
   return (
     <>
       <div className="border-2 border-black">
         <div className="m-2 p-2 flex flex-row justify-items-center">
-          {images.length > PAGE_SIZE ? (
             <div
-              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              className="hidden lg:block m-auto animate-wiggle w-24 cursor-pointer"
               onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
             >
               <img
@@ -45,28 +39,14 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
                 Previous
               </p>
             </div>
-          ) : (
-            <div className="w-1/6 m-auto"></div>
-          )}
-          <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3 place-items-center gap-y-8">
-            {slice.map((image, idx) => {
-              return image === "" ? (
-                <div
-                  key="null"
-                  className="outline outline-4 outline-black backdrop-blur-[4px] w-4/6 max-h-fit"
-                  onClick={() => setIndex(null)}
-                >
-                  <img
-                    src={noneSelected}
-                    className="min-w-0 min-h-0 m-auto"
-                  ></img>
-                </div>
-              ) : (
+          <div className="p-1 overflow-x-scroll grid grid-rows-3 grid-flow-col auto-cols-max gap-4">
+            {safeImages.map((image, idx) => {
+              return (
                 <div
                   key={image}
-                  className="grid grid-cols-1 outline outline-4 outline-black backdrop-blur-[4px] w-4/6  max-h-fit"
+                  className="grid grid-cols-1 outline outline-4 outline-black backdrop-blur-[4px] w-24  max-h-fit"
                   onClick={() =>
-                    setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
+                    setIndex(idx - indexOffset)
                   }
                 >
                   <DragoonItemPreview
@@ -89,7 +69,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           </div>
           {images.length > PAGE_SIZE ? (
             <div
-              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              className="hidden lg:block m-auto animate-wiggle w-1/6 cursor-pointer"
               onClick={() =>
                 setCurrentPage(Math.min(currentPage + 1, maxPages))
               }
@@ -101,7 +81,7 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
             <div className="w-1/6 m-auto"></div>
           )}
         </div>
-        <p className="text-xl xl:text-2xl 2xl:text-3xl w-max mx-auto pb-2">
+        <p className="hidden xl:block text-xl xl:text-2xl 2xl:text-3xl w-max mx-auto pb-2">
           Page {currentPage} of {maxPages}
         </p>
       </div>

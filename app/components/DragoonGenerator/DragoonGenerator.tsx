@@ -112,9 +112,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         isOpen={isCreditsOpen}
         setIsOpen={setIsCreditsOpen}
       />
-      <div className="flex gap-x-8">
-        <div className="w-1/4">
-          <div className="w-full m-auto grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink xl:w-3/4 2xl:w-full">
+      <div className="flex flex-col xl:flex-row gap-x-8">
+        <div className="w-full p-4 xl:p-0 xl:w-1/4">
+          <div className="basis-full w-48 m-auto grid grid-cols-1 grid-rows-1 h-min justify-items-center justify-center shrink xl:w-3/4 2xl:w-full">
             <DragoonPreview
               handItem={handItem}
               hat={hat}
@@ -131,7 +131,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <Form
             id="dragoonData"
             method="post"
-            className="flex flex-col m-auto 2xl:py-4"
+            className="hidden xl:flex flex-col m-auto 2xl:py-4"
           >
             <img src={nameBanner} className="py-2 m-auto" />
             <input
@@ -239,17 +239,17 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         </div>
 
         <div
-          className="p-4 h-fit w-fit max-h-min"
+          className="p-4 h-fit w-screen max-h-min max-w-screen"
           style={{
             backgroundImage: "url(/backgrounds/generator-rescaled.png)",
             backgroundSize: "50%",
           }}
         >
-          <h2 className="font-sans text-4xl antialiased font-bold">
+          <h2 className="font-sans text-2xl xl:text-4xl antialiased font-bold">
             Build your dragoon:
           </h2>
-          <div className="text-lg grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 xl:text-2xl">
-            <div onClick={() => setSelected("clothes")}>
+          <div className="overflow-x-scroll overflow-y-auto text-lg flex xl:text-2xl">
+            <div className="min-w-fit" onClick={() => setSelected("clothes")}>
               <DragoonGeneratorSelector
                 imagePath={cloth}
                 partName="clothes"
@@ -257,7 +257,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div onClick={() => setSelected("eyes")}>
+            <div className="min-w-fit" onClick={() => setSelected("eyes")}>
               <DragoonGeneratorSelector
                 imagePath={eye}
                 partName="eyes"
@@ -265,7 +265,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div onClick={() => setSelected("hats")}>
+            <div className="min-w-fit" onClick={() => setSelected("hats")}>
               <DragoonGeneratorSelector
                 imagePath={hat}
                 partName="hats"
@@ -273,7 +273,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div onClick={() => setSelected("handItems")}>
+            <div className="min-w-fit" onClick={() => setSelected("handItems")}>
               <DragoonGeneratorSelector
                 imagePath={handItem}
                 partName="handItems"
@@ -281,7 +281,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div onClick={() => setSelected("horns")}>
+            <div className="min-w-fit" onClick={() => setSelected("horns")}>
               <DragoonGeneratorSelector
                 imagePath={horn}
                 partName="horns"
@@ -289,7 +289,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div onClick={() => setSelected("moustaches")}>
+            <div className="min-w-fit" onClick={() => setSelected("moustaches")}>
               <DragoonGeneratorSelector
                 imagePath={moustache}
                 partName="moustaches"
@@ -297,7 +297,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="grid grid-rows-2 grid-cols-1 xl:gap-4">
+            <div className="min-w-fit grid grid-rows-2 grid-cols-1 xl:gap-4">
               <div onClick={() => setSelected("colour")}>
                 <DragoonColourPreview
                   thumbnailPath={newColorsButton}
@@ -326,7 +326,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               ></DragoonPartsPreview>
             )}
           </div>
-          <div className="pt-3 text-xl xl:text-2xl">
+          <div className="hidden xl:block pt-3 text-xl xl:text-2xl">
             Want the selen font for yourself?{" "}
             <a
               className="px-4 py-1 text-white bg-purple-500 border-2 border-black border-solid rounded-md"
@@ -339,6 +339,11 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               onClick={() => setIsCreditsOpen(true)}
             >
               Credits
+            </button>
+          </div>
+          <div className="xl:hidden">
+            <button className="float-right px-4 py-1 -mt-1 text-white bg-purple-500 border-2 border-black border-solid rounded-md">
+              Next
             </button>
           </div>
         </div>
