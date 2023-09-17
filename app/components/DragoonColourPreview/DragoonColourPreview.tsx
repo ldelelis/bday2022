@@ -14,7 +14,7 @@ const DragoonColourPreview: FC<DragoonColourPreviewProps> = (props) => {
   return (
     <div
       className={
-        "m-2 h-fit w-24 xl:h-fit border-4 bg-white" +
+        "m-2 h-fit w-24 xl:w-fit xl:max-w-sm border-4 bg-white" +
         " " +
         (isSelected ? "selector-border-selected" : "selector-border")
       }

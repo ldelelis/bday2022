@@ -22,7 +22,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   return (
     <div
       className={
-        "h-fit w-24 xl:w-32 xl:h-fit m-2 border-4 grid grid-cols-1 bg-white" +
+        "h-fit w-24 xl:w-fit m-2 border-4 grid grid-cols-1 bg-white" +
         " " +
         (isSelected ? "selector-border-selected" : "selector-border")
       }

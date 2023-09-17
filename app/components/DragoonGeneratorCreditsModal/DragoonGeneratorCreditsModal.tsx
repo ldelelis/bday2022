@@ -27,14 +27,16 @@ const DragoonGeneratorCreditsModal: FC<DragoonGeneratorCreditsModalProps> = (
               <p>Frame art, backgrounds, buttons, font by 127</p>
               <p>Website development by ~sky, tastelikenyan</p>
               <p>Project management, testing by AC1D</p>
-              <hr className="my-2 border-black border-b-1"></hr>
-              <p className="pb-2">Want the selen font for yourself? </p>
-              <a
-                className="px-2 py-1 text-white bg-purple-500 border-2 border-black border-solid xl:px-4 rounded-md"
-                href="/fonts/Selen2-Regular.ttf"
-              >
-                Download here!
-              </a>
+              <div className="block xl:hidden">
+                <hr className="my-2 border-black border-b-1"></hr>
+                <p className="pb-2">Want the selen font for yourself? </p>
+                <a
+                  className="px-2 py-1 text-white bg-purple-500 border-2 border-black border-solid xl:px-4 rounded-md"
+                  href="/fonts/Selen2-Regular.ttf"
+                >
+                  Download here!
+                </a>
+              </div>
             </div>
           </Dialog.Panel>
         </div>

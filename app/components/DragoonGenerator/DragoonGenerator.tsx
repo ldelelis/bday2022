@@ -248,8 +248,8 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <h2 className="font-sans text-2xl antialiased font-bold xl:text-4xl">
             Build your dragoon:
           </h2>
-          <div className="flex pb-2 overflow-x-scroll overflow-y-auto text-lg xl:text-2xl parts-mask">
-            <div className="min-w-fit" onClick={() => setSelected("clothes")}>
+          <div className="flex pb-2 overflow-x-scroll overflow-y-auto text-lg xl:text-2xl parts-mask lg:no-parts-mask">
+            <div onClick={() => setSelected("clothes")}>
               <DragoonGeneratorSelector
                 imagePath={cloth}
                 partName="clothes"
@@ -257,7 +257,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="min-w-fit" onClick={() => setSelected("eyes")}>
+            <div onClick={() => setSelected("eyes")}>
               <DragoonGeneratorSelector
                 imagePath={eye}
                 partName="eyes"
@@ -265,7 +265,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="min-w-fit" onClick={() => setSelected("hats")}>
+            <div onClick={() => setSelected("hats")}>
               <DragoonGeneratorSelector
                 imagePath={hat}
                 partName="hats"
@@ -273,7 +273,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="min-w-fit" onClick={() => setSelected("handItems")}>
+            <div onClick={() => setSelected("handItems")}>
               <DragoonGeneratorSelector
                 imagePath={handItem}
                 partName="handItems"
@@ -281,7 +281,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="min-w-fit" onClick={() => setSelected("horns")}>
+            <div onClick={() => setSelected("horns")}>
               <DragoonGeneratorSelector
                 imagePath={horn}
                 partName="horns"
@@ -289,10 +289,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div
-              className="min-w-fit"
-              onClick={() => setSelected("moustaches")}
-            >
+            <div onClick={() => setSelected("moustaches")}>
               <DragoonGeneratorSelector
                 imagePath={moustache}
                 partName="moustaches"
@@ -300,7 +297,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 selected={selected}
               />
             </div>
-            <div className="min-w-fit grid grid-rows-2 grid-cols-1 xl:gap-4">
+            <div className="grid grid-rows-2 grid-cols-1 xl:gap-4">
               <div onClick={() => setSelected("colour")}>
                 <DragoonColourPreview
                   thumbnailPath={newColorsButton}
@@ -330,6 +327,15 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             )}
           </div>
           <div className="pt-3 xl:text-2xl">
+            <div className="hidden xl:inline">
+              Want the selen font for yourself?{" "}
+              <a
+                className="px-2 py-1 text-white bg-purple-500 border-2 border-black border-solid xl:px-4 rounded-md"
+                href="/fonts/Selen2-Regular.ttf"
+              >
+                Download here!
+              </a>
+            </div>
             <button
               className="float-left px-4 py-1 -mt-1 text-white bg-purple-500 border-2 border-black border-solid xl:float-right rounded-md"
               onClick={() => setIsCreditsOpen(true)}
