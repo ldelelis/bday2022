@@ -55,4 +55,21 @@
     .selector-border-selected {
 	border-color: rgb(124 58 237);
     }
+
+    .parts-mask {
+        -webkit-mask: linear-gradient(to right, black calc(100% - 30px), transparent);
+    }
+    .parts-mask::-webkit-scrollbar {
+        display: none;
+    }
+    /* ::-webkit-scrollbar { */
+    /*     height: 24px; */
+    /*     width: 12px; */
+    /* } */
+    /* .parts-mask::-webkit-scrollbar-thumb { */
+    /* 	width: 1rem; */
+    /* 	background-clip: padding-box; */
+    /*     background: url("/buttons/scrollbar-prop.png"); */
+    /*     background-repeat: no-repeat; */
+    /* } */
 }
