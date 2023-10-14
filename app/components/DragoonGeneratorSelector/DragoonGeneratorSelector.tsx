@@ -22,7 +22,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   return (
     <div
       className={
-        "h-fit w-4/5 xl:h-fit xl:w-fit m-2 border-4 grid grid-cols-1 bg-white" +
+        "h-fit w-24 xl:w-fit m-2 border-4 grid grid-cols-1 bg-white" +
         " " +
         (isSelected ? "selector-border-selected" : "selector-border")
       }
@@ -38,7 +38,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
         color={DEFAULT_COLOR}
         style={{}}
       />
-      <h1 className="text-center capitalize font-bold row-span-1">{label}</h1>
+      <h1 className="font-bold text-center capitalize row-span-1">{label}</h1>
     </div>
   );
 };

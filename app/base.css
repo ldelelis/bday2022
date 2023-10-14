@@ -55,4 +55,14 @@
     .selector-border-selected {
 	border-color: rgb(124 58 237);
     }
+
+    .parts-mask {
+        -webkit-mask: linear-gradient(to right, black calc(100% - 30px), transparent);
+    }
+    .parts-mask::-webkit-scrollbar {
+        display: none;
+    }
+    .no-parts-mask {
+    	-webkit-mask: none;
+    }
 }
