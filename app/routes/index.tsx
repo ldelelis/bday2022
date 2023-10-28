@@ -21,6 +21,7 @@ export async function loader() {
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
+  console.log(`laskdflksadjlsadkj formData is ${formData}`);
 
   await createDragoon(
     Number(formData.get("hat")),
