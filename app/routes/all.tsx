@@ -49,25 +49,33 @@ export default function All() {
   const currentPage = Number(searchParams.get("page") || 1);
   useEffect(() => {
     const { innerWidth } = window;
-    setPageSize(innerWidth > 1441 ? 4 : 2);
-    setSearchParams({ pageSize: String(innerWidth > 1441 ? 4 : 2) });
+    let breakpoint;
+    if (innerWidth > 1441) {
+      breakpoint = 4;
+    } else if (innerWidth > 1001) {
+      breakpoint = 2;
+    } else {
+      breakpoint = 1;
+    }
+    setPageSize(breakpoint);
+    setSearchParams({ pageSize: String(breakpoint) });
   }, []);
 
   const pageCount = Math.ceil(count / pageSize) || 1;
 
   return (
     <div
-      className="p-1 font-dragoon text-2xl xl:text-[1.9rem] leading-10 min-h-screen h-full"
+      className="p-1 font-dragoon text-xl xl:text-[1.9rem] leading-10 min-h-screen h-full"
       style={{
         backgroundImage: "url(/backgrounds/all-background.png)",
       }}
     >
       <img
         src="/images/message-board.png"
-        className="w-4/12 xl:w-3/12 2xl:w-2/12 mx-auto my-4 inset-0"
+        className="inset-0 w-4/12 mx-auto my-4 xl:w-3/12 2xl:w-2/12"
       />
       <div className="flex flex-row gap-x-4 2xl:gap-x-8 min-h-max">
-        <div className="m-auto basis-1/12 animate-wiggle">
+        <div className="my-auto grow basis-1/12 animate-wiggle">
           <Link
             to={
               "?page=" + Math.max(1, currentPage - 1) + "&pageSize=" + pageSize
@@ -76,10 +84,10 @@ export default function All() {
             data-nav-operation="previous"
           >
             <img src="/buttons/next-button-new.png" className="-scale-x-100" />
-            <p className="w-min m-auto text-xl xl:text-2xl">Previous</p>
+            <p className="m-auto text-sm w-min xl:text-2xl">Previous</p>
           </Link>
         </div>
-        <div className="grid grid-rows-2 grid-cols-1 2xl:grid-cols-2 gap-2 basis-10/12">
+        <div className="grow grid grid-rows-1 xl:grid-rows-2 grid-cols-1 2xl:grid-cols-2 gap-2 basis-10/12">
           {dragoons.map((goon: Dragoon) => {
             return (
               <DragoonCard
@@ -99,7 +107,7 @@ export default function All() {
             );
           })}
         </div>
-        <div className="m-auto basis-1/12 animate-wiggle">
+        <div className="flex-1 m-auto basis-1/12 animate-wiggle">
           <Link
             to={
               "?page=" +
@@ -110,24 +118,24 @@ export default function All() {
             prefetch="intent"
           >
             <img src="/buttons/next-button-new.png" />
-            <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
+            <p className="m-auto text-xl w-min xl:text-3xl">Next</p>
           </Link>
         </div>
+        <p className="absolute inset-x-0 bottom-0 py-4 mx-auto w-fit">
+          Page {currentPage} of {pageCount}
+        </p>
+        <Link
+          to="/"
+          prefetch="intent"
+          className="m-auto absolute bottom-0 left-0 xl:pl-[9vw] 2xl:pl-[9.5vw] "
+        >
+          <button className="px-2 text-lg text-white bg-purple-400 border-2 border-black border-solid flex-end rounded-md">
+            {"<- Return to"}
+            <br />
+            {"generator"}
+          </button>
+        </Link>
       </div>
-      <p className="w-fit mx-auto py-4">
-        Page {currentPage} of {pageCount}
-      </p>
-      <Link
-        to="/"
-        prefetch="intent"
-        className="pl-[10vw] xl:pl-[9vw] 2xl:pl-[9.5vw] relative -top-16 "
-      >
-        <button className="text-xl text-white border-2 border-solid border-black bg-purple-400 rounded-md px-2">
-          {"<- Return to"}
-          <br />
-          {"generator"}
-        </button>
-      </Link>
     </div>
   );
 }

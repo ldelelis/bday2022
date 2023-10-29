@@ -73,6 +73,7 @@ const DragoonSubmissionForm: FC = () => {
           id="author"
           name="author"
           type="text"
+          value={author}
           className="px-4 text-2xl border-b-2 border-black 2xl:text-4xl h-max basis-8"
           required={true}
           maxLength={35}
@@ -88,6 +89,7 @@ const DragoonSubmissionForm: FC = () => {
         <textarea
           name="comment"
           id="comment"
+          value={message}
           className="p-4 text-2xl border-2 border-black 2xl:text-4xl basis-52"
           required={true}
           maxLength={160}

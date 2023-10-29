@@ -79,6 +79,18 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     );
   };
 
+  // useEffect(() => {
+  //   const parts = document.getElementById("generator-parts");
+  //   const form = document.getElementById("generator-form");
+  //   if (submissionStatus === DragoonGeneratorStatus.PARTS) {
+  //     parts?.classList.remove("hidden");
+  //     form?.classList.add("hidden");
+  //   } else {
+  //     form?.classList.remove("hidden");
+  //     parts?.classList.add("hidden");
+  //   }
+  // }, [submissionStatus]);
+
   return (
     <>
       <DragoonGeneratorCreditsModal
@@ -126,7 +138,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           }}
         >
           {submissionStatus === DragoonGeneratorStatus.PARTS ? (
-            <>
+            <div>
               <h2 className="font-sans text-2xl antialiased font-bold xl:text-4xl">
                 Build your dragoon:
               </h2>
@@ -235,7 +247,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                   Next
                 </button>
               </div>
-            </>
+            </div>
           ) : (
             <DragoonSubmissionForm />
           )}

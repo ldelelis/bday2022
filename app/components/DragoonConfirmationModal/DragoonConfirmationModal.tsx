@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { Dispatch, FC, SetStateAction } from "react";
 import DragoonCard from "../DragoonCard/DragoonCard";
 import { toPng } from "html-to-image";
+import { Form } from "@remix-run/react";
 
 type DragoonConfirmationModalProps = {
   author: string;
@@ -96,6 +97,65 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
                 backgroundColor={backgroundColor}
               />
             </div>
+            <Form id="dragoonConfirmationData" method="post" className="hidden">
+              <input
+                id="author"
+                name="author"
+                type="text"
+                value={author}
+                readOnly={true}
+              />
+              <textarea
+                name="comment"
+                id="comment"
+                value={comment}
+                readOnly={true}
+              ></textarea>
+              <input
+                id="hat"
+                name="hat"
+                type="hidden"
+                value={hat === null ? "" : hat + 1}
+              />
+              <input
+                id="handItem"
+                name="handItem"
+                type="hidden"
+                value={handItem === null ? "" : handItem + 1}
+              />
+              <input id="eye" name="eye" type="hidden" value={eye + 1} />
+              <input
+                id="moustache"
+                name="moustache"
+                type="hidden"
+                value={moustache === null ? "" : moustache + 1}
+              />
+              <input
+                id="clothes"
+                name="clothes"
+                type="hidden"
+                value={clothes === null ? "" : clothes + 1}
+              />
+              <input
+                id="frames"
+                name="frames"
+                type="hidden"
+                value={frame === null ? "" : frame + 1}
+              />
+              <input id="horns" name="horns" type="hidden" value={horns + 1} />
+              <input
+                id="baseColor"
+                name="baseColor"
+                type="hidden"
+                value={baseColor}
+              />
+              <input
+                id="backgroundColor"
+                name="backgroundColor"
+                type="hidden"
+                value={backgroundColor}
+              />
+            </Form>
             <div className="flex py-2 gap-x-4">
               <button
                 className="px-2 py-1 mr-auto text-white bg-purple-500 border-2 border-black rounded-md"
@@ -105,7 +165,7 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
               </button>
               <button
                 type="submit"
-                form="dragoonData"
+                form="dragoonConfirmationData"
                 className="px-2 py-1 text-white bg-purple-500 border-2 border-black rounded-md"
               >
                 Submit!
