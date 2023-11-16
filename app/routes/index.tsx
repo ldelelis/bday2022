@@ -46,6 +46,8 @@ export function links() {
     { rel: "stylesheet", href: styles },
     { rel: "preload", href: "/buttons/submit-hover.png", as: "image" },
     { rel: "preload", href: "/buttons/reset-hover.png", as: "image" },
+    { rel: "preload", href: "/buttons/submit-idle.png", as: "image" },
+    { rel: "preload", href: "/buttons/reset-idle.png", as: "image" },
     { rel: "preload", href: "/backgrounds/all-background.png", as: "image" },
     { rel: "preload", href: "/fonts/Selen2-Regular.ttf", as: "font" },
   ];

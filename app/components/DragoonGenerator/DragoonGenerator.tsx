@@ -20,6 +20,7 @@ import { framesButton, newColorsButton } from "~/images";
 import DragoonGeneratorCreditsModal from "../DragoonGeneratorCreditsModal/DragoonGeneratorCreditsModal";
 import DragoonSubmissionForm from "../DragoonSubmissionForm/DragoonSubmissionForm";
 import { Link } from "@remix-run/react";
+import DragoonConfirmationStep from "../DragoonConfirmationStep/DragoonConfirmationStep";
 
 type DragoonGeneratorProps = {
   clothes: string[];
@@ -34,6 +35,7 @@ type DragoonGeneratorProps = {
 enum DragoonGeneratorStatus {
   PARTS,
   FORM,
+  CONFIRM,
 }
 
 const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
@@ -61,8 +63,10 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
 
   const [selected, setSelected] = useState("clothes");
   const [isCreditsOpen, setIsCreditsOpen] = useState(false);
+  const [author, setAuthor] = useState("");
+  const [comment, setComment] = useState("");
   const [submissionStatus, setSubmissionStatus] =
-    useState<DragoonGeneratorStatus>(DragoonGeneratorStatus.PARTS);
+    useState<DragoonGeneratorStatus>(DragoonGeneratorStatus.FORM);
 
   const { clothes, eyes, hats, handItems, horns, moustaches, frames } = props;
   const cloth = clothes[clothIndex];
@@ -79,18 +83,6 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     );
   };
 
-  // useEffect(() => {
-  //   const parts = document.getElementById("generator-parts");
-  //   const form = document.getElementById("generator-form");
-  //   if (submissionStatus === DragoonGeneratorStatus.PARTS) {
-  //     parts?.classList.remove("hidden");
-  //     form?.classList.add("hidden");
-  //   } else {
-  //     form?.classList.remove("hidden");
-  //     parts?.classList.add("hidden");
-  //   }
-  // }, [submissionStatus]);
-
   return (
     <>
       <DragoonGeneratorCreditsModal
@@ -99,22 +91,29 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
       />
       <div className="flex flex-col xl:flex-row gap-x-8">
         <div className="w-full p-2 xl:p-0 xl:w-1/4">
-          <div className="justify-center w-48 m-auto basis-full grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink xl:w-3/4 2xl:w-full">
-            <DragoonPreview
-              handItem={handItem}
-              hat={hat}
-              eye={eye}
-              moustache={moustache}
-              cloth={cloth}
-              horn={horn}
-              frame={frame}
-              currentColor={currentColor}
-              backgroundColor={backgroundColor}
-            />
-          </div>
+          {submissionStatus !== DragoonGeneratorStatus.CONFIRM && (
+            <div className="justify-center w-48 m-auto basis-full grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink xl:w-3/4 2xl:w-full">
+              <DragoonPreview
+                handItem={handItem}
+                hat={hat}
+                eye={eye}
+                moustache={moustache}
+                cloth={cloth}
+                horn={horn}
+                frame={frame}
+                currentColor={currentColor}
+                backgroundColor={backgroundColor}
+              />
+            </div>
+          )}
 
           <div className="hidden xl:block">
-            <DragoonSubmissionForm />
+            <DragoonSubmissionForm
+              author={author}
+              setAuthor={setAuthor}
+              comment={comment}
+              setComment={setComment}
+            />
           </div>
           <Link
             to="/all"
@@ -248,8 +247,59 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 </button>
               </div>
             </div>
+          ) : submissionStatus === DragoonGeneratorStatus.FORM ? (
+            <div>
+              <DragoonSubmissionForm
+                author={author}
+                setAuthor={setAuthor}
+                comment={comment}
+                setComment={setComment}
+              />
+              <div className="flex justify-between max-w-full gap-8 min-w-fit">
+                <button
+                  type="button"
+                  className="w-2/5 h-12 mt-2 bg-bottom reset-button"
+                  onClick={() =>
+                    setSubmissionStatus(DragoonGeneratorStatus.PARTS)
+                  }
+                />
+                <button
+                  type="button"
+                  className="float-right w-2/6 h-16 submit-button"
+                  disabled={author.length === 0 || comment.length === 0}
+                  onClick={() =>
+                    setSubmissionStatus(DragoonGeneratorStatus.CONFIRM)
+                  }
+                />
+              </div>
+            </div>
           ) : (
-            <DragoonSubmissionForm />
+            <div>
+              <DragoonConfirmationStep
+                {...{
+                  clothesIndex: clothIndex,
+                  handItemIndex,
+                  hatIndex,
+                  eyeIndex,
+                  moustacheIndex,
+                  hornsIndex: hornIndex,
+                  baseColor: currentColor,
+                  backgroundColor,
+                  frameIndex,
+                  author,
+                  comment,
+                }}
+              />
+              <button
+                className="float-left px-4 py-1 mt-4 text-white bg-purple-500 border-2 border-black border-solid xl:float-right rounded-md"
+                onClick={() => setSubmissionStatus(DragoonGeneratorStatus.FORM)}
+              >
+                Back
+              </button>
+              <button className="float-right px-4 py-1 mt-4 text-white bg-purple-500 border-2 border-black border-solid xl:float-right rounded-md">
+                Confirm
+              </button>
+            </div>
           )}
         </div>
       </div>

@@ -35,6 +35,14 @@
     	background-size: contain;
     	background-repeat: no-repeat;
     }
+    @media (max-width: 768px) {
+        .submit-button {
+        	background-image: url("/buttons/submit-hover.png");
+        	background-size: contain;
+        	background-repeat: no-repeat;
+        }
+
+    }
     .submit-button:hover {
     	background-image: url("/buttons/submit-hover.png");
     }

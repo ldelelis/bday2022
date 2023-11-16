@@ -13,13 +13,23 @@ import {
 import { nameBanner, yourMessage } from "~/images/dragoonGenerator/form";
 import { Form, useTransition } from "@remix-run/react";
 import { useAtom } from "jotai";
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import DragoonConfirmationModal from "../DragoonConfirmationModal/DragoonConfirmationModal";
 
-const DragoonSubmissionForm: FC = () => {
+type DragoonSubmissionFormProps = {
+  author: string;
+  comment: string;
+  setAuthor: Dispatch<SetStateAction<string>>;
+  setComment: Dispatch<SetStateAction<string>>;
+};
+
+const DragoonSubmissionForm: FC<DragoonSubmissionFormProps> = ({
+  author,
+  setAuthor,
+  comment,
+  setComment,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [author, setAuthor] = useState("");
-  const [message, setMessage] = useState("");
 
   const [clothIndex, setCloth] = useAtom(clothCurrent);
   const [eyeIndex, setEye] = useAtom(eyeCurrent);
@@ -50,7 +60,7 @@ const DragoonSubmissionForm: FC = () => {
     <>
       <DragoonConfirmationModal
         author={author}
-        comment={message}
+        comment={comment}
         clothes={clothIndex}
         horns={hornIndex}
         eye={eyeIndex}
@@ -89,12 +99,12 @@ const DragoonSubmissionForm: FC = () => {
         <textarea
           name="comment"
           id="comment"
-          value={message}
+          value={comment}
           className="p-4 text-2xl border-2 border-black 2xl:text-4xl basis-52"
           required={true}
           maxLength={160}
           disabled={transition.state === "submitting"}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => setComment(e.target.value)}
         ></textarea>
         <input
           id="hat"
@@ -140,22 +150,22 @@ const DragoonSubmissionForm: FC = () => {
           type="hidden"
           value={backgroundColor}
         />
-        <div className="flex justify-center h-16 max-w-full gap-8 min-w-fit">
+        <div className="justify-center hidden h-16 max-w-full xl:flex gap-8 min-w-fit">
           <button
             type="button"
             form="dragoonData"
-            className="w-1/3 h-full submit-button"
+            className="w-1/3 h-full xl:block submit-button"
             disabled={
               transition.state === "submitting" ||
               author.length === 0 ||
-              message.length === 0
+              comment.length === 0
             }
             onClick={() => setIsOpen(true)}
           />
           <button
             type="button"
             onClick={() => handleReset()}
-            className="w-2/5 h-full bg-bottom reset-button"
+            className="w-2/5 h-full bg-bottom xl:block reset-button"
             disabled={transition.state === "submitting"}
           />
         </div>

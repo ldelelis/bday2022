@@ -5,13 +5,13 @@ import DragoonPreview from "../DragoonPreview/DragoonPreview";
 export type DragoonCardProps = {
   author: string;
   comment: string;
-  clothesIndex: number;
+  clothesIndex: number | null;
   hornsIndex: number;
   eyeIndex: number;
-  handItemIndex: number;
-  hatIndex: number;
-  moustacheIndex: number;
-  frameIndex: number;
+  handItemIndex: number | null;
+  hatIndex: number | null;
+  moustacheIndex: number | null;
+  frameIndex: number | null;
   baseColor: string;
   backgroundColor: string;
 };
