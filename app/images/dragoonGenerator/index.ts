@@ -6,3 +6,4 @@ export { default as handItem } from "./handItem";
 export { default as horn } from "./horn";
 export { default as moustache } from "./moustache";
 export { default as frame } from "./frames";
+export { default as hatBack } from "./hatBack";

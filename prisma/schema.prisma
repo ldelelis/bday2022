@@ -22,6 +22,7 @@ model Dragoon {
 	clothes		Int?
 	horns		Int
 	frame		Int?
+	hatBack Int?
 	baseColor	String
 	backgroundColor	String
 

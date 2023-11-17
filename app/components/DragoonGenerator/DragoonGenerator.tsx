@@ -9,8 +9,9 @@ import {
   hatCurrent,
   hornCurrent,
   moustacheCurrent,
+  hatBackCurrent,
 } from "~/atoms";
-import { useAtom } from "jotai";
+import { useAtom, SetStateAction } from "jotai";
 import { FC, useState } from "react";
 import DragoonGeneratorSelector from "~/components/DragoonGeneratorSelector/DragoonGeneratorSelector";
 import DragoonPreview from "~/components/DragoonPreview/DragoonPreview";
@@ -31,6 +32,7 @@ type DragoonGeneratorProps = {
   horns: string[];
   moustaches: string[];
   frames: string[];
+  hatsBack: string[];
 };
 
 const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
@@ -41,17 +43,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [hornIndex, setHorn] = useAtom(hornCurrent);
   const [moustacheIndex, setMoustache] = useAtom(moustacheCurrent);
   const [frameIndex, setFrame] = useAtom(frameCurrent);
-
-  const partSetterMap = {
-    clothes: setCloth,
-    eyes: setEye,
-    hats: setHat,
-    handItems: setHandItem,
-    horns: setHorn,
-    moustaches: setMoustache,
-    colour: null,
-    frames: setFrame,
-  };
+  const [hatBackIndex, setHatBack] = useAtom(hatBackCurrent);
 
   const [currentColor, setCurrentColor] = useAtom(baseColorCurrent);
   const [backgroundColor, setBackgroundColor] = useAtom(backgroundColorCurrent);
@@ -62,7 +54,16 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
 
-  const { clothes, eyes, hats, handItems, horns, moustaches, frames } = props;
+  const {
+    clothes,
+    eyes,
+    hats,
+    handItems,
+    horns,
+    moustaches,
+    frames,
+    hatsBack,
+  } = props;
   const cloth = clothes[clothIndex];
   const eye = eyes[eyeIndex];
   const hat = hats[hatIndex];
@@ -70,6 +71,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
   const horn = horns[hornIndex];
   const moustache = moustaches[moustacheIndex];
   const frame = frames[frameIndex];
+  const hatBack = hatsBack[hatBackIndex];
 
   const handleReset = () => {
     setCloth(null);
@@ -83,12 +85,33 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setBackgroundColor("#ffffff");
   };
 
+  const specialSetHat = (idx: SetStateAction<null>) => {
+    setHat(idx);
+    setHatBack(idx + 1);
+  };
+
+  const partSetterMap = {
+    clothes: setCloth,
+    eyes: setEye,
+    hats: specialSetHat,
+    handItems: setHandItem,
+    horns: setHorn,
+    moustaches: setMoustache,
+    colour: null,
+    frames: setFrame,
+  };
+
   const transition = useTransition();
 
   const isOptional = (partName: string): boolean => {
-    return ["clothes", "hats", "handItems", "moustaches", "frames"].includes(
-      partName
-    );
+    return [
+      "clothes",
+      "hats",
+      "handItems",
+      "moustaches",
+      "frames",
+      "hatsBack",
+    ].includes(partName);
   };
 
   return (
@@ -101,6 +124,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         eye={eyeIndex}
         handItem={handItemIndex}
         hat={hatIndex}
+        hatBack={hatBackIndex}
         moustache={moustacheIndex}
         frame={frameIndex}
         baseColor={currentColor}
@@ -123,6 +147,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               cloth={cloth}
               horn={horn}
               frame={frame}
+              hatBack={hatBack}
               currentColor={currentColor}
               backgroundColor={backgroundColor}
             />
@@ -164,6 +189,12 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               name="hat"
               type="hidden"
               value={hatIndex === null ? "" : hatIndex + 1}
+            />
+            <input
+              id="hatBack"
+              name="hatBack"
+              type="hidden"
+              value={hatBackIndex === null ? "" : hatBackIndex + 1}
             />
             <input
               id="handItem"
@@ -268,6 +299,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             <div onClick={() => setSelected("hats")}>
               <DragoonGeneratorSelector
                 imagePath={hat}
+                secondaryImagePath={hatBack}
                 partName="hats"
                 label="hats"
                 selected={selected}
@@ -321,6 +353,9 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               <DragoonPartsPreview
                 key={selected}
                 images={props[selected]}
+                secondaryImages={
+                  selected === "hats" ? props["hatsBack"] : undefined
+                }
                 setIndex={partSetterMap[selected]}
                 optional={isOptional(selected)}
               ></DragoonPartsPreview>

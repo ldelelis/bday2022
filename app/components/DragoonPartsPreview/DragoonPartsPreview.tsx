@@ -6,12 +6,13 @@ import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/Dragoo
 
 type DragoonPartsPreviewProps = {
   images: string[];
+  secondaryImages?: string[];
   setIndex: (idx?: number | null) => void;
   optional: boolean;
 };
 
 const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
-  const { images, setIndex, optional } = props;
+  const { images, secondaryImages, setIndex, optional } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 15;
   const maxPages = Math.ceil(images.length / PAGE_SIZE);
@@ -31,10 +32,10 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
   return (
     <>
       <div className="border-2 border-black">
-        <div className="m-2 p-2 flex flex-row justify-items-center">
+        <div className="flex flex-row p-2 m-2 justify-items-center">
           {images.length > PAGE_SIZE ? (
             <div
-              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              className="w-1/6 m-auto cursor-pointer animate-wiggle"
               onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
             >
               <img
@@ -73,13 +74,23 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
                     styleProps="stacked z-20 min-w-0 min-h-0 m-auto"
                     image={image}
                   />
+                  {secondaryImages ? (
+                    <DragoonItemPreview
+                      styleProps="stacked z-90 min-w-0 min-h-0 m-auto"
+                      image={
+                        secondaryImages[idx + (currentPage - 1) * PAGE_SIZE]
+                      }
+                    />
+                  ) : (
+                    <></>
+                  )}
                   <DragoonItemPreview
                     styleProps="stacked z-10 opacity-50 min-w-0 min-h-0 m-auto"
                     image={baseBlackLine}
                   />
                   {/*We override the style definitions to disable the preview's outline*/}
                   <DragoonItemBase
-                    className="stacked opacity-50 min-w-0 min-h-0 m-auto"
+                    className="min-w-0 min-h-0 m-auto opacity-50 stacked"
                     color={DEFAULT_COLOR}
                     style={{}}
                   />
@@ -89,19 +100,19 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
           </div>
           {images.length > PAGE_SIZE ? (
             <div
-              className="m-auto animate-wiggle w-1/6 cursor-pointer"
+              className="w-1/6 m-auto cursor-pointer animate-wiggle"
               onClick={() =>
                 setCurrentPage(Math.min(currentPage + 1, maxPages))
               }
             >
               <img src="/buttons/next-button-new.png" />
-              <p className="w-min m-auto text-xl xl:text-2xl">Next</p>
+              <p className="m-auto text-xl w-min xl:text-2xl">Next</p>
             </div>
           ) : (
             <div className="w-1/6 m-auto"></div>
           )}
         </div>
-        <p className="text-xl xl:text-2xl 2xl:text-3xl w-max mx-auto pb-2">
+        <p className="pb-2 mx-auto text-xl xl:text-2xl 2xl:text-3xl w-max">
           Page {currentPage} of {maxPages}
         </p>
       </div>

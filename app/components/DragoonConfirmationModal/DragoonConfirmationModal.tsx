@@ -11,6 +11,7 @@ type DragoonConfirmationModalProps = {
   eye: number;
   handItem: number | null;
   hat: number | null;
+  hatBack: number | null;
   moustache: number | null;
   frame: number | null;
   baseColor: string;
@@ -29,6 +30,7 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
     eye,
     handItem,
     hat,
+    hatBack,
     moustache,
     frame,
     baseColor,
@@ -88,6 +90,7 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
                 clothesIndex={clothes}
                 eyeIndex={eye}
                 hatIndex={hat}
+                hatBackIndex={hatBack}
                 hornsIndex={horns}
                 handItemIndex={handItem}
                 moustacheIndex={moustache}

@@ -9,6 +9,7 @@ export const hatCurrent = atomWithStorage("hat", null);
 export const hornCurrent = atomWithStorage("horn", 0);
 export const moustacheCurrent = atomWithStorage("moustache", null);
 export const frameCurrent = atomWithStorage("frame", null);
+export const hatBackCurrent = atomWithStorage("hatBack", null);
 
 export const baseColorCurrent = atomWithStorage("baseColor", DEFAULT_COLOR);
 export const backgroundColorCurrent = atomWithStorage(

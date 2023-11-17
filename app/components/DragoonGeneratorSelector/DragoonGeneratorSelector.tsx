@@ -6,6 +6,7 @@ import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/Dragoo
 
 type DragoonitemSelectorProps = {
   imagePath?: string;
+  secondaryImagePath?: string;
   partName: string;
   label: string;
   selected: string;
@@ -13,6 +14,7 @@ type DragoonitemSelectorProps = {
 
 const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
   partName,
+  secondaryImagePath,
   imagePath,
   selected,
   label,
@@ -28,6 +30,14 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
       }
     >
       <DragoonItemPreview image={imagePath} styleProps="stacked z-20" />
+      {secondaryImagePath ? (
+        <DragoonItemPreview
+          image={secondaryImagePath}
+          styleProps="stacked z-90"
+        />
+      ) : (
+        <></>
+      )}
       <DragoonItemPreview
         styleProps="stacked z-10 opacity-50"
         image={baseBlackLine}
@@ -38,7 +48,7 @@ const DragoonGeneratorSelector: FC<DragoonitemSelectorProps> = ({
         color={DEFAULT_COLOR}
         style={{}}
       />
-      <h1 className="text-center capitalize font-bold row-span-1">{label}</h1>
+      <h1 className="font-bold text-center capitalize row-span-1">{label}</h1>
     </div>
   );
 };

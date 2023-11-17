@@ -1,7 +1,7 @@
 import { ActionArgs, HeadersFunction, json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ClientOnly } from "remix-utils";
-import { cloth, eye, hat, handItem, horn, moustache } from "~/images";
+import { cloth, eye, hat, handItem, horn, moustache, hatBack } from "~/images";
 import styles from "~/components/DragoonGenerator/DragoonGenerator.css";
 import { createDragoon } from "~/models/dragoon.server";
 import DragoonGenerator from "~/components/DragoonGenerator/DragoonGenerator";
@@ -16,6 +16,7 @@ export async function loader() {
     horns: horn,
     moustaches: moustache,
     frames: frames,
+    hatsBack: hatBack,
   });
 }
 
@@ -29,6 +30,7 @@ export async function action({ request }: ActionArgs) {
     Number(formData.get("moustache")),
     Number(formData.get("clothes")),
     Number(formData.get("horns")),
+    Number(formData.get("hatBack")),
     String(formData.get("baseColor")),
     String(formData.get("backgroundColor")),
     String(formData.get("comment")),

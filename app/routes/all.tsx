@@ -64,7 +64,7 @@ export default function All() {
     >
       <img
         src="/images/message-board.png"
-        className="w-4/12 xl:w-3/12 2xl:w-2/12 mx-auto my-4 inset-0"
+        className="inset-0 w-4/12 mx-auto my-4 xl:w-3/12 2xl:w-2/12"
       />
       <div className="flex flex-row gap-x-4 2xl:gap-x-8 min-h-max">
         <div className="m-auto basis-1/12 animate-wiggle">
@@ -76,7 +76,7 @@ export default function All() {
             data-nav-operation="previous"
           >
             <img src="/buttons/next-button-new.png" className="-scale-x-100" />
-            <p className="w-min m-auto text-xl xl:text-2xl">Previous</p>
+            <p className="m-auto text-xl w-min xl:text-2xl">Previous</p>
           </Link>
         </div>
         <div className="grid grid-rows-2 grid-cols-1 2xl:grid-cols-2 gap-2 basis-10/12">
@@ -89,6 +89,7 @@ export default function All() {
                 clothesIndex={goon.clothes - 1}
                 eyeIndex={goon.eye - 1}
                 hatIndex={goon.hat - 1}
+                hatBackIndex={goon.hatBack - 1}
                 hornsIndex={goon.horns - 1}
                 handItemIndex={goon.handItem - 1}
                 moustacheIndex={goon.moustache - 1}
@@ -110,11 +111,11 @@ export default function All() {
             prefetch="intent"
           >
             <img src="/buttons/next-button-new.png" />
-            <p className="w-min m-auto text-xl xl:text-3xl">Next</p>
+            <p className="m-auto text-xl w-min xl:text-3xl">Next</p>
           </Link>
         </div>
       </div>
-      <p className="w-fit mx-auto py-4">
+      <p className="py-4 mx-auto w-fit">
         Page {currentPage} of {pageCount}
       </p>
       <Link
@@ -122,7 +123,7 @@ export default function All() {
         prefetch="intent"
         className="pl-[10vw] xl:pl-[9vw] 2xl:pl-[9.5vw] relative -top-16 "
       >
-        <button className="text-xl text-white border-2 border-solid border-black bg-purple-400 rounded-md px-2">
+        <button className="px-2 text-xl text-white bg-purple-400 border-2 border-black border-solid rounded-md">
           {"<- Return to"}
           <br />
           {"generator"}
