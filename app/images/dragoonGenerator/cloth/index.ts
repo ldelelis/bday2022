@@ -62,6 +62,55 @@ import cloth61 from "./61.png";
 import cloth62 from "./62.png";
 import cloth63 from "./63.png";
 import cloth64 from "./64.png";
+import cloth65 from "./65.png";
+import cloth66 from "./66.png";
+import cloth67 from "./67.png";
+import cloth68 from "./68.png";
+import cloth69 from "./69.png";
+import cloth70 from "./70.png";
+import cloth71 from "./71.png";
+import cloth72 from "./72.png";
+import cloth73 from "./73.png";
+import cloth74 from "./74.png";
+import cloth75 from "./75.png";
+import cloth76 from "./76.png";
+import cloth77 from "./77.png";
+import cloth78 from "./78.png";
+import cloth79 from "./79.png";
+import cloth80 from "./80.png";
+import cloth81 from "./81.png";
+import cloth82 from "./82.png";
+import cloth83 from "./83.png";
+import cloth84 from "./84.png";
+import cloth85 from "./85.png";
+import cloth86 from "./86.png";
+import cloth87 from "./87.png";
+import cloth88 from "./88.png";
+import cloth89 from "./89.png";
+import cloth90 from "./90.png";
+import cloth91 from "./91.png";
+import cloth92 from "./92.png";
+import cloth93 from "./93.png";
+import cloth94 from "./94.png";
+import cloth95 from "./95.png";
+import cloth96 from "./96.png";
+import cloth97 from "./97.png";
+import cloth98 from "./98.png";
+import cloth99 from "./99.png";
+import cloth100 from "./100.png";
+import cloth101 from "./101.png";
+import cloth102 from "./102.png";
+import cloth103 from "./103.png";
+import cloth104 from "./104.png";
+import cloth105 from "./105.png";
+import cloth106 from "./106.png";
+import cloth107 from "./107.png";
+import cloth108 from "./108.png";
+import cloth109 from "./109.png";
+import cloth110 from "./110.png";
+import cloth111 from "./111.png";
+import cloth112 from "./112.png";
+import cloth113 from "./113.png";
 
 export default [
   cloth1,
@@ -128,4 +177,53 @@ export default [
   cloth62,
   cloth63,
   cloth64,
+  cloth65,
+  cloth66,
+  cloth67,
+  cloth68,
+  cloth69,
+  cloth70,
+  cloth71,
+  cloth72,
+  cloth73,
+  cloth74,
+  cloth75,
+  cloth76,
+  cloth77,
+  cloth78,
+  cloth79,
+  cloth80,
+  cloth81,
+  cloth82,
+  cloth83,
+  cloth84,
+  cloth85,
+  cloth86,
+  cloth87,
+  cloth88,
+  cloth89,
+  cloth90,
+  cloth91,
+  cloth92,
+  cloth93,
+  cloth94,
+  cloth95,
+  cloth96,
+  cloth97,
+  cloth98,
+  cloth99,
+  cloth100,
+  cloth101,
+  cloth102,
+  cloth103,
+  cloth104,
+  cloth105,
+  cloth106,
+  cloth107,
+  cloth108,
+  cloth109,
+  cloth110,
+  cloth111,
+  cloth112,
+  cloth113,
 ];

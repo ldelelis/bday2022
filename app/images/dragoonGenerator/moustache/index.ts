@@ -25,6 +25,18 @@ import moustache24 from "./24.png";
 import moustache25 from "./25.png";
 import moustache26 from "./26.png";
 import moustache27 from "./27.png";
+import moustache28 from "./28.png";
+import moustache29 from "./29.png";
+import moustache30 from "./30.png";
+import moustache31 from "./31.png";
+import moustache32 from "./32.png";
+import moustache33 from "./33.png";
+import moustache34 from "./34.png";
+import moustache35 from "./35.png";
+import moustache36 from "./36.png";
+import moustache37 from "./37.png";
+import moustache38 from "./38.png";
+import moustache39 from "./39.png";
 
 export default [
   moustache1,
@@ -54,4 +66,16 @@ export default [
   moustache25,
   moustache26,
   moustache27,
+  moustache28,
+  moustache29,
+  moustache30,
+  moustache31,
+  moustache32,
+  moustache33,
+  moustache34,
+  moustache35,
+  moustache36,
+  moustache37,
+  moustache38,
+  moustache39,
 ];

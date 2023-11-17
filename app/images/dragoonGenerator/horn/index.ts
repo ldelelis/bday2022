@@ -19,6 +19,25 @@ import horn18 from "./18.png";
 import horn19 from "./19.png";
 import horn20 from "./20.png";
 import horn21 from "./21.png";
+import horn22 from "./22.png";
+import horn23 from "./23.png";
+import horn24 from "./24.png";
+import horn25 from "./25.png";
+import horn26 from "./26.png";
+import horn27 from "./27.png";
+import horn28 from "./28.png";
+import horn29 from "./29.png";
+import horn30 from "./30.png";
+import horn31 from "./31.png";
+import horn32 from "./32.png";
+import horn33 from "./33.png";
+import horn34 from "./34.png";
+import horn35 from "./35.png";
+import horn36 from "./36.png";
+import horn37 from "./37.png";
+import horn38 from "./38.png";
+import horn39 from "./39.png";
+import horn40 from "./40.png";
 
 export default [
   horn1,
@@ -42,4 +61,23 @@ export default [
   horn19,
   horn20,
   horn21,
+  horn22,
+  horn23,
+  horn24,
+  horn25,
+  horn26,
+  horn27,
+  horn28,
+  horn29,
+  horn30,
+  horn31,
+  horn32,
+  horn33,
+  horn34,
+  horn35,
+  horn36,
+  horn37,
+  horn38,
+  horn39,
+  horn40,
 ];

@@ -31,6 +31,19 @@ import handItem31 from "./31.png";
 import handItem32 from "./32.png";
 import handItem33 from "./33.png";
 import handItem34 from "./34.png";
+import handItem35 from "./35.png";
+import handItem36 from "./36.png";
+import handItem37 from "./37.png";
+import handItem38 from "./38.png";
+import handItem39 from "./39.png";
+import handItem40 from "./40.png";
+import handItem41 from "./41.png";
+import handItem42 from "./42.png";
+import handItem43 from "./43.png";
+import handItem46 from "./46.png";
+import handItem47 from "./47.png";
+import handItem48 from "./48.png";
+import handItem49 from "./49.png";
 
 export default [
   handItem1,
@@ -66,4 +79,17 @@ export default [
   handItem32,
   handItem33,
   handItem34,
+  handItem35,
+  handItem36,
+  handItem37,
+  handItem38,
+  handItem39,
+  handItem40,
+  handItem41,
+  handItem42,
+  handItem43,
+  handItem46,
+  handItem47,
+  handItem48,
+  handItem49,
 ];

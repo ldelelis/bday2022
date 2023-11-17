@@ -43,6 +43,33 @@ import eye44 from "./44.png";
 import eye45 from "./45.png";
 import eye46 from "./46.png";
 import eye47 from "./47.png";
+import eye48 from "./48.png";
+import eye49 from "./49.png";
+import eye50 from "./50.png";
+import eye51 from "./51.png";
+import eye52 from "./52.png";
+import eye53 from "./53.png";
+import eye54 from "./54.png";
+import eye55 from "./55.png";
+import eye56 from "./56.png";
+import eye57 from "./57.png";
+import eye58 from "./58.png";
+import eye59 from "./59.png";
+import eye60 from "./60.png";
+import eye61 from "./61.png";
+import eye62 from "./62.png";
+import eye63 from "./63.png";
+import eye64 from "./64.png";
+import eye65 from "./65.png";
+import eye66 from "./66.png";
+import eye67 from "./67.png";
+import eye68 from "./68.png";
+import eye69 from "./69.png";
+import eye70 from "./70.png";
+import eye71 from "./71.png";
+import eye72 from "./72.png";
+import eye73 from "./73.png";
+import eye74 from "./74.png";
 
 export default [
   eye1,
@@ -90,4 +117,31 @@ export default [
   eye45,
   eye46,
   eye47,
+  eye48,
+  eye49,
+  eye50,
+  eye51,
+  eye52,
+  eye53,
+  eye54,
+  eye55,
+  eye56,
+  eye57,
+  eye58,
+  eye59,
+  eye60,
+  eye61,
+  eye62,
+  eye63,
+  eye64,
+  eye65,
+  eye66,
+  eye67,
+  eye68,
+  eye69,
+  eye70,
+  eye71,
+  eye72,
+  eye73,
+  eye74,
 ];
