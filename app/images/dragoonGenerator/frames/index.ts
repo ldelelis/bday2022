@@ -5,4 +5,11 @@ import frame04 from "./04.png";
 import frame05 from "./05.png";
 import frame06 from "./06.png";
 
-export default [frame01, frame02, frame03, frame04, frame05, frame06];
+export default [
+  { item: frame01, new: false },
+  { item: frame02, new: false },
+  { item: frame03, new: false },
+  { item: frame04, new: false },
+  { item: frame05, new: false },
+  { item: frame06, new: false },
+];

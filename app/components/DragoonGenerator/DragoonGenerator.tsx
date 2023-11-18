@@ -24,15 +24,20 @@ import { nameBanner, yourMessage } from "~/images/dragoonGenerator/form";
 import DragoonConfirmationModal from "../DragoonConfirmationModal/DragoonConfirmationModal";
 import DragoonGeneratorCreditsModal from "../DragoonGeneratorCreditsModal/DragoonGeneratorCreditsModal";
 
+type DragoonGeneratorItem = {
+  item: string;
+  new: boolean;
+};
+
 type DragoonGeneratorProps = {
-  clothes: string[];
-  eyes: string[];
-  hats: string[];
-  handItems: string[];
-  horns: string[];
-  moustaches: string[];
-  frames: string[];
-  hatsBack: string[];
+  clothes: DragoonGeneratorItem[];
+  eyes: DragoonGeneratorItem[];
+  hats: DragoonGeneratorItem[];
+  handItems: DragoonGeneratorItem[];
+  horns: DragoonGeneratorItem[];
+  moustaches: DragoonGeneratorItem[];
+  frames: DragoonGeneratorItem[];
+  hatsBack: DragoonGeneratorItem[];
 };
 
 const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
@@ -140,13 +145,13 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
         <div className="w-1/4">
           <div className="w-full m-auto grid grid-cols-1 grid-rows-1 h-min justify-items-center shrink xl:w-3/4 2xl:w-full">
             <DragoonPreview
-              handItem={handItem}
-              hat={hat}
-              eye={eye}
-              moustache={moustache}
-              cloth={cloth}
-              horn={horn}
-              frame={frame}
+              handItem={handItem?.item}
+              hat={hat?.item}
+              eye={eye.item}
+              moustache={moustache?.item}
+              cloth={cloth?.item}
+              horn={horn.item}
+              frame={frame?.item}
               hatBack={hatBack}
               currentColor={currentColor}
               backgroundColor={backgroundColor}
@@ -282,7 +287,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
           <div className="text-lg grid grid-cols-2 grid-rows-2 sm:grid-cols-7 sm:grid-rows-1 xl:grid-cols-7 xl:grid-rows-1 xl:text-2xl">
             <div onClick={() => setSelected("clothes")}>
               <DragoonGeneratorSelector
-                imagePath={cloth}
+                imagePath={cloth?.item}
                 partName="clothes"
                 label="clothes"
                 selected={selected}
@@ -290,7 +295,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             </div>
             <div onClick={() => setSelected("eyes")}>
               <DragoonGeneratorSelector
-                imagePath={eye}
+                imagePath={eye.item}
                 partName="eyes"
                 label="eyes"
                 selected={selected}
@@ -298,7 +303,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             </div>
             <div onClick={() => setSelected("hats")}>
               <DragoonGeneratorSelector
-                imagePath={hat}
+                imagePath={hat?.item}
                 secondaryImagePath={hatBack}
                 partName="hats"
                 label="hats"
@@ -307,7 +312,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             </div>
             <div onClick={() => setSelected("handItems")}>
               <DragoonGeneratorSelector
-                imagePath={handItem}
+                imagePath={handItem?.item}
                 partName="handItems"
                 label="extras"
                 selected={selected}
@@ -315,7 +320,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             </div>
             <div onClick={() => setSelected("horns")}>
               <DragoonGeneratorSelector
-                imagePath={horn}
+                imagePath={horn.item}
                 partName="horns"
                 label="horns"
                 selected={selected}
@@ -323,7 +328,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             </div>
             <div onClick={() => setSelected("moustaches")}>
               <DragoonGeneratorSelector
-                imagePath={moustache}
+                imagePath={moustache?.item}
                 partName="moustaches"
                 label="face"
                 selected={selected}

@@ -42,20 +42,24 @@ const DragoonCard: FC<DragoonCardProps> = (props) => {
     backgroundColor,
   } = props;
   return (
-    <div className="border-2 border-black backdrop-blur-sm flex flex-row flex-wrap">
+    <div className="flex flex-row flex-wrap border-2 border-black backdrop-blur-sm">
       <div
         id="dragoon-preview"
-        className="grid p-4 basis-1/4 xl:basis-2/12 2xl:basis-1/3"
+        className="p-4 grid basis-1/4 xl:basis-2/12 2xl:basis-1/3"
       >
         <DragoonPreview
-          cloth={cloth[clothesIndex]}
-          horn={horn[hornsIndex]}
-          eye={eye[eyeIndex]}
-          handItem={handItem[handItemIndex]}
-          hat={hat[hatIndex]}
+          cloth={cloth[clothesIndex] ? cloth[clothesIndex].item : null}
+          horn={horn[hornsIndex].item ? horn[hornsIndex].item : null}
+          eye={eye[eyeIndex].item}
+          handItem={
+            handItem[handItemIndex] ? handItem[handItemIndex].item : null
+          }
+          hat={hat[hatIndex] ? hat[hatIndex].item : null}
           hatBack={hatBack[hatBackIndex]}
-          moustache={moustache[moustacheIndex]}
-          frame={frame[frameIndex]}
+          moustache={
+            moustache[moustacheIndex] ? moustache[moustacheIndex].item : null
+          }
+          frame={frame[frameIndex] ? frame[frameIndex].item : null}
           currentColor={baseColor}
           backgroundColor={backgroundColor}
         />

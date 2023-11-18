@@ -1,11 +1,16 @@
 import { FC, useState } from "react";
 import { DEFAULT_COLOR } from "~/atoms";
-import { baseBlackLine, noneSelected } from "~/images";
+import { baseBlackLine, noneSelected, newLabel } from "~/images";
 import DragoonItemBase from "../DragoonSelector/DragoonSelectorBase/DragoonSelectorBase";
 import DragoonItemPreview from "../DragoonSelector/DragoonSelectorPreview/DragoonSelectorPreview";
 
+type DragoonPart = {
+  item: string;
+  new: boolean;
+};
+
 type DragoonPartsPreviewProps = {
-  images: string[];
+  images: DragoonPart[];
   secondaryImages?: string[];
   setIndex: (idx?: number | null) => void;
   optional: boolean;
@@ -16,12 +21,16 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 15;
   const maxPages = Math.ceil(images.length / PAGE_SIZE);
-  let indexOffset = 0;
   const safeImages = [...images];
+  safeImages.sort((a, b) => (a.new === b.new ? 0 : a.new ? -1 : 1));
+
+  const imageIndexMap = images.reduce((acc, x, idx) => {
+    acc[x.item] = idx;
+    return acc;
+  }, {});
 
   if (optional) {
-    safeImages.unshift("");
-    indexOffset = 1;
+    safeImages.unshift({ item: "", new: false });
   }
 
   const slice = safeImages.slice(
@@ -50,8 +59,8 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
             <div className="w-1/6 m-auto"></div>
           )}
           <div className="grid grid-cols-2 grid-rows-8 col-span-9 sm:grid-cols-3 sm:grid-rows-5 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-5 xl:grid-rows-3 place-items-center gap-y-8">
-            {slice.map((image, idx) => {
-              return image === "" ? (
+            {slice.map((image) => {
+              return image.item === "" ? (
                 <div
                   key="null"
                   className="outline outline-4 outline-black backdrop-blur-[4px] w-4/6 max-h-fit"
@@ -64,21 +73,31 @@ const DragoonPartsPreview: FC<DragoonPartsPreviewProps> = (props) => {
                 </div>
               ) : (
                 <div
-                  key={image}
+                  key={image.item}
                   className="grid grid-cols-1 outline outline-4 outline-black backdrop-blur-[4px] w-4/6  max-h-fit"
                   onClick={() =>
-                    setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
+                    // setIndex(idx - indexOffset + (currentPage - 1) * PAGE_SIZE)
+                    setIndex(imageIndexMap[image.item])
                   }
                 >
+                  {image.new ? (
+                    <img
+                      src={newLabel}
+                      className="absolute top-0 left-0 z-50 opacity-75 scale-75"
+                    />
+                  ) : (
+                    <></>
+                  )}
                   <DragoonItemPreview
                     styleProps="stacked z-20 min-w-0 min-h-0 m-auto"
-                    image={image}
+                    image={image.item}
                   />
                   {secondaryImages ? (
                     <DragoonItemPreview
                       styleProps="stacked z-90 min-w-0 min-h-0 m-auto"
                       image={
-                        secondaryImages[idx + (currentPage - 1) * PAGE_SIZE]
+                        // secondaryImages[idx + (currentPage - 1) * PAGE_SIZE]
+                        secondaryImages[imageIndexMap[image.item] + 1]
                       }
                     />
                   ) : (

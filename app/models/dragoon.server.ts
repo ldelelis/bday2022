@@ -33,7 +33,6 @@ export async function createDragoon(
         create: {
           comment,
           author,
-          originIp: userIP,
         },
       },
     },
