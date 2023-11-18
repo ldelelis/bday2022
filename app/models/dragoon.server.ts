@@ -42,17 +42,25 @@ export async function createDragoon(
 
 export async function getAllDragoons(
   page: number,
-  pageSize: number = 4
+  pageSize: number = 4,
+  year: number
 ): Promise<[Number, Dragoon[]]> {
+  const yearFilter = {
+    createdAt: {
+      lt: new Date(`${year + 1}-01-01`),
+      gte: new Date(`${year}-01-01`),
+    },
+  };
   const skip = (page - 1) * pageSize;
 
-  const count = await db.dragoon.count();
+  const count = await db.dragoon.count({ where: yearFilter });
 
   const dragoons = await db.dragoon.findMany({
     include: { comment: true },
     orderBy: {
       createdAt: "asc",
     },
+    where: yearFilter,
     take: pageSize,
     skip,
   });

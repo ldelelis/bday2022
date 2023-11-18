@@ -36,8 +36,6 @@ model DragoonComment {
 
 	author		String
 	comment		String
-	isApproved	Boolean		@default(false)
-	originIp	String?
 
 	dragoon		Dragoon		@relation(fields: [dragoonId], references: [id])
 	dragoonId	String		@unique
