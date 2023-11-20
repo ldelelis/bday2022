@@ -74,8 +74,9 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
       <div className="fixed inset-0 bg-black/30" aria-hidden="true">
         <div className="fixed inset-0 flex items-center justify-center">
           <Dialog.Panel className="max-w-3xl p-4 bg-purple-300 border-2 border-black rounded font-dragoon">
-            <Dialog.Title className="pb-2 text-2xl">
-              Please confirm your message!
+            <Dialog.Title className="pb-2 text-xl">
+              Submissions are currently disabled. You can still download your
+              dragoon!
             </Dialog.Title>
             <div
               className="text-2xl"
@@ -110,6 +111,7 @@ const DragoonConfirmationModal: FC<DragoonConfirmationModalProps> = (props) => {
                 type="submit"
                 form="dragoonData"
                 className="px-2 py-1 text-white bg-purple-500 border-2 border-black rounded-md"
+                disabled={true}
               >
                 Submit!
               </button>

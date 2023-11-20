@@ -82,6 +82,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
     setCloth(null);
     setEye(0);
     setHat(null);
+    setHatBack(null);
     setHandItem(null);
     setHorn(0);
     setMoustache(null);
@@ -164,6 +165,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
             className="flex flex-col m-auto 2xl:py-4"
           >
             <img src={nameBanner} className="py-2 m-auto" />
+            {/*
             <input
               id="author"
               name="author"
@@ -189,6 +191,7 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
               disabled={transition.state === "submitting"}
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
+              */}
             <input
               id="hat"
               name="hat"
@@ -249,11 +252,11 @@ const DragoonGenerator: FC<DragoonGeneratorProps> = (props) => {
                 type="button"
                 form="dragoonData"
                 className="w-1/3 h-full submit-button"
-                disabled={
-                  transition.state === "submitting" ||
-                  author.length === 0 ||
-                  message.length === 0
-                }
+                // disabled={
+                //   transition.state === "submitting" ||
+                //   author.length === 0 ||
+                //   message.length === 0
+                // }
                 onClick={() => setIsOpen(true)}
               />
               <button
